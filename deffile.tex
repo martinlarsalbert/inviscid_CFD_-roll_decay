@@ -1,0 +1,258 @@
+%**************************************************************%
+%                   File Name: deffile.tex                     %
+%                                                              %
+%  This LaTeX file is prepared for writing the manuscript for  %
+%    the 12th International Offshore and Polar Engineering     %
+%   Conference to be held from May 26-31, 2002 in Kitakyushu   %
+%      Organized by ISOPE and hosted by Kyushu University      %
+%                                                              %
+%           Prepared by Masashi KASHIWAGI on December 13, 2001 %
+%**************************************************************%
+%
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%% Style of Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ps@isopefoot{\let\@mkboth=\@gobbletwo
+ \def\@oddhead{}
+ \def\@evenhead{}
+%\def\@oddfoot{}
+%\def\@evenfoot{}
+ \def\@oddfoot{\hbox to \textwidth
+   {\footnotesize {Paper No.\,2011-\papernumber} \hfil 
+   {\firstauthorname} \hfil {Page number:\ \thepage\ of\ \totalpage}}}
+ \def\@evenfoot{\hbox to \textwidth
+   {\footnotesize {Paper No.\,2011-\papernumber} \hfil 
+   {\firstauthorname} \hfil {Page number:\ \thepage\ of\ \totalpage}}}
+}%
+%---------------------------------------------------------------
+\setcounter{topnumber}{3}     %
+\def\topfraction{1.0}         %
+\setcounter{bottomnumber}{2}  %
+\def\bottomfraction{1.0}      %
+\setcounter{totalnumber}{4}   %
+\def\textfraction{0.0}        %
+\def\floatpagefraction{1.0}   %
+%
+\setcounter{dbltopnumber}{4}
+\def\dbltopfraction{1.0}
+\def\dblfloatpagefraction{1.0}
+%---------------------------------------------------------------
+%
+\def\leftcapmargin{35pt}
+\def\rightcapmargin{15pt}
+%
+\long\def\@makecaption#1#2{%
+ \vskip 10\p@ \footnotesize\baselineskip=4.0mm
+ \@tempdimb=\leftcapmargin
+ \@tempdima\hsize\advance\@tempdima-\@tempdimb
+ \@tempdimb=\rightcapmargin
+ \advance\@tempdima-\@tempdimb
+ \newbox\tempbox
+ \setbox\tempbox=\hbox{#1}
+ \setbox\@tempboxa=\hbox{\hskip\leftcapmargin #2\hskip\rightcapmargin}
+ \ifdim \wd\@tempboxa >\hsize
+ \hbox to\hsize{\hfil \hskip-\the\wd\tempbox \hskip\leftcapmargin #1 
+ \parbox[t]\@tempdima{#2}\hskip\rightcapmargin}%
+ \else \hbox to\hsize{\hfil #1 #2\hfil}\fi
+%\setcounter{subfigure}{0}
+%\setcounter{subtable}{0}
+}
+%--------------------------------------------------------
+\def\fnum@figure{{\footnotesize Fig.\,\thefigure}\ }
+\def\fnum@table{{\footnotesize Table\,\thetable}\,}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\thesection{}
+\def\thesubsection{}
+\def\thesubsubsection{}
+%
+\def\section{\@startsection{section}{1}{\z@}
+{2ex plus .3ex minus .2ex}{1.5ex plus .1ex}{\small}}
+\def\subsection{\@startsection{subsection}{2}{\z@}
+{1.5ex plus .2ex minus .2ex}{1ex plus .1ex}{\small\bf}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}
+{1.5ex plus .2ex minus .2ex}{1ex plus .1ex}{\footnotesize\it}}
+%
+\def\paragraph{\@startsection{paragraph}{4}{\z@}
+{1ex plus .3ex minus .2ex}{-1em}{\large\bf}}
+\def\subparagraph{\@startsection{subparagraph}{4}
+{\parindent}{1ex plus .3ex minus .2ex}{-1em}{\small\bf}}
+%---------------------------------------------------------------------
+\def\eqnarray{%
+ \stepcounter{equation}%
+ \let\@currentlabel=\theequation
+ \global\@eqnswtrue
+ \global\@eqcnt\z@
+ \tabskip\mathindent
+ \let\\=\@eqncr
+ $$\halign to \displaywidth\bgroup\@eqnsel\hskip\@centering
+ $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne
+ \hfil$\displaystyle{{}##{}}$\hfil
+ &\global\@eqcnt\tw@$\displaystyle\tabskip\z@{##}$\hfil
+ \tabskip\@centering&\llap{##}\tabskip\z@\cr}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\def\@cite#1#2{\,[{\hbox{#1\if@tempswa , #2\fi}}]}
+%
+\def\thebibliography#1{%
+\begin{flushleft}\section*{REFERENCES}\end{flushleft}
+\list
+{[\arabic{enumi}]}{\settowidth\labelwidth{#1)}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+%=====================================================================
+%
+\newif\if@lastpagecolumnalign \@lastpagecolumnaligntrue
+% \@lastpagecolumnalignfalse  % if you do NOT need the function No.3
+%
+\if@lastpagecolumnalign %============ FUNCTION No.3 ============
+%
+\newdimen\lastp@geheight \lastp@geheight=10mm
+\newsavebox{\lastp@gebox}
+%
+% define \endabstract
+%
+\long\def\endabstract#1{\gdef\@endabstract{#1}} % permit paragraphs
+%
+% to create enough space of footnote to align columns of the last page
+%
+\def\lastpagecontrol{\@ifnextchar [{\l@stpagecontrol}%
+ {\l@stpagecontrol[\z@]}}
+%
+\def\l@stpagecontrol[#1]#2{\global\lastp@geheight=#2%
+%
+ \@ifundefined{maxsize}{}{\global\advance\maxsize-#2}% for supertab.sty
+%
+ \@ifundefined{@endabstract}{}{% save \endabstract in a box
+ \global\sbox{\lastp@gebox}{%
+  \begin{minipage}{\textwidth}\vspace*{#1}%
+  \hrule width \textwidth \vspace{1ex}%
+  \begin{list}{}{\setlength{\leftmargin}{0.15\textwidth}%
+  \listparindent=10pt \parsep=0pt
+  \topsep=0pt \partopsep=0pt
+  \setlength{\rightmargin}{\leftmargin}\small}%
+  \item \ignorespaces\hspace*{\listparindent}\ignorespaces
+                 \@endabstract
+  \end{list}%
+  \vspace{1ex} \hrule width \textwidth
+  \end{minipage}}}%
+%
+% insert footnote with abstract if enough room left
+%                 without abstract otherwise
+%
+  \@tempdima\ht\lastp@gebox \advance\@tempdima\dp\lastp@gebox
+ \ifdim\@tempdima>\lastp@geheight
+  \@tempdima\lastp@geheight \global\lastp@geheight=0pt
+ \else
+  \global\advance\lastp@geheight -\@tempdima
+  \@tempdima\lastp@geheight \global\lastp@geheight\textheight
+ \fi
+  \def\footnoterule{\null}% force it to \null at the last page
+  \insert\footins{\footnotesize
+  \interlinepenalty\interfootnotelinepenalty
+  \splittopskip\footnotesep
+  \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+  \hsize\textwidth \@parboxrestore
+  \ifdim\lastp@geheight=\z@\else\usebox{\lastp@gebox}\fi%
+  \vspace*{\@tempdima}}}
+%
+% set the layout of the last line of the document
+%
+\def\lastpagesettings{\@ifnextchar [{\l@stpagesettings}%
+ {\l@stpagesettings[\z@]}}
+%
+\def\l@stpagesettings[#1]{%
+%\begin{flushright}%
+% {\footnotesize(`{\tt\jobname.tex}'~~@~\today)}%
+%\end{flushright}%
+%
+% put \endabstract in the next page when no room left for it
+%
+ \ifdim\lastp@geheight=\z@
+ \onecolumn\null\vspace*{#1}\noindent\usebox{\lastp@gebox}%
+ \fi}
+%
+\fi %===========================================================
+%
+\makeatother
+%---------------------------------------------------------------
+\def\jsection#1{\section{\hspace*{-4.0mm}\uppercase{#1}}}
+\def\jsubsection#1{\subsection{\hspace*{-4.0mm}#1}}
+\def\jsubsubsection#1{\subsubsection{\hspace*{-4.0mm}#1}}
+%---------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\autospacing
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+% 
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bfl}{\begin{flushleft}}
+\newcommand{\efl}{\end{flushleft}}
+\newcommand{\bfr}{\begin{flushright}}
+\newcommand{\efr}{\end{flushright}}
+\newcommand{\ds}{\displaystyle}
+%---------------------------------------------------------------
+\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}}
+\newcommand{\ubar}[1]{\overline{#1}}
+\newcommand{\dint}{\int\!\!\!\int}
+\newcommand{\tint}{\int\!\!\!\int\!\!\!\int}
+\newcommand{\heikou}{\,/\!/\,}
+\newcommand{\hs}{\hspace*{0.2mm}}
+\newcommand{\iomega}{i\hspace*{0.25mm}\omega\hspace*{0.2mm}}
+\newcommand{\jneqi}{j = \hspace*{-1.6mm}/\hspace*{0.5mm} i}
+\newcommand{\rmP}{{\rm P}}
+\newcommand{\rmQ}{{\rm Q}}
+\newcommand{\cint}{\int_0^\infty \hspace*{-6.2mm}C\hspace*{3.8mm}}
+\newcommand{\e}{\,e}
+\newcommand{\noteq}{=\hspace*{-3.0mm}/\hspace*{1.25mm}}
+\newcommand{\ch}{\hspace*{0.5mm}{\rm ch}\hspace*{0.3mm}}
+\newcommand{\sh}{\hspace*{0.5mm}{\rm sh}\hspace*{0.3mm}}
+\newcommand{\dash}{{\hs\prime}}
+\newcommand{\npar}{\par\vspace*{10pt}}
+%
+%%%%%%%%%%%%%%%% Upper case of Greek Letters %%%%%%%%%%%%%%%%%%
+\newcommand{\gPi}{\mathnormal{\Pi}}
+\newcommand{\gGamma}{\mathnormal{\Gamma}}
+\newcommand{\gPhi}{\mathnormal{\Phi}}
+\newcommand{\gPsi}{\mathnormal{\Psi}}
+\newcommand{\gTheta}{\mathnormal{\Theta}}
+\newcommand{\gDelta}{\mathnormal{\Delta}}
+\newcommand{\gXi}{\mathnormal{\Xi}}
+\newcommand{\gLambda}{\mathnormal{\Lambda}}
+\newcommand{\gOmega}{\mathnormal{\Omega}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\textheight}  {240.0mm}
+\setlength{\textwidth}   {191.9mm}
+\setlength{\columnsep}   {8.9mm}
+\setlength{\parindent}   {0.0mm}
+\setlength{\mathindent}  {0.0mm}
+%
+\newlength{\mybaselineskip}
+\setlength{\mybaselineskip}{11pt}
+\newlength{\myleftmargin}
+\newlength{\mytopmargin} 
+\setlength{\myleftmargin}  {11.0mm}
+\setlength{\mytopmargin}   {13.0mm}
+%%%%%% For the letter size (ISOPE Format) %%%%%%%%%%%%%
+\setlength{\myleftmargin}  {12.0mm}
+\setlength{\mytopmargin}   { 3.0mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\oddsidemargin} {-1in}
+\setlength{\topmargin}     {-1in}
+\addtolength{\oddsidemargin}{\myleftmargin}
+\addtolength{\topmargin}    {\mytopmargin}
+\setlength{\headheight}  { 0.0mm}
+\setlength{\footskip}    {20.0mm}
+%
+\sloppy
+
