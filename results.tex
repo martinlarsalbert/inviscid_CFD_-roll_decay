@@ -30,9 +30,9 @@ model used, the steady roll angle was instead removed by removing the
 linear trend in the roll angle signal.
 
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/output_91_0.pdf}\end{center}
-        \caption{}
-        \label{fig:}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/mdl.pdf}\end{center}
+        \caption{Model test results}
+        \label{fig:mdl}
     \end{figure}
     
     \subsection{Ikeda's method}\label{ikedas-method}
@@ -46,9 +46,9 @@ calculated with \(C_r\) predicted with the descision tree gave much
 better agreement.
 
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/output_95_0.pdf}\end{center}
-        \caption{}
-        \label{fig:}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/ikeda.pdf}\end{center}
+        \caption{Ikeda prediction}
+        \label{fig:ikeda}
     \end{figure}
     
     \subsection{FNPF}\label{fnpf}
@@ -58,18 +58,18 @@ test. The results from these simulations can be seen in the figure
 below.
 
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/output_98_0.pdf}\end{center}
-        \caption{}
-        \label{fig:}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/fnpf.pdf}\end{center}
+        \caption{FNPF}
+        \label{fig:fnpf}
     \end{figure}
     
     \subsection{Roll damping prediction with Hybrid
 method}\label{roll-damping-prediction-with-hybrid-method}
 Replacing the wave damping $B_W$, for the zero speed case above, with values obtained with FNPF is shown below. 
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/output_101_0.pdf}\end{center}
-        \caption{}
-        \label{fig:}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/hybrid_0.pdf}\end{center}
+        \caption{Hybrid method 0 knots}
+        \label{fig:hybrid_0}
     \end{figure}
     
     FNPF gave stable results at zero speed, but very unstable results at
@@ -81,18 +81,18 @@ motions in the FNPF. The results are compared with corresponding results
 from the model tests.
 
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/output_103_0.pdf}\end{center}
-        \caption{}
-        \label{fig:}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/hybrid_speed_amplitudes.pdf}\end{center}
+        \caption{Hybrid method at speed amplitudes}
+        \label{fig:hybrid_speed_amplitudes}
     \end{figure}
     
     The results using the Hybrid method for Run 3 at speed gives very
 similar results to the corresponding model tests.
 
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/output_105_0.pdf}\end{center}
-        \caption{}
-        \label{fig:}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/hybrid_speed_time.pdf}\end{center}
+        \caption{Hybrid method at speed}
+        \label{fig:hybrid_speed_time}
     \end{figure}
     
     The coefficients obtained from model tests, FNPF and Hybrid method are
