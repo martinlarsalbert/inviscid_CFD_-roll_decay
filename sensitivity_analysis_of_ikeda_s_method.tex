@@ -1,0 +1,437 @@
+\section{Sensitivity analysis of Ikeda's
+method}\label{sensitivity-analysis-of-ikedas-method}
+
+Ikeda's method divides roll damping into five damping components:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Symbol & Component\tabularnewline
+\midrule
+\endhead
+\(B_F\) & skin friction\tabularnewline
+\(B_E\) & eddy generation\tabularnewline
+\(B_L\) & hull lift\tabularnewline
+\(B_W\) & roll wave generation\tabularnewline
+\(B_{BK}\) & bilge keels\tabularnewline
+\bottomrule
+\end{longtable}
+
+And the total damping is written as the sum of these components,
+
+\begin{equation}
+B_{44} = B_F + B_E + B_L + B_W + B_{BK}
+\end{equation}
+
+Due to the absence of bilge keels for the KVLCC2 the \(B_{BK}\) does not
+need to be included. This means that remaining components will get all
+the attention in this paper. Ikeda has in a series of papers proposed
+semi empirical formulas for the viscous damping components: \(B_F\),
+\(B_E\) and \(B_L\) which have been implemented for this study. The wave
+damping \(B_W\) is calculated using a potential flow strip theory code
+or a more advance potential flow code such as the FNPF method later
+described as the Hybrid method in this paper.
+
+Ikeda produced many papers about various aspects of roll damping where
+most of them are translations from original manuscripts in Japanese.
+Summaries of this method \cite{7505983/FB64RGPF},
+\cite{7505983/KAKIM2E2} and \cite{7505983/UGK6YEVD} has been used
+together with the original papers to understand how the method should be
+implemented. Falzarano says that the Himeno report and associated
+computer programs are well-known to have numerous typographical errors.
+When looking at these resources it becomes evident that there is some
+variety on how the method should be implemented, regardless if this is
+due to typographical errors or being variations of the actual method.
+The implementation was therefore a fairly time consuming task where
+various alternative implementations needed to be compared and
+investigated.
+
+The scale effects of roll damping is considered to mainly be associated
+with the sking friction component \(B_F\) \cite{7505983/FB64RGPF}. This
+component makes a very small part of the total damping for the full
+scale ship, but a substantial part for the model scale ship used in this
+study. This is therefore the only component in ikedas method that needs
+to be recalculated when the scale changes.
+
+For the skin friction damping \(B_F\) implementation was made according
+to the description in \cite{7505983/UGK6YEVD}. With the difference that
+the actual wetted surface \(S\) was used instead of the proposed
+estimation formula.
+
+The hull lift damping \(B_L\) is calculated according to
+\cite{7505983/937PN5DT} and implemented as described in
+\cite{7505983/UYUAYY7E}. Journe added a linear interpolation to the
+values for \(\kappa\) from the Ikeda paper.
+
+A schematic graph of how the parameters vary with speed and roll angle
+amplitude \(\phi_a\) in the current model scale is created with the
+current implementation of Ikeda as shown below. The roll amplitude is
+first varied at zero speed (left). The speed is then varied from zero to
+the froude number corresponding to 15.5 knots in full scale for the
+KVLCC2 with a roll angle amplitude of 10 degrees (middle). The amplitude
+is then gradually reduced at the highest froude number down to zero
+again (right).
+
+Assumming that the trends are correct in Ikeda's method it can be noted
+from the amplitude variations at zero knots (left): * \(B_W\) does not
+change with amplitude, implying that they only contribute to the linear
+part (\(B_1\)) of the damping. (The \(B_W\) was calculated with strip
+theory here) * \(B_F\) has a small amplitude dependancy but the linear
+part is dominating. * \(B_E\) has a large amplitude depandancy and only
+contributes to the quadratic damping (\(B_2\))\cite{7505983/4AFVVGNT}.
+
+Looking at the speed variation (middle): * At low speed \(B_F\) and
+\(B_E\) are the dominating components. (Note that this ship does not
+have bilge keels, as that would otherwise also be a large component). *
+At high speed the \(B_E\) has almost disappeared and is replaced by the
+\(B_L\) which is now the dominating component. * \(B_F\) has a large
+contribution for all speeds (at model scale).
+
+Looking at the roll amplitude variation (right): * (Please note that
+this x-axis is revered in this graph) * \(B_L\) does not change with
+amplitude, implying that they only contribute to the linear part
+(\(B_1\)) of the damping. * \(B_F\) has a small amplitude dependancy but
+the linear part is dominating.
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_39_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    When the damping predicted with Ikeda was compared with corresponding
+model test it was found that the results were in poor agreement for the
+zero speed case but quite good results at speed. This was pointing
+towards the eddy damping being incorrect in the current implementation
+of Ikeda's method. A thurough investigation of the eddy damping
+prediction was therefore conducted which is described in the next
+section.
+
+    \subsection{Eddy damping}\label{eddy-damping}
+
+The eddy damping is due to eddies generated around the ship hull during
+the roll motion. Strong eddies occures at sharp edges in the geometry.
+Below is an illustration of how the eddy damping changes with bilge
+radius to beam ratio as predicted with the current implementation of the
+method. It seems that the damping approaches zero very fast as the bilge
+radius increase. So having just a small rounding of the bilge, compared
+to a square section, will have a great impact on the eddy roll damping.
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_42_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Ikeda made experiements on a number of two-dimensional cylinders with
+various sections \cite{7505983/4AFVVGNT}. Ikeda found that the eddy
+damping per unit length of these sections can be expressed as:
+ 
+            
+    
+    \begin{equation}
+B'_{E0} = \frac{4 C_{r} T_{s}^{4} \omega \phi_{a} \rho}{3 \pi}
+\label{eq:equation}
+\end{equation}
+
+    
+
+    The total eddy damping can be obtained as an integral over the sections
+along the ship hull:
+ 
+            
+    
+    \begin{equation}
+B_{E0} = \int\limits_{AP}^{FP} B'_{E0}\, dx
+\label{eq:equation}
+\end{equation}
+
+    
+
+    It can be seen from the section damping equation above that the eddy
+damping increases linearly with both roll amplitude and frequency, and
+that it will go to zero for small amplitudes and frequencies, which
+means that it is only included in the quadratic damping term (\(B_2\)).
+Ikeda expressed the \(C_r\) coefficient to be entirely depending on the
+hull form. Ikeda developed a regression formula for \(C_r\) based on his
+experiments, which is used in the prediction method. The authors of this
+paper have tried to implement this method according to the description
+in the original paper \cite{7505983/4AFVVGNT} but have failed to
+reproduce the results from Ikeda's experiments exactly. Other resources
+such as \cite{7505983/FB64RGPF} and \cite{7505983/KAKIM2E2} have also
+been used without success.
+
+Instead a new regression for \(C_r\) was made on the experimental
+results from \cite{7505983/4AFVVGNT}. The experimental results (below)
+were collected by the authors using manual digitalization.
+ 
+            
+    
+    \begin{longtable}[c]{@{}lllllllllllll@{}}
+\toprule\addlinespace
+model & $\hat{\omega}$ & $\phi_a$ & $\hat{B_E}^*$ & B_W+B_F & $L_{pp}$ & $beam$ & $T_s$ & $\sigma$ & $R_b$ & $a_1$ & $a_3$ & $C_r$\\\addlinespace 
+\midrule\endhead
+A & 0.7509999999999999 & 0.23 & 0.03753367571367666 & 0.0036357630291343353 & 0.8 & 0.28 & 0.11199999999999999 & 1.0 & 0.0 & 0.09572067327729883 & -0.13851394050431068 & 6.791066236924095\\\addlinespace 
+A & 0.507 & 0.24 & 0.028412505258521625 & 0.001390847207830892 & 0.8 & 0.28 & 0.11199999999999999 & 1.0 & 0.0 & 0.09572067327729883 & -0.13851394050431068 & 7.297514558176523\\\addlinespace 
+B & 0.7509999999999999 & 0.3 & 0.02070022681130489 & 0.003265431521957657 & 0.8 & 0.28 & 0.11199999999999999 & 0.997 & 0.01 & 0.09594956148239993 & -0.13645394665840074 & 2.862276498613116\\\addlinespace 
+B & 0.536 & 0.3 & 0.013327670129715686 & 0.0011106958095124797 & 0.8 & 0.28 & 0.11199999999999999 & 0.997 & 0.01 & 0.09594956148239993 & -0.13645394665840074 & 2.5820572246775715\\\addlinespace 
+C & 0.7509999999999999 & 0.27 & 0.006150584844546503 & 0.0021146614051981705 & 0.8 & 0.28 & 0.11199999999999999 & 0.995 & 0.02 & 0.09610173289389044 & -0.13508440395498614 & 0.942686403519787\\\addlinespace 
+C & 0.625 & 0.21 & 0.003986684713683185 & 0.0015000392814414284 & 0.8 & 0.28 & 0.11199999999999999 & 0.995 & 0.02 & 0.09610173289389044 & -0.13508440395498614 & 0.9439893821974789\\\addlinespace 
+D & 0.939 & 0.31 & 0.007465704560231518 & 0.0020385726488099023 & 0.8 & 0.28 & 0.11199999999999999 & 0.988 & 0.03 & 0.09663180060654622 & -0.13031379454108408 & 0.7906835390460057\\\addlinespace 
+D & 0.7509999999999999 & 0.31 & 0.006144708627086015 & 0.0015002944963602304 & 0.8 & 0.28 & 0.11199999999999999 & 0.988 & 0.03 & 0.09663180060654622 & -0.13031379454108408 & 0.8136897536952459\\\addlinespace 
+G & 0.8140000000000001 & 0.24 & 0.011504995055307304 & 0.08835564931140577 & 0.8 & 0.185 & 0.192 & 0.799 & 0.18239704162959489 & -0.3470782119390985 & -0.007600489480668136 & 0.08606062205238546\\\addlinespace 
+H & 0.56 & 0.3 & 0.0006398363737784848 & 0.0014000371877776175 & 0.8 & 0.39799999999999996 & 0.193 & 0.893 & 0.19570204423684776 & 0.014252111702710376 & -0.0688620354229256 & 0.0596772641355714\\\addlinespace 
+H & 0.889 & 0.3 & 0.0011242278371175344 & 0.002290023345660393 & 0.8 & 0.39799999999999996 & 0.193 & 0.893 & 0.19570204423684776 & 0.014252111702710376 & -0.0688620354229256 & 0.0660511799369215\\\addlinespace 
+I & 0.58 & 0.25 & 0.0017690750019860046 & 0.0009999925056469947 & 0.8 & 0.237 & 0.096 & 0.977 & 0.0493806713819148 & 0.09198685657943263 & -0.12305863394274225 & 0.3580373791465449\\\addlinespace 
+I & 0.861 & 0.25 & 0.001950180538963892 & 0.00250475666585228 & 0.8 & 0.237 & 0.096 & 0.977 & 0.0493806713819148 & 0.09198685657943263 & -0.12305863394274225 & 0.2658776209301261\\\addlinespace 
+J & 1.03 & 0.23 & 0.004696651608905555 & 0.002761633629519946 & 0.8 & 0.34299999999999997 & 0.192 & 0.593 & 0.3534094529483184 & -0.06336616200212129 & 0.12359023842785882 & 0.13572061257096327\\\addlinespace 
+K & 0.78 & 0.29 & 0.017659813274832913 & 0.0013035049232182035 & 1.0 & 0.193 & 0.125 & 0.541 & 0.22715551565933745 & -0.14872060747212207 & 0.1558461247394752 & 0.29254752963292663\\\addlinespace 
+L & 0.551 & 0.26 & 0.1342976216222535 & 0.02880233570839885 & 1.0 & 0.151 & 0.14400000000000002 & 0.43 & 0.240320284977418 & -0.37779280539751503 & 0.21059154430298574 & 0.9275961561025332\\\addlinespace 
+\bottomrule 
+ \end{longtable}
+
+    
+
+    Where \(OG/d=0\) for all sections. For the Series60 sections (G-K) the
+bilge radius \(R_b\) was estimated using the following estimation,
+proposed by the authors:
+ 
+            
+    
+    \begin{equation}
+R_{b} = \frac{\sqrt{B_{s} T_{s} \left(1 - \sigma\right)}}{\sqrt{1 - \frac{\pi}{4}}}
+\label{eq:equation}
+\end{equation}
+
+    
+
+    The nondimensional damping is expressed in \cite{7505983/4AFVVGNT} using
+a star (*) sign. The reason seams to be that Ikeda wanted to signal that
+this damping only has the quadratic part of the damping. This stared
+damping are defined as:
+ 
+            
+    
+    \begin{equation}
+B_{E0 HAT} = \frac{8 B_{E star hat}}{3 \pi}
+\label{eq:equation}
+\end{equation}
+
+    
+
+    \(\hat{B_E}^*\) and \((B_W+B_F)^*\) are the experimental values taken
+from \cite{7505983/4AFVVGNT}. Which add up to the total damping:
+
+    \(\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*\)
+
+    The Lewis section coefficients were calculated as:
+ 
+            
+    
+    \begin{equation}
+D_{1} = \frac{4 \sigma}{\pi} + \frac{\left(H_{0} - 1\right)^{2} \left(- \frac{4 \sigma}{\pi} + 1\right)}{\left(H_{0} + 1\right)^{2}} + 3
+\label{eq:equation}
+\end{equation}
+
+    
+ 
+            
+    
+    \begin{equation}
+a_{3} = \frac{- D_{1} + \sqrt{9 - 2 D_{1}} + 3}{D_{1}}
+\label{eq:equation}
+\end{equation}
+
+    
+ 
+            
+    
+    \begin{equation}
+a_{1} = \frac{\left(H_{0} - 1\right) \left(a_{3} + 1\right)}{H_{0} + 1}
+\label{eq:equation}
+\end{equation}
+
+    
+ 
+            
+    
+    \begin{equation}
+B_{E0 HAT} = \frac{8 B_{E star hat}}{3 \pi}
+\label{eq:equation}
+\end{equation}
+
+    
+
+    And the \(C_r\) was calculated from the experiments as:
+ 
+            
+    
+    \begin{equation}
+C_{r} = \frac{3 \pi B_{E0 HAT} B_{s} T_{s} beam^{2} \sigma}{4 T^{4} \omega_{hat} \phi_{a}}
+\label{eq:equation}
+\end{equation}
+
+    
+
+    Instead of trying to invent some very advanced mathematical expression
+for the \(C_r\) regression a simple decision tree model was instead
+fitted to the \(C_r\) data from Ikeda's experiments. The fitted decision
+tree is illustrated in the figure below:
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_63_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Eventhoug this tree is so simple it has very good accuracy in
+reproducing the results from Ikedas experiments (\(r^2=0.996)\). The
+\(C_r\) was predicted with Ikeda and the alternative decision tree model
+for the KVLCC2 with section data according to the table below. A
+comparison is shown in the figure below, where it can be seen that the
+Ikeda implementation predicts much higher \(C_r\) between station 8 and
+14, where the bilge radius is also very small.
+ 
+            
+    
+    \begin{longtable}[c]{@{}llllllll@{}}
+\toprule\addlinespace
+$x$ & $beam$ & $T_s$ & $\sigma$ & $\frac{OG}{d}$ & $R_b$ & $a_1$ & $a_3$\\\addlinespace 
+\midrule\endhead
+-0.08080882352941177 & 0.17115554117647058 & 0.029411764705882353 & 0.5939992517452843 & 1.0999999999999996 & 0.09758941694170616 & 0.5340949013902127 & 0.09346077843706034\\\addlinespace 
+0.14941076470588238 & 0.4101988529411765 & 0.26838235294117646 & 0.2432956630457875 & 0.12054794520547941 & 0.6230466900619334 & -0.1824458277260031 & 0.3650565796464702\\\addlinespace 
+0.4125188823529412 & 0.6150630000000001 & 0.3058823529411765 & 0.49222807909482774 & 0.10576923076923073 & 0.6671978461991239 & 0.003203556976734904 & 0.19158944479904777\\\addlinespace 
+0.6427384705882353 & 0.7394487352941176 & 0.3058823529411765 & 0.653718963842786 & 0.10576923076923073 & 0.6041278867085014 & 0.10239362220051965 & 0.08357826147472612\\\addlinespace 
+0.9058465882352942 & 0.8258710588235294 & 0.3058823529411765 & 0.7857936964338019 & 0.10576923076923073 & 0.5021491605629501 & 0.14889281493367498 & -0.00024621915261740444\\\addlinespace 
+1.1360661764705882 & 0.8510367352941176 & 0.3058823529411765 & 0.8780056081159271 & 0.10576923076923073 & 0.38468440514364793 & 0.15415047011882232 & -0.057593441230048115\\\addlinespace 
+1.3662857647058824 & 0.8529412941176471 & 0.3058823529411765 & 0.9445485696925716 & 0.10576923076923073 & 0.25964289371087323 & 0.14822611734831342 & -0.09979784926318554\\\addlinespace 
+1.6293938235294119 & 0.8529412941176471 & 0.3058823529411765 & 0.9837969411523451 & 0.10576923076923073 & 0.1403519881372493 & 0.1440002403931892 & -0.12546231104499617\\\addlinespace 
+1.8596135294117646 & 0.8529412941176471 & 0.3058823529411765 & 0.9973617422737119 & 0.10576923076923073 & 0.05663418741256937 & 0.14250677906686124 & -0.134532352965095\\\addlinespace 
+2.1227216176470587 & 0.8529412941176471 & 0.3058823529411765 & 0.9979523911561022 & 0.10576923076923073 & 0.04989345314050447 & 0.14244128456104196 & -0.13493011211884393\\\addlinespace 
+2.3529411764705883 & 0.8529412941176471 & 0.3058823529411765 & 0.9979517810766112 & 0.10576923076923073 & 0.04990088539633636 & 0.14244135223122248 & -0.13492970114645178\\\addlinespace 
+2.5866385294117644 & 0.8529412941176471 & 0.3058823529411765 & 0.9979512935186544 & 0.10576923076923073 & 0.049906824245393284 & 0.1424414063112502 & -0.13492937270934396\\\addlinespace 
+2.853721176470588 & 0.8529412941176471 & 0.3058823529411765 & 0.9979517810766112 & 0.10576923076923073 & 0.04990088539633636 & 0.14244135223122248 & -0.13492970114645178\\\addlinespace 
+3.087418529411765 & 0.8529412941176471 & 0.3058823529411765 & 0.9979517810766112 & 0.10576923076923073 & 0.04990088539633636 & 0.14244135223122248 & -0.13492970114645178\\\addlinespace 
+3.3211158823529408 & 0.8529412941176471 & 0.3058823529411765 & 0.9979326878514596 & 0.10576923076923073 & 0.05013293059480477 & 0.14244347003477187 & -0.13491683936916107\\\addlinespace 
+3.588198529411765 & 0.8527555294117647 & 0.3058823529411765 & 0.9912384299601698 & 0.10576923076923073 & 0.10319620688499365 & 0.14309046599982314 & -0.13042795627929626\\\addlinespace 
+3.821895882352942 & 0.8454087058823531 & 0.3058823529411765 & 0.9700959804598432 & 0.10576923076923073 & 0.1898272847533075 & 0.14164643465147272 & -0.11659011810535287\\\addlinespace 
+4.0555932352941175 & 0.8141369117647059 & 0.3058823529411765 & 0.9357906856132224 & 0.10576923076923073 & 0.2729657971444984 & 0.1284632648706989 & -0.09485605304001271\\\addlinespace 
+4.2892905882352945 & 0.7078072941176471 & 0.3058823529411765 & 0.8981468043116771 & 0.10576923076923073 & 0.32055705586758354 & 0.0675552738224847 & -0.07182793147878982\\\addlinespace 
+4.556373235294117 & 0.41476041176470585 & 0.3058823529411765 & 0.8566227195636964 & 0.10576923076923073 & 0.2911382798056208 & -0.18351472793269105 & -0.043764611706507486\\\addlinespace 
+4.790070588235294 & 0.08396374705882353 & 0.23794117647058824 & 0.47076332581694846 & 0.1359703337453646 & 0.22196727820657103 & -0.7721801546355255 & 0.1030403802769838\\\addlinespace 
+\bottomrule 
+ \end{longtable}
+
+    
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_66_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    These two alternative ways to calculate the eddy damping will be further
+discussed below, when comparing the total predicted damping with
+corresponding results from the model tests.
+
+    \subsection{Time and frequency domain}\label{time-and-frequency-domain}
+
+Ikeda's method is defined in the frequency domain, where the damping is
+expressed as a function of roll angle amplitude \(\phi_a\) and roll
+angle frequency \(\omega\). The equivalent linear damping \(B_e\) (not
+to confuse with eddy damping \(B_E\)) is a way to convert the frequency
+domain damping into time domain damping \cite{7505983/FB64RGPF}, so that
+time domain roll simulations can be conducted with results from Ikeda's
+method. The most general way to determine \(B_e\) is to assume that the
+energy loss due to damping during a half cycle of roll is the same when
+nonlinear and linear dampings are used \cite{7505983/RYUBZITQ}. The
+\(B_e\) can then be calculated as a Fourier series expansion of the
+damping model, which in the case of a cubic model yields as:
+ 
+            
+    
+    \begin{equation}
+B_{e} = B_{1} + \frac{8 B_{2} \omega_{0} \phi_{a}}{3 \pi} + 0.75 B_{3} \omega_{0}^{2} \phi_{a}^{2}
+\label{eq:equation}
+\end{equation}
+
+    
+
+    In the case of a quadratic model \(B_3=0\) and for the linear model
+\(B_1\) and \(B_e\) are the same thing.
+
+    The expression above gives a relation between the frequency domain
+quantities \(\phi_a\), \(\omega\) and the time domain quantities
+\(B_1\), \(B_2\) and \(B_3\) which can be used to obtain the latter ones
+from the Ikeda's method. This can be done by calculating the damping
+with Ikeda's method for a variation of frequencies and amplitudes and
+then fit the above expression to this damping and obtain \(B_1\),
+\(B_2\) and \(B_3\):
+
+\[B^{Ikeda}(\phi_a, \omega) = B_e(\phi_a, \omega)\]
+
+In the case of a roll decay test \(\phi_a\) is the only parameter being
+varied. In order to verify this approach, an alternative method using
+the logaritmic decrement \cite{7505983/BYNJ8CFG} to obtaining the
+frequency domain quantities from time series result is also used.
+
+This method is investigated on simulation results with a quadratic
+model: \(B_1 = 0.05\), \(B_2 = 0.9\), \(A_{44} = 1.0\), \(C_1 = 5.0\).
+The peak values, being the only known amplitudes from this signal, is
+shown in the figure below.
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_72_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The decrement is calculated as the ratio between every other peak, so
+that negative and positive roll peaks are separated. This decrement can
+be calulated for each peak:
+\[ \Delta_n = \frac{\phi_{a,n}}{\phi_{a,n+2}}\]
+
+    The nondimensional \(\zeta\) damping coefficient for each peak can be
+calculated from the logaritimic decrement:
+
+    \[\zeta_n = \frac{\delta_n}{2\pi}=\frac{ln(\Delta_n)}{2\pi}\]
+
+    The dimensional damping \(B_n\) (Nm*s) can be then be obtained:
+ 
+            
+    
+    \begin{equation}
+B = 2 A_{44} \omega_{0} \zeta
+\label{eq:equation}
+\end{equation}
+
+    
+
+    So the damping can be obtained for each oscillation this way but it is
+not obvious which of the roll amplitudes these dampings correspond to.
+Four different choices were tried, associating damping \(B_n\) with the
+following amplitudes: * A : \(\phi_n\) * B : \(\phi_{n+1}\) * C :
+\(\phi_{n+2}\) * D : \((\phi_n + \phi_{n+1} + \phi_{n+2})/3\)
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_79_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Taking the mean value of peak n and the following two peaks (alt.D) seem
+to be the approach that best matches the \(B_e\) (predicted using the
+linearized equivalent damping method). The linearized equivalent damping
+method therefore seems to be the best way to convert \(B_1\), \(B_2\),
+\(B_3\) to frequency domain, considering the difficulties with the
+logaritmic decrement method as described above. The only time linearized
+equivalent damping method has not been used in this paper, is when
+damping at individual peaks from a time signal should be converted to
+frequency domain.
+
+    \subsection{Proposed hybrid method}\label{proposed-hybrid-method}
+
+\subsubsection{Proposed model}\label{proposed-model}
+
+A Hybrid method has been developed where wave damping \(B_W\) obtained
+with FNPF as described in the previous section is used together with the
+visous damping contributions from Ikeda's method. The wave damping was
+determined by using the PIT described above on results from FNPF
+simulations of roll decay tests.
+
+\subsubsection{FNPF method}\label{fnpf-method}
+
+    

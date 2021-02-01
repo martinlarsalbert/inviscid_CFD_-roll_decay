@@ -1,0 +1,115 @@
+\section{Results}\label{results}
+
+    \subsection{Roll decay model tests}\label{roll-decay-model-tests}
+
+\subsubsection{0 knots}\label{knots}
+
+Data from two roll decay model tests conducted at zero speed were
+available:
+\href{../../notebooks/01.2_select_suitable_MDL_test_KLVCC2.ipynb\#rolldecay}{Roll
+decay model tests 0 knots}. These tests where analyzed by fitting a
+\href{../../notebooks/01.2_select_suitable_MDL_test_KLVCC2.ipynb\#cubic_model}{Cubic
+model} to the model test data. The two models were very similar in terms
+of roll damping and stiffness, suggesting good repeatability in the
+model tests as well as in the parameter identification technique (PIT)
+used. The individual damping from each oscillation obtained with the
+logarithmic decrement method are very scattered, but this does not seem
+to influence the two models for the 0 speed case, which are very
+similiar.
+
+    \subsubsection{15.5 knots}\label{knots}
+
+Data from one roll decay model tests conducted at a ship speed
+corresponding to 15.5 knots full scale ship speed was also available.
+This model tests was analyzed in the same way as the other tests. It was
+found that the damping was higher at speed. The ship got a small
+\href{../../notebooks/01.3_select_suitable_MDL_test_KLVCC2_speed.ipynb\#yawrate}{yaw
+rate} at the end of test, giving a small steady roll angle due to the
+centrifugal force. Since this effect is not included in the matematical
+model used, the steady roll angle was instead removed by removing the
+linear trend in the roll angle signal.
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_87_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Ikeda's method}\label{ikedas-method}
+
+    When looking at predictions for KVLCC2 at 0 speed made with regular
+Ikeda's method, it was found that the eddy damping \(B_E\) was too high
+compared with the regular implementation, compared to the model test
+results. Eventhough the rest of the components would also be
+overpredicted, the \(B_E\) would still be too large. The eddy damping
+calculated with \(C_r\) predicted with the descision tree gave much
+better agreement.
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_91_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{FNPF}\label{fnpf}
+
+Simulations of roll decay tests were conducted with FNPF for each model
+test. The results from these simulations can be seen in the figure
+below.
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_94_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Roll damping prediction with Hybrid
+method}\label{roll-damping-prediction-with-hybrid-method}
+Replacing the wave damping $B_W$, for the zero speed case above, with values obtained with FNPF is shown below. 
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_97_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    FNPF gave stable results at zero speed, but very unstable results at
+speed, due to what was thought to be memory effects. For the speed case
+the viscous damping was instead present during the actual FNPF
+simulations. The viscous damping was included by adding a linear
+\(B_{visc,1}\) and quadratic \(B_{visc,2}\) damping term the equation of
+motions in the FNPF. The results are compared with corresponding results
+from the model tests.
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_99_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The results using the Hybrid method for Run 3 at speed gives very
+similar results to the corresponding model tests.
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_101_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The coefficients obtained from model tests, FNPF and Hybrid method are
+summarized in model scale units in the table below:
+ 
+            
+    
+    \begin{longtable}[c]{@{}lllllll@{}}
+\toprule\addlinespace
+run & method & $F_n$ & $\omega_0$ & $B_1$ & $B_2$ & $B_3$\\\addlinespace 
+\midrule\endhead
+1 & model test & 0.0 & 2.461405663797153 & 2.960431148229692 & -6.520487128705247 & 43.7753590783464\\\addlinespace 
+2 & model test & 0.0 & 2.461149414341689 & 2.879736279200558 & -5.874151219904037 & 41.50366418695269\\\addlinespace 
+2 & FNPF & 0.0 & 2.469512621237472 & 0.14245882294522433 & 2.9442349635220273 & 0.0\\\addlinespace 
+3 & model test & 0.14231828016230666 & 2.4675051791344322 & 7.523313711481077 & 7.0280627607638 & 0.3897887036233833\\\addlinespace 
+3 & FNPF & 0.14231828016230666 & 2.4731115844417735 & 1.939382895537425 & 2.876088787299491 & 0.0\\\addlinespace 
+3 & FNPF & 0.14231828016230666 & 2.4672709863288573 & 1.8288702419438334 & 3.3099823707085987 & 0.0\\\addlinespace 
+3 & FNPF & 0.14231828016230666 & 2.4531795386475976 & 2.503610883554999 & 1.3308576126192526 & 0.0\\\addlinespace 
+3 & FNPF & 0.14231828016230666 & 2.4642154500169404 & 7.612597393349741 & 8.176912123526904 & 0.0\\\addlinespace 
+3 & FNPF & 0.14231828016230666 & 2.440717566554755 & 7.8985005775656605 & 4.593428224531338 & 0.0\\\addlinespace 
+\bottomrule 
+ \end{longtable}
+
+    
+
+    
