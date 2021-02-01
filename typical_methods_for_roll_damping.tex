@@ -58,15 +58,6 @@ as:
     
 
     Which has an analytical solution \cite{undefined}:
- 
-            
-    
-    \begin{equation}
-\phi = \left(\left(\frac{\zeta \phi_{0}}{\sqrt{1 - \zeta^{2}}} + \frac{\dot{\phi}_{0}}{\omega_{0} \sqrt{1 - \zeta^{2}}}\right) \operatorname{sin}\left(\omega_{0} t \sqrt{1 - \zeta^{2}}\right) + \phi_{0} \operatorname{cos}\left(\omega_{0} t \sqrt{1 - \zeta^{2}}\right)\right) e^{- \omega_{0} t \zeta}
-\label{eq:equation}
-\end{equation}
-
-    
 
     In the usual case of having no initial roll velocity (\(\phi_0=0\)) this
 equation can be simlified to:
@@ -74,7 +65,8 @@ equation can be simlified to:
             
     
     \begin{equation}
-\phi = \frac{\left(\zeta \operatorname{sin}\left(\omega_{0} t \sqrt{1 - \zeta^{2}}\right) + \sqrt{1 - \zeta^{2}} \operatorname{cos}\left(\omega_{0} t \sqrt{1 - \zeta^{2}}\right)\right) \phi_{0} e^{- \omega_{0} t \zeta}}{\sqrt{1 - \zeta^{2}}}
+\phi = \frac{\zeta \phi_{0} e^{- \omega_{0} t \zeta} \operatorname{sin}\left(\omega_{0} t \sqrt{1 - \zeta^{2}}\right)}{\sqrt{1 - \zeta^{2}}} + \phi_{0} e^{- \omega_{0} t \zeta} \operatorname{cos}\left(\omega_{0} t \sqrt{1 - \zeta^{2}}\right) \\ 
+
 \label{eq:equation}
 \end{equation}
 
@@ -101,7 +93,9 @@ generall expression that can be expressed in general form according to
             
     
     \begin{equation}
-A_{44} \ddot{\phi} + \operatorname{B_{44}}\left(\dot{\phi}\right) + \operatorname{C_{44}}\left(\phi\right) = 0
+A_{44} \ddot{\phi} + \operatorname{B_{44}}\left(\dot{\phi}\right)  \\ 
++ \operatorname{C_{44}}\left(\phi\right) = 0 \\ 
+
 \label{eq:equation}
 \end{equation}
 
@@ -114,7 +108,9 @@ and stiffness models:
             
     
     \begin{equation}
-\operatorname{B_{44}}\left(\dot{\phi}\right) = B_{1} \dot{\phi} + B_{2} \left|{\dot{\phi}}\right| \dot{\phi} + B_{3} \dot{\phi}^{3}
+\operatorname{B_{44}}\left(\dot{\phi}\right) = B_{1} \dot{\phi} + B_{2} \left|{\dot{\phi}}\right| \dot{\phi}  \\ 
++ B_{3} \dot{\phi}^{3} \\ 
+
 \label{eq:equation}
 \end{equation}
 
@@ -134,7 +130,13 @@ and stiffness models:
             
     
     \begin{equation}
-A_{44} \ddot{\phi} + \left(B_{1} + B_{2} \left|{\dot{\phi}}\right| + B_{3} \dot{\phi}^{2}\right) \dot{\phi} + \left(C_{1} + C_{3} \phi^{2} + C_{5} \phi^{4}\right) \phi = 0
+A_{44} \ddot{\phi} + B_{1} \dot{\phi}  \\ 
++ B_{2} \left|{\dot{\phi}}\right| \dot{\phi}  \\ 
++ B_{3} \dot{\phi}^{3}  \\ 
++ C_{1} \phi  \\ 
++ C_{3} \phi^{3}  \\ 
++ C_{5} \phi^{5} = 0 \\ 
+
 \label{eq:equation}
 \end{equation}
 
@@ -163,7 +165,13 @@ unique solutions:
             
     
     \begin{equation}
-\left(B_{1A} + B_{2A} \left|{\dot{\phi}}\right| + B_{3A} \dot{\phi}^{2}\right) \dot{\phi} + \left(C_{1A} + C_{3A} \phi^{2} + C_{5A} \phi^{4}\right) \phi + \ddot{\phi} = 0
+B_{1A} \dot{\phi} + B_{2A} \left|{\dot{\phi}}\right| \dot{\phi}  \\ 
++ B_{3A} \dot{\phi}^{3}  \\ 
++ C_{1A} \phi  \\ 
++ C_{3A} \phi^{3}  \\ 
++ C_{5A} \phi^{5}  \\ 
++ \ddot{\phi} = 0 \\ 
+
 \label{eq:equation}
 \end{equation}
 
