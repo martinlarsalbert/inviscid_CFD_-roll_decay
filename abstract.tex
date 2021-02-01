@@ -1,14 +1,33 @@
-%1 short intro
-%What problem did you study and why is it important? Here, you want to provide some background to the study.
-Many cost-efficient computation methods have been developed over the years to analyze various aspects of ship hydrodynamics such as: resistance, propulsion and seakeeping. Getting the best possible accuracy with the lowest possible computational cost is an important factor in a ship’s early design stage. Potential flow-based analysis partly presents such a solution for seakeeping, with good accuracy for heave and pitch, but not for roll where the roll damping contains both inviscid and viscous effects. Roll motion is, however, often a critical degree of freedom that needs to be analyzed since large roll motions can result in cargo shifting or even capsizing. 
-The viscous part of roll damping can be assessed with high accuracy by means of experimental model tests or URANS calculations, but these are generally too expensive in the early design stage of ships. Many semi-empirical formulas to determine viscous damping were therefore developed during the 1970s, where Ikeda’s method is one of the most widely used.
-% 2 pupose/objective of study
-% the motivation behind the study.
-% the specific question or hypothesis you addressed. 
-The viscous damping from this method is normally combined with inviscid roll damping from strip theory.
+\section{Abstract}\label{abstract}
 
-With today’s computational power, more advanced potential flow methods can be used in the seakeeping analysis to enhance the accuracy in the predictions, but still at relatively low computational cost. This paper investigates the feasibility of combining 3D unsteady fully nonlinear potential flow (FNPF) theory solved by means of a Boundary Element Method (BEM) together with the viscous contributions from Ikeda’s method.
+Many cost-efficient computation methods have been developed over the
+years to analyze various aspects of ship hydrodynamics such as:
+resistance, propulsion and seakeeping. Getting the best possible
+accuracy with the lowest possible computational cost is an important
+factor in a ship's early design stage. Potential flow-based analysis
+partly presents such a solution for seakeeping, with good accuracy for
+heave and pitch, but not for roll where the roll damping contains both
+inviscid and viscous effects. Roll motion is, however, often a critical
+degree of freedom that needs to be analyzed since large roll motions can
+result in cargo shifting or even capsizing. The viscous part of roll
+damping can be assessed with high accuracy by means of experimental
+model tests or URANS calculations, but these are generally too expensive
+in the early design stage of ships. Many semi-empirical formulas to
+determine viscous damping were therefore developed during the 1970s,
+where Ikeda's method is one of the most widely used. The viscous damping
+from this method is normally combined with inviscid roll damping from
+strip theory. With today's computational power, more advanced potential
+flow methods can be used in the seakeeping analysis to enhance the
+accuracy in the predictions, but still at relatively low computational
+cost. This paper investigates the feasibility of combining 3D unsteady
+fully nonlinear potential flow (FNPF) theory solved by means of a
+Boundary Element Method (BEM) together with the viscous contributions
+from Ikeda's method. The approach of substituting the inviscid part from
+Ikeda's method using strip theory with FNPF is investigated by
+conducting roll decay simulations. The results estimated by the proposed
+approach are compared with both the classic strip theory approach and
+roll decay model tests. It is found that potential improvements to the
+modelling of roll damping can be achieved by introducing FNPF analysis
+in the Ikeda's method.
 
-% 3 method/methodology that has been used
-The approach of substituting the inviscid part from Ikeda’s method using strip theory with FNPF is investigated by conducting roll decay simulations. The results estimated by the proposed approach are compared with both the classic strip theory approach and roll decay model tests. It is found that potential improvements to the modelling of roll damping can be achieved by introducing FNPF analysis in the Ikeda’s method.
-
+    
