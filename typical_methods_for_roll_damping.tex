@@ -94,7 +94,7 @@ generall expression that can be expressed in general form according to
             
     
     \begin{equation}
-A_{44} \ddot{\phi} \\ + \operatorname{B_{44}}\left(\dot{\phi}\right) \\ + \operatorname{C_{44}}\left(\phi\right) = 0
+A_{44} \ddot{\phi} + \operatorname{B_{44}}\left(\dot{\phi}\right) + \operatorname{C_{44}}\left(\phi\right) = 0
 \label{eq:equation}
 \end{equation}
 
@@ -107,7 +107,7 @@ and stiffness models:
             
     
     \begin{equation}
-\operatorname{B_{44}}\left(\dot{\phi}\right) = B_{1} \dot{\phi} \\ + B_{2} \left|{\dot{\phi}}\right| \dot{\phi} \\ + B_{3} \dot{\phi}^{3}
+\operatorname{B_{44}}\left(\dot{\phi}\right) = B_{1} \dot{\phi} + B_{2} \left|{\dot{\phi}}\right| \dot{\phi} + B_{3} \dot{\phi}^{3}
 \label{eq:equation}
 \end{equation}
 
@@ -127,7 +127,9 @@ and stiffness models:
             
     
     \begin{equation}
-A_{44} \ddot{\phi} \\ + B_{1} \dot{\phi} \\ + B_{2} \left|{\dot{\phi}}\right| \dot{\phi} \\ + B_{3} \dot{\phi}^{3} \\ + C_{1} \phi \\ + C_{3} \phi^{3} \\ + C_{5} \phi^{5} = 0
+\begin{aligned}
+A_{44} \ddot{\phi} + B_{1} \dot{\phi} + B_{2} \left|{\dot{\phi}}\right| \dot{\phi} + B_{3} \dot{\phi}^{3} + C_{1} \phi + C_{3} \phi^{3} \\ + C_{5} \phi^{5} = 0
+\end{aligned}
 \label{eq:equation}
 \end{equation}
 
@@ -156,7 +158,9 @@ unique solutions:
             
     
     \begin{equation}
-B_{1A} \dot{\phi} \\ + B_{2A} \left|{\dot{\phi}}\right| \dot{\phi} \\ + B_{3A} \dot{\phi}^{3} \\ + C_{1A} \phi \\ + C_{3A} \phi^{3} \\ + C_{5A} \phi^{5} \\ + \ddot{\phi} = 0
+\begin{aligned}
+B_{1A} \dot{\phi} + B_{2A} \left|{\dot{\phi}}\right| \dot{\phi} + B_{3A} \dot{\phi}^{3} + C_{1A} \phi + C_{3A} \phi^{3} + C_{5A} \phi^{5} + \ddot{\phi} = 0
+\end{aligned}
 \label{eq:equation}
 \end{equation}
 
@@ -190,7 +194,9 @@ acceleration:
             
     
     \begin{equation}
+\begin{aligned}
 \ddot{\phi} = - B_{1A} \dot{\phi} - B_{2A} \left|{\dot{\phi}}\right| \dot{\phi} - B_{3A} \dot{\phi}^{3} - C_{1A} \phi - C_{3A} \phi^{3} - C_{5A} \phi^{5}
+\end{aligned}
 \label{eq:equation}
 \end{equation}
 
@@ -223,6 +229,10 @@ B_{1} = 2 A_{44} \omega_{0} \zeta
     The analytical and numerical solutions are vary similar according to the
 example: \(A_{44} = 1.0\), \(B_1 = 0.3\), \(C_1 = 5.0\) shown in the
 figure below.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+findfont: Font family ['"serif"'] not found. Falling back to DejaVu Sans.
+    \end{Verbatim}
 
     \begin{figure}
         \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/analytical_numerical.pdf}\end{center}
