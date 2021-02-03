@@ -3,23 +3,23 @@
 Many great semi-empirical methods have been developed over the years to
 analyze various aspects of ship hydrodynamics such as: resistance,
 propulsion and seakeeping. These methods were often developed because
-computing the flow numerically was far too complicated and time consuming
-at the time. When computers are now faster and great advancements in the
-field of Computation Fluid Dynamics (CFD) has been achieved, the simpler
-semi-empirical formulas have now gotten less and less relevant. But have
-they all of gotten totally irrelevant?
+computing the flow numerically was far too complicated and time
+consuming at the time. When computers are now faster and great
+advancements in the field of Computation Fluid Dynamics (CFD) has been
+achieved, the simpler semi-empirical formulas have now gotten less and
+less relevant. But have they all of gotten totally irrelevant?
 
 A semi-empirical method to predict ship roll damping, commonly known as
 Ikeda's method, will be investigated in this paper, for a use case that
 can still make it relevant. It will be investigated if this method can
 be used to increase the accuracy of the roll motion prediction of a
-fully nonlinear potential flow method (FNPF), so that this relatively fast
-option can be used to a larger extent than what is currently possible
-today. The roll damping of ships is highly dependent on viscous effects
-which mean that the inviscid potential flow lacks a lot of the important
-physics of the roll motion and can therefore not give relevant results
-for this degree of freedom, where more advanced options such as model
-tests or URANS are needed.
+fully nonlinear potential flow method (FNPF), so that this relatively
+fast option can be used to a larger extent than what is currently
+possible today. The roll damping of ships is highly dependent on viscous
+effects which mean that the inviscid potential flow lacks a lot of the
+important physics of the roll motion and can therefore not give relevant
+results for this degree of freedom, where more advanced options such as
+model tests or URANS are needed.
 
 The Hybrid method, combining Ikeda's method and FNPF proposed in this
 paper is investigated using the well known KVLCC2 test case.
@@ -36,9 +36,9 @@ paper is investigated using the well known KVLCC2 test case.
     This ship was selected partly because it is a well known test case and
 also because it does not have any bilge keels. Ikeda's method contain
 methods to predict damping from various components, where the bilge
-keels is one of them. Results from roll decay simulations made with
-the hybrid method will be compared to corresponding model test data from
-the SSPA Maritime Dynamics Laboratory. From these model tests, only the
+keels is one of them. Results from roll decay simulations made with the
+hybrid method will be compared to corresponding model test data from the
+SSPA Maritime Dynamics Laboratory. From these model tests, only the
 total damping can be observed. Reducing the number of components by
 having no bilge keels will therefore give more insight into the
 remaining components.
