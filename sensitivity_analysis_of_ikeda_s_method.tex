@@ -128,13 +128,13 @@ to a square section, will have a great impact on the eddy roll damping.
     
     Ikeda made experiements on a number of two-dimensional cylinders with
 various sections \cite{7505983/4AFVVGNT}. Ikeda found that the eddy
-damping per unit length of these sections can be expressed as:
+damping per unit length of these sections can be expressed as: 
  
             
     
     \begin{equation}
 B'_{E0} = \frac{4 C_{r} T_{s}^{4} \omega \phi_{a} \rho}{3 \pi}
-\label{eq:equation}
+\label{eq:eddy_section}
 \end{equation}
 
     
@@ -151,18 +151,19 @@ B_{E0} = \int\limits_{AP}^{FP} B'_{E0}\, dx
 
     
 
-    It can be seen from the section damping equation above that the eddy
-damping increases linearly with both roll amplitude and frequency, and
-that it will go to zero for small amplitudes and frequencies, which
-means that it is only included in the quadratic damping term ($B_2$).
-Ikeda expressed the $C_r$ coefficient to be entirely depending on the
-hull form. Ikeda developed a regression formula for $C_r$ based on his
-experiments, which is used in the prediction method. The authors of this
-paper have tried to implement this method according to the description
-in the original paper \cite{7505983/4AFVVGNT} but have failed to
-reproduce the results from Ikeda's experiments exactly. Other resources
-such as \cite{7505983/FB64RGPF} and \cite{7505983/KAKIM2E2} have also
-been used without success.
+    It can be seen from the section damping (eq. \ref{eq:eddy_section})
+above that the eddy damping increases linearly with both roll amplitude
+and frequency, and that it will go to zero for small amplitudes and
+frequencies, which means that it is only included in the quadratic
+damping term ($B_2$). Ikeda expressed the $C_r$ coefficient to be
+entirely depending on the hull form. Ikeda developed a regression
+formula for $C_r$ based on his experiments, which is used in the
+prediction method. The authors of this paper have tried to implement
+this method according to the description in the original paper
+\cite{7505983/4AFVVGNT} but have failed to reproduce the results from
+Ikeda's experiments exactly. Other resources such as
+\cite{7505983/FB64RGPF} and \cite{7505983/KAKIM2E2} have also been used
+without success.
 
 Instead, a new regression for $C_r$ was made on the experimental
 results from \cite{7505983/4AFVVGNT}. The experimental results were
