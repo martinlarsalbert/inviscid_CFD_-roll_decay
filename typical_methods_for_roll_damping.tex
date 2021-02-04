@@ -43,53 +43,8 @@ tests. In this technique, parameters in a mathematical model are
 determined in order to get the best fit to a roll decay time signal. A
 derivation of a matematical model suitable for this study is described
 below together with a description of how the parameters: damping,
-stiffness and inertia coefficients are determined.
-
-A differential equation for a linearly decaying motion can be written
-as:
- 
-            
-    
-    \begin{equation}
-\omega_{0}^{2} y + 2 \omega_{0} \zeta \dot{y} + \ddot{y} = 0
-\label{eq:equation}
-\end{equation}
-
-    
-
-    Which has an analytical solution \cite{undefined}:
-
-    In the usual case of having no initial roll velocity ($\phi_0=0$) this
-equation can be simlified to:
- 
-            
-    
-    \begin{equation}
-\begin{aligned}
-\phi = \frac{\zeta \phi_{0} e^{- \omega_{0} t \zeta} \operatorname{sin}\left(\omega_{0} t \sqrt{1 - \zeta^{2}}\right)}{\sqrt{1 - \zeta^{2}}} \\ + \phi_{0} e^{- \omega_{0} t \zeta} \operatorname{cos}\left(\omega_{0} t \sqrt{1 - \zeta^{2}}\right)
-\end{aligned}
-\label{eq:equation}
-\end{equation}
-
-    
-
-    And the damping coefficient $\zeta$ is very small for ships so that
-$\sqrt{1-\zeta}$ is almost 1 and the solution can be further
-simplified, into something that can easily be recognized as a decaying
-oscillation:
- 
-            
-    
-    \begin{equation}
-\phi = \phi_{0} e^{- \omega_{0} t \zeta} \operatorname{cos}\left(\omega_{0} t\right)
-\label{eq:equation}
-\end{equation}
-
-    
-
-    The equations derived above are the linear special case of a more
-general expression that can be expressed in general form according to
-\cite{7505983/FB64RGPF}:
+stiffness and inertia coefficients are determined. The roll decay motion
+can be expressed in general form according to \cite{7505983/FB64RGPF}:
  
             
     
@@ -202,9 +157,9 @@ acceleration:
 
     
 
-    This numerical solution can be compared with the analytical solution
-above for a linear model. For this case the relation between $\zeta$
-and $B_1$ can be expressed as:
+    This numerical solution can be compared with an analytical solution for
+a linear model (see \ref{eq:linear}). For this case the relation
+between $\zeta$ and $B_1$ can be expressed as:
  
             
     
