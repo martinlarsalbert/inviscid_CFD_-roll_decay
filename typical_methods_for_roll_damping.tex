@@ -3,10 +3,10 @@ damping}\label{typical-methods-for-roll-damping}
 
     \subsection{Roll decay test}\label{roll-decay-test}
 
-A common way to determine the roll damping of a ship is to
-conduct a roll decay test. The initial heel angle during this test gives
-the ship potential energy that subsequently is shifting to kinetic energy as the ship
-starts to move during the inital phase of the roll decay test. The
+A common way to determine the roll damping of a ship is to conduct a
+roll decay test. The initial heel angle during this test gives the ship
+potential energy that subsequently is shifting to kinetic energy as the
+ship starts to move during the inital phase of the roll decay test. The
 energy is transfered between kinetic and potential energy during the
 oscillations. The ship loses energy over time due to the damping wich
 can be seen in this graph:
@@ -20,11 +20,11 @@ can be seen in this graph:
     \end{figure}
     
 
-    Time traces of the roll motion from roll decay tests in model scale experiments as well as from FNPF
-simulations are used in this paper to determine the roll damping of
-KVLCC2. Two different techniques to identidy the damping from these
-tests are used: the PIT method and the logartithmic decrement method
-which are both described below.
+    Time traces of the roll motion from roll decay tests in model scale
+experiments as well as from FNPF simulations are used in this paper to
+determine the roll damping of KVLCC2. Two different techniques to
+identidy the damping from these tests are used: the PIT method and the
+logartithmic decrement method which are both described below.
 
 \subsection{Ikeda's method}\label{ikedas-method}
 
@@ -40,10 +40,10 @@ with FNPF resulting in the Hybrid method as proposed in this paper.
 \cite{7505983/EXYJELCU} is used to obtain the damping coefficients from
 the roll decay model test as well as from the FNPF simulated roll decay
 tests. In this technique, parameters in a mathematical model are
-determined in order to get the best fit to a roll decay time signal. A derivation
-of a matematical model suitable for this study is described below
-together with a description of how the parameters: damping, stiffness
-and inertia coefficients are determined.
+determined in order to get the best fit to a roll decay time signal. A
+derivation of a matematical model suitable for this study is described
+below together with a description of how the parameters: damping,
+stiffness and inertia coefficients are determined.
 
 A differential equation for a linearly decaying motion can be written
 as:
@@ -59,7 +59,7 @@ as:
 
     Which has an analytical solution \cite{undefined}:
 
-    In the usual case of having no initial roll velocity (\(\phi_0=0\)) this
+    In the usual case of having no initial roll velocity ($\phi_0=0$) this
 equation can be simlified to:
  
             
@@ -73,8 +73,8 @@ equation can be simlified to:
 
     
 
-    And the damping coefficient \(\zeta\) is very small for ships so that
-\(\sqrt{1-\zeta}\) is almost 1 and the solution can be further
+    And the damping coefficient $\zeta$ is very small for ships so that
+$\sqrt{1-\zeta}$ is almost 1 and the solution can be further
 simplified, into something that can easily be recognized as a decaying
 oscillation:
  
@@ -100,7 +100,7 @@ A_{44} \ddot{\phi} + \operatorname{B_{44}}\left(\dot{\phi}\right) + \operatornam
 
     
 
-    Where \(B_{44}(\dot{\phi})\) and \(C_{44}(\phi)\) are the damping and
+    Where $B_{44}(\dot{\phi})$ and $C_{44}(\phi)$ are the damping and
 stiffness models. A cubic model can be obtained by using cubic damping
 and stiffness models:
  
@@ -136,11 +136,11 @@ A_{44} \ddot{\phi} + B_{1} \dot{\phi} + B_{2} \left|{\dot{\phi}}\right| \dot{\ph
     
 
     This mathematical model can be reduced to a quadratic damping model when
-\(B_3=0\) and a linear model when \(B_2=B_3=0\). This equation does not
+$B_3=0$ and a linear model when $B_2=B_3=0$. This equation does not
 have one unique solution however. If all parameters would be multiplied
-by a factor \(k\) these parameters would also yield as a solution to the
+by a factor $k$ these parameters would also yield as a solution to the
 equation. All parameters are therefore divided by the total added mass
-parameters \(A_{44}\), replacing the parameters with new parameters such
+parameters $A_{44}$, replacing the parameters with new parameters such
 as:
  
             
@@ -167,27 +167,27 @@ B_{1A} \dot{\phi} + B_{2A} \left|{\dot{\phi}}\right| \dot{\phi} + B_{3A} \dot{\p
     
 
     The parameters of this equation can be identified using least square fit
-if the time signals \(\phi(t)\), \(\dot{\phi}(t)\) and
-\(\ddot{\phi}(t)\) are all known. This is the case for the results from
+if the time signals $\phi(t)$, $\dot{\phi}(t)$ and
+$\ddot{\phi}(t)$ are all known. This is the case for the results from
 the FNPF simulations but not from the model tests, where only the roll
-signal \(\phi(t)\) is known. The other time derivatives can be estimated
-using numerical differentiation of a low-pass filtered roll signal or Kalman
-filtered roll signal. The filtering will however introduce some errors
-in itself. So instead of using this "Differentiation approach", it has been
-found that solving the differential equation numerically for guessed
-parameter values determined using optimization similarly to what was
-used by \cite{7505983/FJHQJJUH} and \cite{7505983/9B7QMVJJ} gives the
-best parameter estimation. One problem with this "Integration approach"
-is that in order to converge, the optimization needs a resonable first
-guess of the parameters. The Differentiation approach has therefore been used
-as a pre-step to obtain a very good first guess of the parameters that
-can be passed on to the Integration approach. This has been used for
-both signals from FNPF and model tests where in the latter case
-numerical differentiation is used.
+signal $\phi(t)$ is known. The other time derivatives can be estimated
+using numerical differentiation of a low-pass filtered roll signal or
+Kalman filtered roll signal. The filtering will however introduce some
+errors in itself. So instead of using this "Differentiation approach",
+it has been found that solving the differential equation numerically for
+guessed parameter values determined using optimization similarly to what
+was used by \cite{7505983/FJHQJJUH} and \cite{7505983/9B7QMVJJ} gives
+the best parameter estimation. One problem with this "Integration
+approach" is that in order to converge, the optimization needs a
+resonable first guess of the parameters. The Differentiation approach
+has therefore been used as a pre-step to obtain a very good first guess
+of the parameters that can be passed on to the Integration approach.
+This has been used for both signals from FNPF and model tests where in
+the latter case numerical differentiation is used.
 
 The differential equation is numerically solved as an intial value
-problem, where the initial states for \(\phi(t)\), \(\dot{\phi}(t)\) and
-\(\ddot{\phi}(t)\) are used to estimate the following states, by
+problem, where the initial states for $\phi(t)$, $\dot{\phi}(t)$ and
+$\ddot{\phi}(t)$ are used to estimate the following states, by
 conducting very small time steps using the following expression for the
 acceleration:
  
@@ -203,8 +203,8 @@ acceleration:
     
 
     This numerical solution can be compared with the analytical solution
-above for a linear model. For this case the relation between \(\zeta\)
-and \(B_1\) can be expressed as:
+above for a linear model. For this case the relation between $\zeta$
+and $B_1$ can be expressed as:
  
             
     
@@ -227,11 +227,9 @@ B_{1} = 2 A_{44} \omega_{0} \zeta
     
 
     The analytical and numerical solutions are very similar according to the
-example: \(A_{44} = 1.0\), \(B_1 = 0.3\), \(C_1 = 5.0\) shown in the
+example: $A_{44} = 1.0$, $B_1 = 0.3$, $C_1 = 5.0$ shown in the
 figure below.
-
-
-    \begin{figure}
+\begin{figure}
         \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/analytical_numerical.pdf}\end{center}
         \caption{Analytical and numerical}
         \label{fig:analytical_numerical}

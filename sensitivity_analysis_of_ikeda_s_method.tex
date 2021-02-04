@@ -28,12 +28,12 @@ the attention in this paper. Ikeda has in a series of papers proposed
 semi empirical formulas for the viscous damping components: $B_F$,
 $B_E$ and $B_L$ which have been implemented for this study. The wave
 damping $B_W$ is calculated using a potential flow strip theory code
-or a more advance potential flow code such as the FNPF method later
-described as the Hybrid method in this paper.
+or a more advanced potential flow method such as FNPF as is done in this
+study.
 
 Ikeda produced many papers about various aspects of roll damping where
-most of them are translations from original manuscripts in Japanese.
-Summaries of this method \cite{7505983/FB64RGPF},
+most of them are translations from original manuscripts written in
+Japanese. Summaries of this method \cite{7505983/FB64RGPF},
 \cite{7505983/KAKIM2E2} and \cite{7505983/UGK6YEVD} has been used
 together with the original papers to understand how the method should be
 implemented. Falzarano says that the Himeno report and associated
@@ -46,21 +46,21 @@ various alternative implementations needed to be compared and
 investigated.
 
 The scale effects of roll damping is considered to mainly be associated
-with the sking friction component $B_F$ \cite{7505983/FB64RGPF}. This
-component makes a very small part of the total damping for the full
+with the skin friction component $B_F$ \cite{7505983/FB64RGPF}. This
+component constitute a very small part of the total damping for the full
 scale ship, but a substantial part for the model scale ship used in this
-study. This is therefore the only component in ikedas method that needs
+study. This is therefore the only component in Ikedas method that needs
 to be recalculated when the scale changes.
 
 For the skin friction damping $B_F$ implementation was made according
 to the description in \cite{7505983/UGK6YEVD}. With the difference that
-the actual wetted surface $S$ was used instead of the proposed
+the actual wetted surface at rest $S$ was used instead of the proposed
 estimation formula.
 
 The hull lift damping $B_L$ is calculated according to
 \cite{7505983/937PN5DT} and implemented as described in
-\cite{7505983/UYUAYY7E}. Journe added a linear interpolation to the
-values for $\kappa$ from the Ikeda paper.
+\cite{7505983/UYUAYY7E}. Journée added a linear interpolation to the
+values for $\kappa$ from the Ikeda's paper.
 
 A schematic graph of how the parameters vary with speed and roll angle
 amplitude $\phi_a$ in the current model scale is created with the
@@ -102,13 +102,13 @@ Looking at the roll amplitude variation (right):
         \label{fig:ikeda_generic}
     \end{figure}
     
-    When the damping predicted with Ikeda was compared with corresponding
-model test it was found that the results were in poor agreement for the
-zero speed case but quite good results at speed. This was pointing
-towards the eddy damping being incorrect in the current implementation
-of Ikeda's method. A thurough investigation of the eddy damping
-prediction was therefore conducted which is described in the next
-section.
+    When the damping predicted with Ikeda's method was compared with
+corresponding model test it was found that the results were in poor
+agreement for the zero speed case but quite good results at speed. This
+was pointing towards the eddy damping being incorrect in the current
+implementation of Ikeda's method. A thorough investigation of the eddy
+damping prediction was therefore conducted which is described in the
+next section.
 
     \subsection{Eddy damping}\label{eddy-damping}
 
@@ -164,7 +164,7 @@ reproduce the results from Ikeda's experiments exactly. Other resources
 such as \cite{7505983/FB64RGPF} and \cite{7505983/KAKIM2E2} have also
 been used without success.
 
-Instead a new regression for $C_r$ was made on the experimental
+Instead, a new regression for $C_r$ was made on the experimental
 results from \cite{7505983/4AFVVGNT}. The experimental results were
 collected by the authors using manual digitalization
 \cite{7505983/RXYIE6UW}.
@@ -183,9 +183,9 @@ R_{b} = \frac{\sqrt{B_{s} T_{s} \left(1 - \sigma\right)}}{\sqrt{1 - \frac{\pi}{4
     
 
     The nondimensional damping is expressed in \cite{7505983/4AFVVGNT} using
-a star (*) sign. The reason seams to be that Ikeda wanted to signal that
-this damping only has the quadratic part of the damping. This stared
-damping are defined as:
+an asterisk, or star symbol (*). The reason seems to be that Ikeda
+wanted to signal that this damping only has the quadratic part of the
+damping. This stared damping is defined as:
  
             
     
@@ -221,10 +221,10 @@ C_{r} = \frac{3 \pi B_{E0 HAT} B_{s} T_{s} beam^{2} \sigma}{4 T^{4} \omega_{hat}
 
     
 
-    Instead of trying to invent some very advanced mathematical expression
-for the $C_r$ regression a simple decision tree model was instead
-fitted to the $C_r$ data from Ikeda's experiments. The fitted decision
-tree is illustrated in the figure below:
+    Instead of trying to invent a complicated mathematical expression for
+the $C_r$ regression a simple decision tree model was instead fitted
+to the $C_r$ data from Ikeda's experiments. The fitted decision tree
+is illustrated in the figure below:
 
     \begin{figure}
         \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/decision_tree.pdf}\end{center}
@@ -232,13 +232,13 @@ tree is illustrated in the figure below:
         \label{fig:decision_tree}
     \end{figure}
     
-    Eventhoug this tree is so simple it has very good accuracy in
+    Even thoug this tree is very simple it has very good accuracy in
 reproducing the results from Ikedas experiments ($r^2=0.996)$. The
-$C_r$ was predicted with Ikeda and the alternative decision tree model
-for the KVLCC2 with section data according to the table below. A
-comparison is shown in the figure below, where it can be seen that the
-Ikeda implementation predicts much higher $C_r$ between station 8 and
-14, where the bilge radius is also very small.
+$C_r$ was predicted with Ikeda's method and the alternative decision
+tree model for the KVLCC2 with section data according to the table
+below. A comparison is shown in the figure below, where it can be seen
+that the Ikeda implementation predicts much higher $C_r$ between
+station 8 and 14, where the bilge radius is also very small.
 
     \begin{figure}
         \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{figures/kvlcc2_eddy.pdf}\end{center}
@@ -355,12 +355,44 @@ frequency domain.
 
 \subsubsection{Proposed model}\label{proposed-model}
 
-A Hybrid method has been developed where wave damping $B_W$ obtained
-with FNPF as described in the previous section is used together with the
-visous damping contributions from Ikeda's method. The wave damping was
-determined by using the PIT described above on results from FNPF
-simulations of roll decay tests.
+A Hybrid method is proposed where wave damping $B_W$ is obtained
+implicitly with FNPF as described in the next section is used together
+with the viscous damping contributions from Ikeda's method. The wave
+damping was determined by using the PIT described above on results from
+FNPF simulations of roll decay tests.
 
 \subsubsection{FNPF method}\label{fnpf-method}
+
+\label{fnpf-method} The fully nonlinear potential flow method is
+characterized by the application of the complete dynamic and kinematic
+free surface boundary conditions on the instantaneous free surface as
+well as the body-exact approach where the instantaneous wetted body
+surface is considered in the boundary value problem for the velocity
+potential, i.e. no linearizations are made to the governing equations of
+the potential flow problem.
+
+The method used in this study employs a boundary element method (BEM)
+(ref Hess and Smith) to solve the boundary value problem for the
+velocity potential.
+
+The free surface boundary conditions and the motions of the floating
+body introduce time dependency to the boundary value problem. The BEM is
+coupled with the mixed Eulerian-Lagrangian method (MEL) (ref
+Longuet-Higgins and Cokelet 1976) which is used for the evolution of
+free surface. A fourth-order Adams-Bashforth-Moulton time integral
+scheme is then used to evolve free surface and the rigid-body body
+motions in time.
+
+The benefit with the FNPF method is the lack of linearizations to the
+free surface potential flow where all interactions between the
+undisturbed incident flow and surface piercing body is captured
+implicitly in the total velocity potential, including inviscid (wave)
+damping due to radiation and diffraction. The downside is the larger
+computational cost compared to many other potential flow based methods
+due to the fact that a boundary value problem for the velocity potential
+must be solved at least once every time step, depending on the specifics
+of the time integral scheme. However, FNPF methods are still typically
+less computationally demanding than for example URANS methods, making
+them attractive choices for seakeeping problems.
 
     
