@@ -12,17 +12,19 @@ less relevant. But have they all of gotten totally irrelevant?
 A semi-empirical method to predict ship roll damping, commonly known as
 Ikeda's method, will be investigated in this paper, for a use case that
 can still make it relevant. It will be investigated if this method can
-be used to increase the accuracy of the roll motion prediction of a
-fully nonlinear potential flow method (FNPF), so that this relatively
-fast option can be used to a larger extent than what is currently
-possible today. The roll damping of ships is highly dependent on viscous
-effects which mean that the inviscid potential flow lacks a lot of the
-important physics of the roll motion and can therefore not give relevant
-results for this degree of freedom, where more advanced options such as
-model tests or URANS are needed.
-
-The Hybrid method, combining Ikeda's method and FNPF proposed in this
-paper is investigated using the well known KVLCC2 test case.
+be used to increase the accuracy of the roll motion for a fully
+nonlinear potential flow method (FNPF). FNPF methods are less
+computationally demanding than for example URANS methods, making them
+attractive choices for seakeeping problems. The roll damping of ships is
+however highly dependent on viscous effects which FNPF cannot handle. A
+hybrid method is therfore proposed in this paper: adding viscous damping
+from Ikeda's method to the FNPF simulations in order to improve the
+accuracy of the roll motions. Similar approaches have been investigated
+before: \cite{7505983/UGK6YEVD} used a panel method code and Ikeda's
+method for the APL China vessel, \cite{7505983/24TNAV5Z} used FNPF
+combined with Watanabe and Inoue method to predict the viscous damping.
+The hybrid method in this paper is investigated using the well known
+KVLCC2 test case.
  
             
     
