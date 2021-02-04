@@ -22,12 +22,12 @@ And the total damping is written as the sum of these components,
 B_{44} = B_F + B_E + B_L + B_W + B_{BK}
 \end{equation}
 
-Due to the absence of bilge keels for the KVLCC2 the \(B_{BK}\) does not
+Due to the absence of bilge keels for the KVLCC2 the $B_{BK}$ does not
 need to be included. This means that remaining components will get all
 the attention. Ikeda has in a series of papers proposed
-semi-empirical formulas for the viscous damping components: \(B_F\),
-\(B_E\) and \(B_L\) which have been implemented for this study. The wave
-damping \(B_W\) is calculated using a potential flow strip theory code
+semi-empirical formulas for the viscous damping components: $B_F$,
+$B_E$ and $B_L$ which have been implemented for this study. The wave
+damping $B_W$ is calculated using a potential flow strip theory code
 or a more advanced potential flow method such as FNPF as is done in this study.
 
 Ikeda produced many papers about various aspects of roll damping where
@@ -45,24 +45,24 @@ various alternative implementations needed to be compared and
 investigated.
 
 The scale effects of roll damping is considered to mainly be associated
-with the skin friction component \(B_F\) \cite{7505983/FB64RGPF}. This
+with the skin friction component $B_F$ \cite{7505983/FB64RGPF}. This
 component constitute a very small part of the total damping for the full
 scale ship, but a substantial part for the model scale ship used in this
 study. This is therefore the only component in Ikeda's method that needs
 to be recalculated when the scale changes.
 
-For the skin friction damping \(B_F\) implementation was made according
+For the skin friction damping $B_F$ implementation was made according
 to the description in \cite{7505983/UGK6YEVD}. With the difference that
-the actual wetted surface at rest \(S\) was used instead of the proposed
+the actual wetted surface at rest $S$ was used instead of the proposed
 estimation formula.
 
-The hull lift damping \(B_L\) is calculated according to
+The hull lift damping $B_L$ is calculated according to
 \cite{7505983/937PN5DT} and implemented as described in
 \cite{7505983/UYUAYY7E}. Journée added a linear interpolation to the
-values for \(\kappa\) from Ikeda's paper.
+values for $\kappa$ from Ikeda's paper.
 
 A schematic graph of how the parameters vary with speed and roll angle
-amplitude \(\phi_a\) in the current model scale is created with the
+amplitude $\phi_a$ in the current model scale is created with the
 current implementation of Ikeda as shown below. The roll amplitude is
 first varied at zero speed (left). The speed is then varied from zero to
 the froude number corresponding to 15.5 knots in full scale for the
@@ -153,9 +153,9 @@ B_{E0} = \int\limits_{AP}^{FP} B'_{E0}\, dx
     It can be seen from the section damping equation above that the eddy
 damping increases linearly with both roll amplitude and frequency, and
 that it will go to zero for small amplitudes and frequencies, which
-means that it is only included in the quadratic damping term (\(B_2\)).
-Ikeda expressed the \(C_r\) coefficient to be entirely depending on the
-hull form. Ikeda developed a regression formula for \(C_r\) based on his
+means that it is only included in the quadratic damping term ($B_2$).
+Ikeda expressed the $C_r$ coefficient to be entirely depending on the
+hull form. Ikeda developed a regression formula for $C_r$ based on his
 experiments, which is used in the prediction method. The authors of this
 paper have tried to implement this method according to the description
 in the original paper \cite{7505983/4AFVVGNT} but have failed to
@@ -163,13 +163,13 @@ reproduce the results from Ikeda's experiments exactly. Other resources
 such as \cite{7505983/FB64RGPF} and \cite{7505983/KAKIM2E2} have also
 been used without success.
 
-Instead, a new regression for \(C_r\) was made on the experimental
+Instead, a new regression for $C_r$ was made on the experimental
 results from \cite{7505983/4AFVVGNT}. The experimental results were
 collected by the authors using manual digitalization
 \cite{7505983/RXYIE6UW}.
 
-    Where \(OG/d=0\) for all sections. For the Series60 sections (G-K) the
-bilge radius \(R_b\) was estimated using the following estimation,
+    Where $OG/d=0$ for all sections. For the Series60 sections (G-K) the
+bilge radius $R_b$ was estimated using the following estimation,
 proposed by the authors:
  
             
@@ -195,10 +195,10 @@ B_{E0 HAT} = \frac{8 B_{E star hat}}{3 \pi}
 
     
 
-    \(\hat{B_E}^*\) and \((B_W+B_F)^*\) are the experimental values taken
+    $\hat{B_E}^*$ and $(B_W+B_F)^*$ are the experimental values taken
 from \cite{7505983/4AFVVGNT}. Which add up to the total damping:
 
-    \(\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*\)
+    $\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*$
  
             
     
@@ -209,7 +209,7 @@ B_{E0 HAT} = \frac{8 B_{E star hat}}{3 \pi}
 
     
 
-    And the \(C_r\) was calculated from the experiments as:
+    And the $C_r$ was calculated from the experiments as:
  
             
     
@@ -221,8 +221,8 @@ C_{r} = \frac{3 \pi B_{E0 HAT} B_{s} T_{s} beam^{2} \sigma}{4 T^{4} \omega_{hat}
     
 
     Instead of trying to invent a complicated mathematical expression
-for the \(C_r\) regression, a simple decision tree model was instead
-fitted to the \(C_r\) data from Ikeda's experiments. The fitted decision
+for the $C_r$ regression, a simple decision tree model was instead
+fitted to the $C_r$ data from Ikeda's experiments. The fitted decision
 tree is illustrated in the figure below:
 
     \begin{figure}
@@ -232,11 +232,11 @@ tree is illustrated in the figure below:
     \end{figure}
     
     Even though this tree is very simple it has very good accuracy in
-reproducing the results from Ikedas experiments (\(r^2=0.996)\). The
-\(C_r\) was predicted with Ikeda's method and the alternative decision tree model
+reproducing the results from Ikedas experiments ($r^2=0.996)$. The
+$C_r$ was predicted with Ikeda's method and the alternative decision tree model
 for the KVLCC2 with section data according to the table below. A
 comparison is shown in the figure below, where it can be seen that the
-Ikeda implementation predicts much higher \(C_r\) between station 8 and
+Ikeda implementation predicts much higher $C_r$ between station 8 and
 14, where the bilge radius is also very small.
 
     \begin{figure}
@@ -252,15 +252,15 @@ corresponding results from the model tests.
     \subsection{Time and frequency domain}\label{time-and-frequency-domain}
 
 Ikeda's method is defined in the frequency domain, where the damping is
-expressed as a function of roll angle amplitude \(\phi_a\) and roll
-angle frequency \(\omega\). The equivalent linear damping \(B_e\) (not
-to confuse with eddy damping \(B_E\)) is a way to convert the frequency
+expressed as a function of roll angle amplitude $\phi_a$ and roll
+angle frequency $\omega$. The equivalent linear damping $B_e$ (not
+to confuse with eddy damping $B_E$) is a way to convert the frequency
 domain damping into time domain damping \cite{7505983/FB64RGPF}, so that
 time domain roll simulations can be conducted with results from Ikeda's
-method. The most general way to determine \(B_e\) is to assume that the
+method. The most general way to determine $B_e$ is to assume that the
 energy loss due to damping during a half cycle of roll is the same when
 nonlinear and linear dampings are used \cite{7505983/RYUBZITQ}. The
-\(B_e\) can then be calculated as a Fourier series expansion of the
+$B_e$ can then be calculated as a Fourier series expansion of the
 damping model, which in the case of a cubic model yields as:
  
             
@@ -272,26 +272,26 @@ B_{e} = B_{1} + \frac{8 B_{2} \omega_{0} \phi_{a}}{3 \pi} + 0.75 B_{3} \omega_{0
 
     
 
-    In the case of a quadratic model \(B_3=0\) and for the linear model
-\(B_1\) and \(B_e\) are the same thing.
+    In the case of a quadratic model $B_3=0$ and for the linear model
+$B_1$ and $B_e$ are the same thing.
 
     The expression above gives a relation between the frequency domain
-quantities \(\phi_a\), \(\omega\) and the time domain quantities
-\(B_1\), \(B_2\) and \(B_3\) which can be used to obtain the latter ones
+quantities $\phi_a$, $\omega$ and the time domain quantities
+$B_1$, $B_2$ and $B_3$ which can be used to obtain the latter ones
 from the Ikeda's method. This can be done by calculating the damping
 with Ikeda's method for a variation of frequencies and amplitudes and
-then fit the above expression to this damping and obtain \(B_1\),
-\(B_2\) and \(B_3\):
+then fit the above expression to this damping and obtain $B_1$,
+$B_2$ and $B_3$:
 
 \[B^{Ikeda}(\phi_a, \omega) = B_e(\phi_a, \omega)\]
 
-In the case of a roll decay test \(\phi_a\) is the only parameter being
+In the case of a roll decay test $\phi_a$ is the only parameter being
 varied. In order to verify this approach, an alternative method using
 the logaritmic decrement \cite{7505983/BYNJ8CFG} to obtaining the
 frequency domain quantities from time series result is also used.
 
 This method is investigated on simulation results with a quadratic
-model: \(B_1 = 0.05\), \(B_2 = 0.9\), \(A_{44} = 1.0\), \(C_1 = 5.0\).
+model: $B_1 = 0.05$, $B_2 = 0.9$, $A_{44} = 1.0$, $C_1 = 5.0$.
 The peak values, being the only known amplitudes from this signal, is
 shown in the figure below.
 
@@ -306,12 +306,12 @@ that negative and positive roll peaks are separated. This decrement can
 be calulated for each peak:
 \[ \Delta_n = \frac{\phi_{a,n}}{\phi_{a,n+2}}\]
 
-    The nondimensional damping coefficient for each peak \(\zeta_n\) can be
+    The nondimensional damping coefficient for each peak $\zeta_n$ can be
 calculated from the logaritimic decrement:
 
     \[\zeta_n = \frac{\delta_n}{2\pi}=\frac{ln(\Delta_n)}{2\pi}\]
 
-    The dimensional damping \(B_n\) (Nm*s) can be then be obtained:
+    The dimensional damping $B_n$ (Nm*s) can be then be obtained:
  
             
     
@@ -324,7 +324,7 @@ B = 2 A_{44} \omega_{0} \zeta
 
     So the damping can be obtained for each oscillation this way but it is
 not obvious which of the roll amplitudes these dampings correspond to.
-Four different choices were tried, associating damping \(B_n\) with the
+Four different choices were tried, associating damping $B_n$ with the
 following amplitudes:
 
 \begin{itemize}
@@ -341,10 +341,10 @@ following amplitudes:
     \end{figure}
     
     Taking the mean value of peak n and the following two peaks (alt.D) seem
-to be the approach that best matches the \(B_e\) (predicted using the
+to be the approach that best matches the $B_e$ (predicted using the
 linearized equivalent damping method). The linearized equivalent damping
-method therefore seems to be the best way to convert \(B_1\), \(B_2\),
-\(B_3\) to frequency domain, considering the difficulties with the
+method therefore seems to be the best way to convert $B_1$, $B_2$,
+$B_3$ to frequency domain, considering the difficulties with the
 logaritmic decrement method as described above. The only time linearized
 equivalent damping method has not been used in this paper, is when
 damping at individual peaks from a time signal should be converted to
@@ -354,7 +354,7 @@ frequency domain.
 
 \subsubsection{Proposed model}\label{proposed-model}
 
-A Hybrid method is proposed where wave damping \(B_W\) is obtained
+A Hybrid method is proposed where wave damping $B_W$ is obtained
 implicitly with FNPF as described in the next section is used together with the
 viscous damping contributions from Ikeda's method. The wave damping was
 determined by using the PIT described above on results from FNPF
