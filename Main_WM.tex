@@ -1,0 +1,109 @@
+\documentclass[11pt, fleqn, a3]{article}
+
+\pdfoutput=1
+
+
+\usepackage{articlestyle}
+\newcommand{\scrD}{\mathscr{D}}
+
+
+\def\AH#1{\textcolor{red}{\textbf{AH: #1}}}
+\def\LE#1{\textcolor{blue}{\textbf{LE: #1}}}
+\def\WM#1{\textcolor{violet}{\textbf{WM: #1}}}
+\def\IR#1{\textcolor{green}{\textbf{IR: #1}}}
+
+
+\input{deffile.tex}
+\pagestyle{empty}
+
+\newcommand{\papernumber} {TPC-970}
+\newcommand{\firstauthorname} {Anders Hildeman}
+\newcommand{\totalpage} {777}
+%
+%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\begin{document}
+\baselineskip \mybaselineskip
+\twocolumn[ 
+    \par\vspace*{40.0mm}
+    \large\bc{ \bf
+        Prediction of roll damping using fully nonlinear potential flow and Ikeda's method
+    }\ec 
+
+    \par\vspace{1mm}\footnotesize\bc
+    {
+        \small\it
+        Martin Alexandersson
+    }\\ 
+    Department of Mechanics and Maritime Sciences, Chalmers University of Technology, Sweden \\
+    SSPA Sweden AB, Gothenburg, Sweden\\
+    {
+        \small\it
+        Martin Kjellberg
+    }\\
+    Department of Mechanics and Maritime Sciences, Chalmers University of Technology, Sweden \\
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ec\par\vspace*{15mm}
+
+]
+\footnotesize\par\noindent{\small ABSTRACT}\par\vspace*{2.0mm}
+\baselineskip \mybaselineskip
+
+\input{abstract}
+
+\footnotesize
+\par\bigskip\noindent{{\small KEY\,\,WORDS}}:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% Write Key Words %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Spatial analysis; probabilistic prediction; significant wave height.
+%
+\par\vspace*{2mm}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% Start Introduction %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Please use \jsection{ .... } or \section*{ ..... } %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Chose bibliography style
+%\bibliographystyle{plainnat}
+\bibliographystyle{apalike}
+
+
+
+
+
+    
+%\input{abstract}
+
+
+
+
+%\tableofcontents
+
+
+\input{introduction}
+
+%\input{theory}
+
+%\input{data}
+
+%\input{results}
+
+%\input{discussion}
+
+
+%\section{Acknowledgements}
+ 
+ 
+
+
+
+
+%\input{appendix}
+
+\bibliography{shell}
+
+
+\end{document}
+
