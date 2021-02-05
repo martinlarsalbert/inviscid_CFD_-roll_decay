@@ -1,7 +1,19 @@
-\section{Sensitivity analysis of Ikeda's
-method}\label{sensitivity-analysis-of-ikedas-method}
+\section{Proposed hybrid method}\label{proposed-hybrid-method}
 
-Ikeda's method divides roll damping into five damping components:
+A hybrid method is proposed, where wave damping $B_W$ (including the
+speed dependent wave damping) obtained implicitly with FNPF is used
+together with the viscous damping contributions from Ikeda's method. The
+viscous damping is added to the FNPF simulations by adding the viscous
+parts of the linear and quadratic damping coefficients (obtained with
+Ikeda's method) to the equation of motion,
+
+\[
+B_{visc,1} = B_1^{Ikeda} \\
+B_{visc,2} = B_2^{Ikeda}  
+\]
+
+FNPF and Ikeda's method is further introduced below, starting with
+Ikeda's method which divides roll damping into five damping components:
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -352,25 +364,16 @@ equivalent damping method has not been used in this paper, is when
 damping at individual peaks from a time signal should be converted to
 frequency domain.
 
-    \subsection{Proposed hybrid method}\label{proposed-hybrid-method}
+    \subsection{FNPF method}\label{fnpf-method}
 
-\subsubsection{Proposed model}\label{proposed-model}
-
-A Hybrid method is proposed where wave damping $B_W$ is obtained
-implicitly with FNPF as described in the next section is used together
-with the viscous damping contributions from Ikeda's method. The wave
-damping was determined by using the PIT described above on results from
-FNPF simulations of roll decay tests.
-
-\subsubsection{FNPF method}\label{fnpf-method}
-
-\label{fnpf-method} The fully nonlinear potential flow method is
-characterized by the application of the complete dynamic and kinematic
-free surface boundary conditions on the instantaneous free surface as
-well as the body-exact approach where the instantaneous wetted body
-surface is considered in the boundary value problem for the velocity
-potential, i.e. no linearizations are made to the governing equations of
-the potential flow problem.
+\label{fnpf-method} Wave damping was obtained using PIT on roll decay
+simulation using the fully nonlinear potential flow method. This method
+is characterized by the application of the complete dynamic and
+kinematic free surface boundary conditions on the instantaneous free
+surface as well as the body-exact approach where the instantaneous
+wetted body surface is considered in the boundary value problem for the
+velocity potential, i.e. no linearizations are made to the governing
+equations of the potential flow problem.
 
 The method used in this study employs a boundary element method (BEM)
 \cite{7505983/FD4N3DW2} to solve the boundary value problem for the
