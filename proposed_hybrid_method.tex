@@ -5,15 +5,9 @@ speed dependent wave damping) obtained implicitly with FNPF is used
 together with the viscous damping contributions from Ikeda's method. The
 viscous damping is added to the FNPF simulations by adding the viscous
 parts of the linear and quadratic damping coefficients (obtained with
-Ikeda's method) to the equation of motion,
+Ikeda's method) to the equation of motion.
 
-\[
-B_{visc,1} = B_1^{Ikeda} \\
-B_{visc,2} = B_2^{Ikeda}  
-\]
-
-FNPF and Ikeda's method is further introduced below, starting with
-Ikeda's method which divides roll damping into five damping components:
+Ikeda's method divides roll damping into five damping components:
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -28,20 +22,27 @@ $B_{BK}$ & bilge keels\tabularnewline
 \bottomrule
 \end{longtable}
 
-And the total damping is written as the sum of these components,
+The total damping is calculated as the sum of these components,
 
 \begin{equation}
 B_{44} = B_F + B_E + B_L + B_W + B_{BK}
 \end{equation}
 
-Due to the absence of bilge keels for the KVLCC2 the $B_{BK}$ does not
-need to be included. This means that remaining components will get all
-the attention in this paper. Ikeda has in a series of papers proposed
-semi empirical formulas for the viscous damping components: $B_F$,
-$B_E$ and $B_L$ which have been implemented for this study. The wave
-damping $B_W$ is calculated using a potential flow strip theory code
-or a more advanced potential flow method such as FNPF as is done in this
-study.
+Ikeda has in a series of papers proposed semi empirical formulas for the
+viscous damping components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so
+that viscous damping can be obtained from,
+
+\begin{equation}
+\label{eq:viscous damping}
+B_{visc} = B_F + B_E + B_L + B_{BK}
+\end{equation}
+
+The linear and quadratic part of the viscous damping is obtained using
+the the equivalent linear damping method, further explained in
+se.\ref{se:time_and_frequency}. Due to the absence of bilge keels
+for the KVLCC2 the $B_{BK}$ does not need to be included in the
+viscous damping. This means that remaining components will get all the
+attention in this paper.
 
 Ikeda produced many papers about various aspects of roll damping where
 most of them are translations from original manuscripts written in
