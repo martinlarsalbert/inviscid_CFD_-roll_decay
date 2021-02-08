@@ -22,10 +22,11 @@ $B_{BK}$ & bilge keels\tabularnewline
 \bottomrule
 \end{longtable}
 
-The total damping is calculated as the sum of these components,
+The total damping is calculated as the sum of these components
+\cite{7505983/937PN5DT},
 
 \begin{equation}
-B_{44} = B_F + B_E + B_L + B_W + B_{BK}
+B = B_F + B_E + B_L + B_W + B_{BK}
 \end{equation}
 
 Ikeda has in a series of papers proposed semi empirical formulas for the
@@ -37,12 +38,9 @@ that viscous damping can be obtained from,
 B_{visc} = B_F + B_E + B_L + B_{BK}
 \end{equation}
 
-The linear and quadratic part of the viscous damping is obtained using
-the the equivalent linear damping method, further explained in section:
-"\nameref{se:time_and_frequency}". Due to the absence of bilge keels
-for the KVLCC2 the $B_{BK}$ does not need to be included in the
-viscous damping. This means that remaining components will get all the
-attention in this paper.
+Due to the absence of bilge keels for the KVLCC2 the $B_{BK}$ does not
+need to be included in the viscous damping. This means that remaining
+components will get all the attention in this paper.
 
 Ikeda produced many papers about various aspects of roll damping where
 most of them are translations from original manuscripts written in
@@ -75,14 +73,15 @@ The hull lift damping $B_L$ is calculated according to
 \cite{7505983/UYUAYY7E}. Journée added a linear interpolation to the
 values for $\kappa$ from the Ikeda's paper.
 
-A schematic graph of how the parameters vary with speed and roll angle
-amplitude $\phi_a$ in the current model scale is created with the
-current implementation of Ikeda as shown below. The roll amplitude is
-first varied at zero speed (left). The speed is then varied from zero to
-the froude number corresponding to 15.5 knots in full scale for the
-KVLCC2 with a roll angle amplitude of 10 degrees (middle). The amplitude
-is then gradually reduced at the highest froude number down to zero
-again (right).
+Ikeda's method calculates the roll damping at a certain roll angle
+frequency $\omega$ and roll angle amplitude $\phi_a$. A schematic
+graph of how the parameters vary with speed and roll angle amplitude
+$\phi_a$ is shown in fig.\ref{fig:ikeda_generic}. The roll
+amplitude is first varied at zero speed (left). The speed is then varied
+from zero to the froude number corresponding to 15.5 knots in full scale
+for the KVLCC2 with a roll angle amplitude of 10 degrees (middle). The
+amplitude is then gradually reduced at the highest froude number down to
+zero again (right).
 
 Assumming that the trends are correct in Ikeda's method it can be noted
 from the amplitude variations at zero knots (left):
@@ -108,6 +107,8 @@ Looking at the roll amplitude variation (right):
 \item $B_L$ does not change with amplitude, implying that they only contribute to the linear part ($B_1$) of the damping.
 \item $B_F$ has a small amplitude dependancy but the linear part is dominating.
 \end{itemize}
+
+    
 
     \begin{Verbatim}[commandchars=\\\{\}]
 
@@ -254,23 +255,7 @@ is illustrated in the figure below:
     \end{figure}
     
     Even thoug this tree is very simple it has very good accuracy in
-reproducing the results from Ikedas experiments ($r^2=0.996)$. The
-$C_r$ was predicted with Ikeda's method and the alternative decision
-tree model for the KVLCC2 with section data according to the table
-below. A comparison is shown in the figure below, where it can be seen
-that the Ikeda implementation predicts much higher $C_r$ between
-station 8 and 14, where the bilge radius is also very small.
-
-    \begin{figure}[H]
-        \begin{center}\includegraphics[width = 0.5\textwidth]{figures/kvlcc2_eddy.pdf}\end{center}
-        \vspace{-1cm}
-        \caption{KVLCC2 eddy}
-        \label{fig:kvlcc2_eddy}
-    \end{figure}
-    
-    These two alternative ways to calculate the eddy damping will be further
-discussed below, when comparing the total predicted damping with
-corresponding results from the model tests.
+reproducing the results from Ikedas experiments ($r^2=0.996)$.
 
     \subsection{FNPF method}\label{fnpf-method}
 
