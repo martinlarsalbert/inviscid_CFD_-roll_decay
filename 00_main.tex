@@ -1,0 +1,103 @@
+ \documentclass[11pt,fleqn,a3]{article}
+\usepackage{graphicx} %%%%%%%%%%%%%%% for inserting EPS pictures
+\usepackage{amsmath}% AMS math equation
+\usepackage{txfonts}
+\usepackage{bm}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{longtable}
+%
+\input{deffile.tex}
+\pagestyle{empty}
+%\pagestyle{isopefoot} 
+%
+
+\newcommand{\papernumber} {TPC-970}
+\newcommand{\firstauthorname} {Martin Alexandersson}
+\newcommand{\totalpage} {10}
+%
+%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\begin{document}
+\baselineskip \mybaselineskip
+\twocolumn[ 
+    \par\vspace*{40.0mm}
+    \large\bc{ \bf
+        Prediction of roll damping using fully nonlinear potential flow and Ikeda's method
+    }\ec 
+
+    \par\vspace{1mm}\footnotesize\bc
+    {
+        \small\it
+        Martin Alexandersson
+    }\\ 
+    Department of Mechanics and Maritime Sciences, Chalmers University of Technology, Sweden \\
+    SSPA Sweden AB, Gothenburg, Sweden\\
+    {
+        \small\it
+        Martin Kjellberg
+    }\\
+    SSPA Sweden AB, Gothenburg, Sweden\\
+    {
+        \small\it
+        Wengang Mao
+    }\\
+     Department of Mechanics and Maritime Sciences, Chalmers University of Technology, Sweden\\
+    {
+        \small\it
+        Jonas W. Ringsberg
+    }\\
+     Department of Mechanics and Maritime Sciences, Chalmers University of Technology, Sweden\\
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ec\par\vspace*{15mm}
+
+]
+\footnotesize\par\noindent{\small ABSTRACT}\par\vspace*{2.0mm}
+\baselineskip \mybaselineskip
+
+\input{01_abstract}
+%-----------------------------------------------------------------
+\footnotesize
+\par\bigskip\noindent{{\small KEY\,\,WORDS}}:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% Write Key Words %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Roll-decay; Roll-damping; Ikeda's method; Fully nonlinear potential flow (FNPF); Boundary element methods.
+%
+\par\vspace*{2mm}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% Start Introduction %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Please use \jsection{ .... } or \section*{ ..... } %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\jsection{Introduction}
+%%-----------------------------------------------------------------
+%\input{introduction}
+%
+%\medskip%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Next Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Please use \jsection{ .... } or \section*{ ..... } %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{nomenclature}
+
+\input{01_introduction}
+\input{02_damp_free_roll_decay}
+\input{03_hybrid_model}
+\input{04_validation_cases}
+\input{05_results}
+\input{06_conclusions}
+
+
+%\input{references}
+% Chose bibliography style
+%\bibliographystyle{plainnat}
+\bibliographystyle{apalike}
+\bibliography{references}
+
+
+\appendix
+\input{appendix}
+
+\end{document}

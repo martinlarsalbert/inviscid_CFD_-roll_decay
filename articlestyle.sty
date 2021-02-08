@@ -1,0 +1,221 @@
+\RequirePackage{natbib}
+
+\usepackage{multicol}
+\usepackage[bookmarks=false]{hyperref}
+\usepackage{amsthm,amsfonts,amssymb,amsmath}
+\usepackage{mathrsfs}
+
+\usepackage{algorithm}
+\usepackage{authblk}
+
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+
+\usepackage{ifpdf}
+\usepackage{units}
+
+
+% Only show referenced numbers
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs}
+
+\usepackage{xr}
+
+% to be able to use multirow tables
+\usepackage{multirow}
+
+% To write pseudo code
+\usepackage{listings}
+\lstset{ basicstyle=\footnotesize }
+
+
+% Use utf-8 encoding for foreign characters
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% Multipart figures
+\usepackage{subcaption}
+
+
+
+\usepackage[latin1]{inputenc} % ���:s
+\usepackage{rotating}
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage{amssymb,amsmath,amsfonts,amsthm}
+\usepackage{graphics}
+\usepackage{graphicx}
+\RequirePackage{natbib}
+\usepackage{pstricks,pst-node,psfrag}
+\usepackage{epsfig}
+\usepackage{paralist}
+\usepackage{pstool}
+\usepackage{algpseudocode}
+\usepackage{txfonts}
+\usepackage{bm}
+
+
+% Draw stuff
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes,arrows}
+
+
+% Define block styles for tikz
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+
+\usepackage{acro}
+\usepackage[normalem]{ulem}
+
+
+\DeclareAcronym{spde}{
+  short = SPDE ,
+  long  = stochastic partial differential equation ,
+  class = abbrev
+}
+\DeclareAcronym{fem}{
+  short = FEM ,
+  long  = finite element method ,
+  class = abbrev
+}
+\DeclareAcronym{rmse}{
+  short = RMSE ,
+  long  = root mean square error ,
+  class = abbrev
+}
+\DeclareAcronym{mse}{
+  short = MSE ,
+  long  = mean square error ,
+  class = abbrev
+}
+\DeclareAcronym{mae}{
+  short = MAE ,
+  long  = mean absolute error ,
+  class = abbrev
+}
+\DeclareAcronym{crps}{
+  short = CRPS ,
+  long  = continuous ranked probability score ,
+  class = abbrev
+}
+
+
+
+
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\sphere}{\mathbb{S}^2}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\LG}{\mathbb{LG}}
+\DeclareMathOperator{\IG}{\mathbb{IG}}
+\DeclareMathOperator{\F}{\mathbb{F}}
+\DeclareMathOperator{\C}{\mathbb{C}}
+\DeclareMathOperator{\B}{\mathbb{B}}
+\DeclareMathOperator{\Hs}{\mathbb{H}}
+\DeclareMathOperator{\zero}{\mathbb{O}}
+\DeclareMathOperator{\noise}{\mathcal{W}}
+\DeclareMathOperator{\Ordo}{\mathcal{O}}
+\DeclareMathOperator{\vp}{\varphi}
+\DeclareMathOperator{\om}{\omega}
+\DeclareMathOperator{\pd}{\partial}
+\DeclareMathOperator{\ep}{\epsilon}
+\DeclareMathOperator{\vep}{\varepsilon}
+\DeclareMathOperator{\de}{\delta}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\closure}{cl}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\Cov}{\mathbb{C}}
+\DeclareMathOperator{\Bias}{Bias}
+\DeclareMathOperator{\Mult}{Mult}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\nbd}{ne}
+\DeclareMathOperator{\aug}{aug}
+\DeclareMathOperator{\eye}{I}
+\DeclareMathOperator{\one}{\mathbb{1}}
+
+
+
+\DeclareMathOperator{\domsp}{\mathcal{G}}	
+\DeclareMathOperator{\hs}{H_s}	
+\DeclareMathOperator{\tp}{T_p}	
+\DeclareMathOperator{\damp}{\kappa}	
+\DeclareMathOperator{\preci}{\tau}	
+\DeclareMathOperator{\mean}{\mu}	
+\DeclareMathOperator{\smooth}{\alpha}	
+\DeclareMathOperator{\dims}{d}	
+\DeclareMathOperator{\psp}{\bs{s}}	
+\DeclareMathOperator{\std}{\sigma}	
+\DeclareMathOperator{\warp}{F}	
+\DeclareMathOperator{\rv}{X}	
+\DeclareMathOperator{\gspace}{\mathcal{G}}	
+\DeclareMathOperator{\dspace}{\mathcal{D}}	
+
+
+
+\newcommand{\bs}[1]{\boldsymbol{{#1}}}
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
+
+
+
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
+
+\def\qed{\relax\ifmmode\hskip2em \Box\else\unskip\nobreak\hskip1em $\Box$\fi}
+
+\theoremstyle{plain} % use "default" font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{assum}[thm]{Assumption}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{definition}[thm]{Definition}
+
+\newcommand{\indicator}[1]{\mathbb{I}\left( {#1} \right)}
+\newcommand{\determinant}[1]{\left|{#1} \right|}
+\newcommand{\expect}[1]{\mathbb{E}\left[ {#1} \right]}
+\newcommand{\variance}[1]{\mathbb{V}\left[ {#1} \right]}
+\newcommand{\condexpect}[2]{\mathbb{E}\left[ {#1} \middle| {#2}\right]}
+\newcommand{\prob}[1]{\mathbb{P}\left( {#1} \right)}
+\newcommand{\condprob}[2]{\mathbb{P}\left( {#1} \middle| {#2}\right)}
+\newcommand{\proper}{\mathsf}
+\newcommand{\pP}{\proper{P}}
+\newcommand{\pE}{\proper{E}}
+\newcommand{\pV}{\proper{V}}
+\newcommand{\pD}{\proper{D}}
+\newcommand{\pC}{\proper{C}}
+\newcommand{\pN}{\proper{N}}
+\newcommand{\mv}[1]{{\boldsymbol{\mathrm{#1}}}}
+\newcommand{\bolds}[1]{{\boldsymbol{\mathrm{#1}}}}
+\newcommand{\trsp}{\ensuremath{\top}}
+\newcommand{\md}{\ensuremath{\,\mathrm{d}}}
+\newcommand{\scal}[2]{\left\langle {#1},\,{#2} \right\rangle}
+\newcommand{\norm}[1]{\left\| {#1} \right\|}
+\newcommand{\basis}{\xi}
+\newcommand{\Basis}{\mv{B}}
+\newcommand{\exset}[2]{E_{{#1}}^{{#2}}}
+\newcommand{\four}[1]{\mathcal{F}\left[ {#1} \right]}
+\newcommand{\ifour}[1]{\mathcal{F}^{-1}\left[ {#1} \right]}
+
+
+
+
