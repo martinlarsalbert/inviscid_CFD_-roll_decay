@@ -7,7 +7,7 @@ implementation of Ikeda's method. A thorough investigation of the eddy damping p
 
 \textbf{\textit{Eddy damping}} The eddy damping is due to eddies generated around the ship hull during the roll motion. Strong eddies occures at sharp edges in the geometry. Below is an illustration of how the eddy damping changes with bilge radius to beam ratio as predicted with the current implementation of the method. It seems that the damping approaches zero very fast as the bilge radius increase. So having just a small rounding of the bilge, compared to a square section, will have a great impact on the eddy roll damping.
 
-    \begin{figure}
+    \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/eddy_sigma.pdf}\end{center}
         \vspace{-1cm}
         \caption{Eddy sigma}
