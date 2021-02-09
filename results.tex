@@ -4,25 +4,22 @@
 
 \subsubsection{0 knots}\label{knots}
 
-Data from two roll decay model tests conducted at zero speed were
-available
-.
+Two roll decay model tests were conducted at zero speed.
 These tests where analyzed by fitting a cubic model
 to the model test data. The two models were very similar in terms of
 roll damping and stiffness (see fig.\ref{fig:mdl}), suggesting
-good repeatability in the model tests as well as in the parameter
-identification technique (PIT) used. The individual damping from each
-oscillation obtained with the logarithmic decrement method are very
-scattered, but this does not seem to influence the two models for the 0
-speed case, which are very similiar.
+good repeatability in both the model tests and in the parameter
+identification technique (PIT) used. It can be seen that the damping
+from each individual oscillation obtained with the logarithmic decrement
+method are very scattered. This scatter does not seem to influence the
+two models for the 0 speed case, which are very similiar.
 
     \subsubsection{15.5 knots}\label{knots}
 
-Data from one roll decay model tests conducted at a ship speed
-corresponding to 15.5 knots full scale ship speed was also available
-(see fig.\ref{fig:mdl}). This model tests was analyzed in the
-same way as the other tests. It was found that the damping was higher at
-speed. The ship got a small yaw rate
+One roll decay model tests was conducted at a ship speed corresponding
+to 15.5 knots full scale ship speed (see fig.\ref{fig:mdl}). It
+was found that the damping was higher at speed. The ship got a small yaw
+rate
  at the end of test, giving a small steady roll angle due to the
 centrifugal force. Since this effect is not included in the matematical
 model used, the steady roll angle was instead removed by removing the
@@ -39,12 +36,13 @@ linear trend in the roll angle signal.
     
     \subsection{Ikeda's method}\label{ikedas-method}
 
-    The $C_r$ was predicted with Ikeda's method and the alternative
-decision tree model for the KVLCC2 with section data according to
-tab.\ref{tab:kvlcc2_section_table}. A comparison is shown in the
-figure below, where it can be seen that the Ikeda implementation
-predicts much higher $C_r$ between station 8 and 14, where the bilge
-radius is also very small.
+    The $C_r$ was calculated with regular Ikeda's method and the
+alternative decision tree model for the KVLCC2 with section data
+according to tab.\ref{tab:kvlcc2_section_table}. A comparison
+between these two methods are shown in the figure below. It can be seen
+that the regular Ikeda implementation predicts much higher $C_r$
+between station 8 and 14, where the bilge radius is also very small for
+this ship.
 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/kvlcc2_eddy.pdf}\end{center}
@@ -58,7 +56,8 @@ radius is also very small.
 eddy damping $B_E$ was too high compared to the model test results.
 Even though the rest of the components would also be overpredicted, the
 $B_E$ would still be too large. The eddy damping calculated with
-$C_r$ predicted with the descision tree gave much better agreement.
+$C_r$ predicted with the descision tree gave much better agreement and
+is instead used in the hybrid method.
 
     
 
@@ -73,10 +72,10 @@ $C_r$ predicted with the descision tree gave much better agreement.
 
 Simulations of roll decay tests were conducted with FNPF without viscous
 damping. Wave damping obtained from these tests are shown in
-fig.\ref{fig:fnpf}. It looks like this damping term does not
-change much with the amplitude making it reasonably linear, which is in
-line with Ikeda's original assumption for the derivation of eddy damping
-\cite{7505983/4AFVVGNT}.
+fig.\ref{fig:fnpf}. This damping term does not seem to change
+much with the roll amplitude. This means that the wave damping is
+reasonably linear, which confirms Ikeda's original assumption used in
+his derivation of the eddy damping \cite{7505983/4AFVVGNT}.
 
     
 
@@ -89,7 +88,14 @@ line with Ikeda's original assumption for the derivation of eddy damping
     
     \subsection{Roll motion prediction with hybrid
 method}\label{roll-motion-prediction-with-hybrid-method}
-Replacing the wave damping $B_W$, for the zero speed case above, with values obtained with FNPF is shown below. 
+
+    In fig.\ref{fig:ikeda} the wave damping $B_W$ was calculated
+using a linear strip theory. If this damping is instead replaced by the
+wave damping from FNPF (as shown in fig.\ref{fig:fnpf}) the
+total damping is instead as shown in fig.\ref{fig:hybrid_0}.
+
+    
+
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_0.pdf}\end{center}
         \vspace{-1cm}
@@ -98,10 +104,10 @@ Replacing the wave damping $B_W$, for the zero speed case above, with values obt
     \end{figure}
     
     Results from the roll decay model test and corresponding simulations
-with hybrid method and FNPF method is shown in the figure below. It can
-be seen that the injection of semi empirical viscous damping in the
-hybrid method has given a significant improvement to the FNPF roll
-motion prediction.
+with hybrid method and FNPF method is shown in the figure below. It is
+very clear that the injection of semi empirical viscous damping in the
+hybrid method has given a significant improvement compared to the
+invicid FNPF.
 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_0_time.pdf}\end{center}
@@ -135,7 +141,7 @@ summarized in model scale units in the table below. The equivalent
 linearized damping for 5 degrees roll angle amplitude $B_{e5}$ has
 also been added to this table, for comparison. It can be seen that the
 hybrid method overpredicts the damping at 0 knots and underpredicts the
-damping for the higher speed at this amplitude.
+damping for the higher speed for this amplitude.
  
             
     
@@ -151,9 +157,9 @@ $F_n$ & method & $B_1$ & $B_2$ & $B_3$ & $B_{e5}$\\
 \midrule$[-]$ &  & $[Nm \cdot s]$ & $[Nm \cdot s^2]$ & $[Nm \cdot s^3]$ & $[Nm \cdot s]$\\ 
 0.0 & model test & 2.9604 & -6.5205 & 43.7754 & 3.2864\\ 
 0.0 & model test & 2.8797 & -5.8742 & 41.5037 & 3.2447\\ 
-0.0 & Hybrid & 1.3711 & 13.4769 & 0.0 & 3.828\\ 
+0.0 & hybrid & 1.3711 & 13.4769 & 0.0 & 3.828\\ 
 0.1423 & model test & 7.5233 & 7.0281 & 0.3898 & 8.8214\\ 
-0.1423 & Hybrid & 7.5216 & 6.0148 & 0.0 & 8.6095\\ 
+0.1423 & hybrid & 7.5216 & 6.0148 & 0.0 & 8.6095\\ 
 
 \bottomrule
 \end{tabular}

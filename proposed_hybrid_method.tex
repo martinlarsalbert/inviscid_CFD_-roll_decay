@@ -1,6 +1,6 @@
 \section{Proposed hybrid method}\label{proposed-hybrid-method}
 
-A hybrid method is proposed in this section, where wave damping $B_W$
+A hybrid method is proposed in this paper, where wave damping $B_W$
 (including the speed dependent wave damping) obtained implicitly with
 FNPF is used together with the viscous damping contributions from
 Ikeda's method. The viscous damping is added to the FNPF simulations by
@@ -40,7 +40,7 @@ B_{visc} = B_F + B_E + B_L
 
 In order to reduce the number of uncertain parameters, the bilge keel
 damping $B_{BK}$ has been exluded above, thereby assuming that the
-ship does not have bilge keels.
+ship does not have any bilge keels.
 
 Ikeda produced many papers about various aspects of roll damping where
 most of them are translations from original manuscripts written in
@@ -76,12 +76,12 @@ values for $\kappa$ from the Ikeda's paper.
 Ikeda's method calculates the roll damping at a certain roll angle
 frequency $\omega$ and roll angle amplitude $\phi_a$. A schematic
 graph of how the parameters vary with speed and roll angle amplitude
-$\phi_a$ is shown in fig.\ref{fig:ikeda_generic}. The roll
-amplitude is first varied at zero speed (left). The speed is then varied
-from zero to the froude number corresponding to 15.5 knots in full scale
-for the KVLCC2 with a roll angle amplitude of 10 degrees (middle). The
-amplitude is then gradually reduced at the highest froude number down to
-zero again (right).
+$\phi_a$ is shown in fig.\ref{fig:ikeda_generic}. In this
+figure, roll amplitude is first varied at zero speed (left). The speed
+is then varied from zero to the froude number corresponding to 15.5
+knots in full scale for the KVLCC2 with a roll angle amplitude of 10
+degrees (middle). The amplitude is then gradually reduced at the highest
+froude number down to zero again (right).
 
 Assumming that the trends are correct in Ikeda's method it can be noted
 from the amplitude variations at zero knots (left):
@@ -189,19 +189,6 @@ Instead, a new regression for $C_r$ was made on the experimental
 results from \cite{7505983/4AFVVGNT}. The experimental results were
 collected by the authors using manual digitalization
 \cite{7505983/RXYIE6UW}.
-
-    Where $OG/d=0$ for all sections. For the Series60 sections (G-K) the
-bilge radius $R_b$ was estimated using the following estimation,
-proposed by the authors:
- 
-            
-    
-    \begin{equation}
-R_{b} = \frac{\sqrt{B_{s} T_{s} \left(1 - \sigma\right)}}{\sqrt{1 - \frac{\pi}{4}}}
-\label{eq:equation}
-\end{equation}
-
-    
 
     The nondimensional damping is expressed in \cite{7505983/4AFVVGNT} using
 an asterisk, or star symbol (*). The reason seems to be that Ikeda

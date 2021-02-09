@@ -3,40 +3,38 @@
     A common way to determine the roll damping of a ship is to conduct a
 roll decay test. The initial heel angle during this test gives the ship
 potential energy that subsequently is shifting to kinetic energy as the
-ship starts to move during the inital phase of the roll decay test. The
-energy is transfered between kinetic and potential energy during the
-oscillations. The ship loses energy over time due to the damping wich
-can be seen in this graph:
+ship starts to oscillate during the inital phase of the roll decay test.
+The energy is transfered between kinetic and potential energy during the
+oscillations. The ship loses energy over time due to the damping as
+shown in this illustration:
  
             
     
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/energy.png}\end{center}
         \vspace{-1cm}
-        \caption{Energy transfer}
+        \caption{Energy transfer during roll decay}
         \label{fig:energy}
     \end{figure}
     
 
     Time traces of the roll motion from roll decay tests in model scale
-experiments as well as from FNPF simulations are used in this paper to
-determine the roll damping of KVLCC2. Two different techniques to
+experiments as well as from FNPF and hybrid method simulations are used
+in this paper to determine the roll damping. Two different techniques to
 identify the damping from these tests are used: the PIT method,
 described in the next section and the logartithmic decrement method as
 described in \cite{7505983/BYNJ8CFG}.
-.
-
     \subsection{PIT method}\label{pit-method}
 
     A parameters identification technique (PIT) similar to
 \cite{7505983/EXYJELCU} is used to obtain the damping coefficients from
-the roll decay model test as well as from the FNPF simulated roll decay
-tests. In this technique, parameters in a mathematical model are
-determined in order to get the best fit to a roll decay time signal. A
-derivation of a matematical model suitable for this study is described
-below together with a description of how the parameters: damping,
-stiffness and inertia coefficients are determined. The roll decay motion
-can be expressed in general form according to \cite{7505983/FB64RGPF}:
+the roll decay tests. In this technique, parameters in a mathematical
+model are determined in order to get the best fit to a roll decay time
+signal. A derivation of a matematical model suitable for this study is
+described below together with a description of how the parameters:
+damping, stiffness and inertia coefficients are determined. The roll
+decay motion can be expressed in general form according to
+\cite{7505983/FB64RGPF}:
  
             
     
@@ -86,21 +84,10 @@ A_{44} \ddot{\phi} + \left(B_{1} + B_{2} \left|{\dot{\phi}}\right| + B_{3} \dot{
 $B_3=0$ and a linear model when $B_2=B_3=0$. This equation does not
 have one unique solution however. If all parameters would be multiplied
 by a factor $k$ these parameters would also yield as a solution to the
-equation. All parameters are therefore divided by the total added mass
-parameters $A_{44}$, replacing the parameters with new parameters such
-as:
- 
-            
-    
-    \begin{equation}
-B_{1A} = \frac{B_{1}}{A_{44}}
-\label{eq:equation}
-\end{equation}
-
-    
-
-    The equation is now rewritten with these new parameters which have
-unique solutions:
+equation. All parameters are therefore divided by the total inertia
+$A_{44}$ (including added mass inertia), replacing the parameters with
+new parameters such as: $B_{1A} = B_1/A_{44}$. The equation is now
+rewritten with these new parameters which have unique solutions:
  
             
     
@@ -150,8 +137,8 @@ acceleration:
     
 
     This numerical solution can be compared with an analytical solution for
-a linear model . For this case the relation between $\zeta$ and $B_1$
-can be expressed as:
+a linear model.  For this case the relation between $\zeta$ and $B_1$ can
+be expressed as:
  
             
     
