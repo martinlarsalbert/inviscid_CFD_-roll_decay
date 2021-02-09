@@ -142,7 +142,7 @@ to a square section, will have a great impact on the eddy roll damping.
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/eddy_sigma.pdf}\end{center}
         \vspace{-1cm}
-        \caption{Eddy sigma}
+        \caption{Eddy damping for various bilge radius}
         \label{fig:eddy_sigma}
     \end{figure}
     
@@ -211,13 +211,13 @@ damping. This stared damping is defined as:
             
     
     \begin{equation}
-B_{E0 HAT} = \frac{8 B_{E star hat}}{3 \pi}
+\hat{B}_{E0} = \frac{8 \hat{B^*}_{E}}{3 \pi}
 \label{eq:equation}
 \end{equation}
 
     
 
-    $\hat{B_E}^*$ and $(B_W+B_F)^*$ are the experimental values taken
+    $\hat{B_E^*}$ and $(B_W+B_F)^*$ are the experimental values taken
 from \cite{7505983/4AFVVGNT}. Which add up to the total damping:
 
     $\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*$
@@ -225,7 +225,7 @@ from \cite{7505983/4AFVVGNT}. Which add up to the total damping:
             
     
     \begin{equation}
-B_{E0 HAT} = \frac{8 B_{E star hat}}{3 \pi}
+\hat{B}_{E0} = \frac{8 \hat{B^*}_{E}}{3 \pi}
 \label{eq:equation}
 \end{equation}
 
@@ -236,7 +236,7 @@ B_{E0 HAT} = \frac{8 B_{E star hat}}{3 \pi}
             
     
     \begin{equation}
-C_{r} = \frac{3 \pi B_{E0 HAT} B_{s} T_{s} beam^{2} \sigma}{4 T^{4} \omega_{hat} \phi_{a}}
+C_{r} = \frac{3 \pi B_{s} T_{s} \hat{B}_{E0} beam^{2} \sigma}{4 T^{4} \hat{\omega} \phi_{a}}
 \label{eq:equation}
 \end{equation}
 
