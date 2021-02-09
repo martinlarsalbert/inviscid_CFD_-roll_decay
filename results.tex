@@ -71,9 +71,14 @@ $C_r$ predicted with the descision tree gave much better agreement.
     
     \subsection{FNPF}\label{fnpf}
 
-Simulations of roll decay were conducted with FNPF for each model test
-case. The results from these simulations can be seen in the figure
-below.
+Simulations of roll decay tests were conducted with FNPF without viscous
+damping. Wave damping obtained from these tests are shown in
+fig.\ref{fig:fnpf}. It looks like this damping term does not
+change much with the amplitude making it reasonably linear, which is in
+line with Ikeda's original assumption for the derivation of eddy damping
+\cite{7505983/4AFVVGNT}.
+
+    
 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/fnpf.pdf}\end{center}
@@ -82,12 +87,8 @@ below.
         \label{fig:fnpf}
     \end{figure}
     
-    The wave damping from FNFP seems to be reasonably linear at zero speed
-according the figure above, which is in line with Ikeda's assumption for
-the derivation of eddy damping \cite{7505983/4AFVVGNT}.
-
-    \subsection{Roll damping prediction with Hybrid
-method}\label{roll-damping-prediction-with-hybrid-method}
+    \subsection{Roll motion prediction with hybrid
+method}\label{roll-motion-prediction-with-hybrid-method}
 Replacing the wave damping $B_W$, for the zero speed case above, with values obtained with FNPF is shown below. 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_0.pdf}\end{center}
@@ -129,8 +130,12 @@ however even better:
         \label{fig:hybrid_speed_time}
     \end{figure}
     
-    The coefficients obtained from model tests, FNPF and Hybrid method are
-summarized in model scale units in the table below:
+    The coefficients obtained from model tests, FNPF and hybrid method are
+summarized in model scale units in the table below. The equivalent
+linearized damping for 5 degrees roll angle amplitude $B_{e5}$ has
+also been added to this table, for comparison. It can be seen that the
+hybrid method overpredicts the damping at 0 knots and underpredicts the
+damping for the higher speed at this amplitude.
  
             
     
@@ -138,17 +143,17 @@ summarized in model scale units in the table below:
 \begin{table}[H]
 \scriptsize
 \center
-\caption{Results}
+\caption{Roll damping coefficients for model scale KVLCC2}
 \label{tab:results}
-\begin{tabular}{lllllll}
+\begin{tabular}{llllll}
 \toprule\addlinespace
-run & method & $F_n$ & $\omega_0$ & $B_1$ & $B_2$ & $B_3$\\ 
-\midrule &  & $[-]$ & $\left[\frac{rad}{s}\right]$ & $[Nm \cdot s]$ & $[Nm \cdot s^2]$ & $[Nm \cdot s^3]$\\ 
-1 & model test & 0.0 & 2.4614 & 2.9604 & -6.5205 & 43.7754\\ 
-2 & model test & 0.0 & 2.4611 & 2.8797 & -5.8742 & 41.5037\\ 
-2 & Hybrid & 0.0 & 2.4611 & 1.3711 & 13.4769 & 0.0\\ 
-3 & model test & 0.1423 & 2.4675 & 7.5233 & 7.0281 & 0.3898\\ 
-3 & Hybrid & 0.1423 & 2.4418 & 7.5216 & 6.0148 & 0.0\\ 
+$F_n$ & method & $B_1$ & $B_2$ & $B_3$ & $B_{e5}$\\ 
+\midrule$[-]$ &  & $[Nm \cdot s]$ & $[Nm \cdot s^2]$ & $[Nm \cdot s^3]$ & $[Nm \cdot s]$\\ 
+0.0 & model test & 2.9604 & -6.5205 & 43.7754 & 3.2864\\ 
+0.0 & model test & 2.8797 & -5.8742 & 41.5037 & 3.2447\\ 
+0.0 & Hybrid & 1.3711 & 13.4769 & 0.0 & 3.828\\ 
+0.1423 & model test & 7.5233 & 7.0281 & 0.3898 & 8.8214\\ 
+0.1423 & Hybrid & 7.5216 & 6.0148 & 0.0 & 8.6095\\ 
 
 \bottomrule
 \end{tabular}
