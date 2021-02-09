@@ -1,11 +1,11 @@
 \section{Proposed hybrid method}\label{proposed-hybrid-method}
 
-A hybrid method is proposed, where wave damping $B_W$ (including the
-speed dependent wave damping) obtained implicitly with FNPF is used
-together with the viscous damping contributions from Ikeda's method. The
-viscous damping is added to the FNPF simulations by adding the viscous
-parts of the linear and quadratic damping coefficients (obtained with
-Ikeda's method) to the equation of motion.
+A hybrid method is proposed in this section, where wave damping $B_W$
+(including the speed dependent wave damping) obtained implicitly with
+FNPF is used together with the viscous damping contributions from
+Ikeda's method. The viscous damping is added to the FNPF simulations by
+injecting the viscous parts of the linear and quadratic damping
+coefficients (obtained with Ikeda's method) to the equation of motion.
 
 Ikeda's method divides roll damping into five damping components:
 
@@ -35,12 +35,12 @@ that viscous damping can be obtained from,
 
 \begin{equation}
 \label{eq:viscous damping}
-B_{visc} = B_F + B_E + B_L + B_{BK}
+B_{visc} = B_F + B_E + B_L
 \end{equation}
 
-Due to the absence of bilge keels for the KVLCC2 the $B_{BK}$ does not
-need to be included in the viscous damping. This means that remaining
-components will get all the attention in this paper.
+In order to reduce the number of uncertain parameters, the bilge keel
+damping $B_{BK}$ has been exluded above, thereby assuming that the
+ship does not have bilge keels.
 
 Ikeda produced many papers about various aspects of roll damping where
 most of them are translations from original manuscripts written in
@@ -70,7 +70,7 @@ estimation formula.
 
 The hull lift damping $B_L$ is calculated according to
 \cite{7505983/937PN5DT} and implemented as described in
-\cite{7505983/UYUAYY7E}. Journée added a linear interpolation to the
+\cite{7505983/UYUAYY7E}. Journ\'ee added a linear interpolation to the
 values for $\kappa$ from the Ikeda's paper.
 
 Ikeda's method calculates the roll damping at a certain roll angle
