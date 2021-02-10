@@ -8,7 +8,7 @@ injecting the viscous parts of the linear and quadratic damping
 coefficients (obtained with Ikeda's method) to the equation of motion.
 
 Ikeda's method divides roll damping into five damping components so that
-the total damping can be calculated as \cite{7505983/937PN5DT},
+the total damping can be calculated as \citep{7505983/937PN5DT},
 
 \begin{equation}
 B = B_F + B_E + B_L + B_W + B_{BK}
@@ -33,8 +33,8 @@ ship does not have any bilge keels.
 
 Ikeda produced many papers about various aspects of roll damping where
 most of them are translations from original manuscripts written in
-Japanese. Summaries of this method \cite{7505983/FB64RGPF},
-\cite{7505983/KAKIM2E2} and \cite{7505983/UGK6YEVD} has been used
+Japanese. Summaries of this method \citep{7505983/FB64RGPF},
+\citep{7505983/KAKIM2E2} and \citep{7505983/UGK6YEVD} has been used
 together with the original papers to understand how the method should be
 implemented. Falzarano says that the Himeno report and associated
 computer programs are well-known to have numerous typographical errors.
@@ -46,20 +46,20 @@ various alternative implementations needed to be compared and
 investigated.
 
 The scale effects of roll damping is considered to mainly be associated
-with the skin friction component $B_F$ \cite{7505983/FB64RGPF}. This
+with the skin friction component $B_F$ \citep{7505983/FB64RGPF}. This
 component constitute a very small part of the total damping for the full
 scale ship, but a substantial part for the model scale ship used in this
 study. This is therefore the only component in Ikedas method that needs
 to be recalculated when the scale changes.
 
 For the skin friction damping $B_F$ implementation was made according
-to the description in \cite{7505983/UGK6YEVD}. With the difference that
+to the description in \citep{7505983/UGK6YEVD}. With the difference that
 the actual wetted surface at rest $S$ was used instead of the proposed
 estimation formula.
 
 The hull lift damping $B_L$ is calculated according to
-\cite{7505983/937PN5DT} and implemented as described in
-\cite{7505983/UYUAYY7E}. Journ\'ee added a linear interpolation to the
+\citep{7505983/937PN5DT} and implemented as described in
+\citep{7505983/UYUAYY7E}. Journ\'ee added a linear interpolation to the
 values for $\kappa$ from the Ikeda's paper.
 
 Ikeda's method calculates the roll damping at a certain roll angle
@@ -77,7 +77,7 @@ from the amplitude variations at zero knots (left):
 \begin{itemize}
 \item $B_W$ does not change with amplitude, implying that they only contribute to the linear part ($B_1$) of the damping. (The $B_W$ was calculated with strip theory here)
 \item $B_F$ has a small amplitude dependancy but the linear part is dominating.
-\item $B_E$ has a large amplitude depandancy and only contributes to the quadratic damping ($B_2$)\cite{7505983/4AFVVGNT}.
+\item $B_E$ has a large amplitude depandancy and only contributes to the quadratic damping ($B_2$)\citep{7505983/4AFVVGNT}.
 \end{itemize}
 
 Looking at the speed variation (middle):
@@ -132,7 +132,7 @@ to a square section, will have a great impact on the eddy roll damping.
     \end{figure}
     
     Ikeda made experiements on a number of two-dimensional cylinders with
-various sections \cite{7505983/4AFVVGNT}. Ikeda found that the eddy
+various sections \citep{7505983/4AFVVGNT}. Ikeda found that the eddy
 damping per unit length of these sections can be expressed as: 
  
             
@@ -165,17 +165,17 @@ $C_r$ coefficient to be entirely depending on the hull form. Ikeda
 developed a regression formula for $C_r$ based on his experiments,
 which is used in the prediction method. The authors of this paper have
 tried to implement this method according to the description in the
-original paper \cite{7505983/4AFVVGNT} but have failed to reproduce the
+original paper \citep{7505983/4AFVVGNT} but have failed to reproduce the
 results from Ikeda's experiments exactly. Other resources such as
-\cite{7505983/FB64RGPF} and \cite{7505983/KAKIM2E2} have also been used
+\citep{7505983/FB64RGPF} and \citep{7505983/KAKIM2E2} have also been used
 without success.
 
 Instead, a new regression for $C_r$ was made on the experimental
-results from \cite{7505983/4AFVVGNT}. The experimental results were
+results from \citep{7505983/4AFVVGNT}. The experimental results were
 collected by the authors using manual digitalization
-\cite{7505983/RXYIE6UW}.
+\citep{7505983/RXYIE6UW}.
 
-    The nondimensional damping is expressed in \cite{7505983/4AFVVGNT} using
+    The nondimensional damping is expressed in \citep{7505983/4AFVVGNT} using
 an asterisk, or star symbol (*). The reason seems to be that Ikeda
 wanted to signal that this damping only has the quadratic part of the
 damping. This stared damping is defined as:
@@ -190,7 +190,7 @@ damping. This stared damping is defined as:
     
 
     $\hat{B_E^*}$ and $(B_W+B_F)^*$ are the experimental values taken
-from \cite{7505983/4AFVVGNT}. Which add up to the total damping:
+from \citep{7505983/4AFVVGNT}. Which add up to the total damping:
 
     $\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*$
  
@@ -242,13 +242,13 @@ velocity potential, i.e. no linearizations are made to the governing
 equations of the potential flow problem.
 
 The method used in this study employs a boundary element method (BEM)
-\cite{7505983/FD4N3DW2} to solve the boundary value problem for the
+\citep{7505983/FD4N3DW2} to solve the boundary value problem for the
 velocity potential.
 
 The free surface boundary conditions and the motions of the floating
 body introduce time dependency to the boundary value problem. The BEM is
 coupled with the mixed Eulerian-Lagrangian method (MEL)
-\cite{7505983/ZKB494GT} which is used for the evolution of free surface.
+\citep{7505983/ZKB494GT} which is used for the evolution of free surface.
 A fourth-order Adams-Bashforth-Moulton time integral scheme is then used
 to evolve free surface and the rigid-body body motions in time.
 
