@@ -42,7 +42,7 @@ decay motion can be expressed in general form according to
     
     \begin{equation}
 A_{44} \ddot{\phi} + \operatorname{B_{44}}{\left(\dot{\phi} \right)} + \operatorname{C_{44}}{\left(\phi \right)} = 0
-\label{eq:equation}
+\label{eq:roll_decay_equation_general_himeno}
 \end{equation}
 
     
@@ -55,7 +55,7 @@ stiffness models. A cubic model can be obtained by using cubic damping
     
     \begin{equation}
 \operatorname{B_{44}}{\left(\dot{\phi} \right)} = B_{1} \dot{\phi} + B_{2} \left|{\dot{\phi}}\right| \dot{\phi} + B_{3} \dot{\phi}^{3}
-\label{eq:equation}
+\label{eq:b44_cubic_equation}
 \end{equation}
 
     
@@ -64,7 +64,7 @@ stiffness models. A cubic model can be obtained by using cubic damping
     
     \begin{equation}
 \operatorname{C_{44}}{\left(\phi \right)} = C_{1} \phi + C_{3} \phi^{3} + C_{5} \phi^{5}
-\label{eq:equation}
+\label{eq:restoring_equation_cubic}
 \end{equation}
 
     
@@ -77,7 +77,7 @@ stiffness models. A cubic model can be obtained by using cubic damping
 \begin{aligned}
 A_{44} \ddot{\phi} + \left(B_{1} + B_{2} \left|{\dot{\phi}}\right| + B_{3} \dot{\phi}^{2}\right) \dot{\phi} \\ + \left(C_{1} + C_{3} \phi^{2} + C_{5} \phi^{4}\right) \phi = 0
 \end{aligned}
-\label{eq:equation}
+\label{eq:roll_decay_equation_cubic}
 \end{equation}
 
     
@@ -97,7 +97,7 @@ rewritten with these new parameters which have unique solutions:
 \begin{aligned}
 \left(B_{1A} + B_{2A} \left|{\dot{\phi}}\right| + B_{3A} \dot{\phi}^{2}\right) \dot{\phi} \\ + \left(C_{1A} + C_{3A} \phi^{2} + C_{5A} \phi^{4}\right) \phi + \ddot{\phi} = 0
 \end{aligned}
-\label{eq:equation}
+\label{eq:roll_decay_equation_cubic_A}
 \end{equation}
 
     
@@ -133,7 +133,7 @@ acceleration:
 \begin{aligned}
 \ddot{\phi} = - B_{1A} \dot{\phi} - B_{2A} \left|{\dot{\phi}}\right| \dot{\phi} - B_{3A} \dot{\phi}^{3} - C_{1A} \phi \\ - C_{3A} \phi^{3} - C_{5A} \phi^{5}
 \end{aligned}
-\label{eq:equation}
+\label{eq:eq_phi1d}
 \end{equation}
 
     
@@ -146,7 +146,7 @@ be expressed as:
     
     \begin{equation}
 B_{1} = 2 A_{44} \omega_{0} \zeta
-\label{eq:equation}
+\label{eq:B_1_zeta_eq}
 \end{equation}
 
     
@@ -157,7 +157,7 @@ B_{1} = 2 A_{44} \omega_{0} \zeta
     
     \begin{equation}
 \omega_{0} = \sqrt{\frac{C_{1}}{A_{44}}}
-\label{eq:equation}
+\label{eq:omega0_eq}
 \end{equation}
 
     
