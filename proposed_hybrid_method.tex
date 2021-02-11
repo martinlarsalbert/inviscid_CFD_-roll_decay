@@ -18,9 +18,9 @@ Where $B_F$ is the skin friction component, $B_E$ is the eddy
 generation component, $B_L$ is hull lift component, $B_W$ is roll
 wave generation component and $B_{BK}$ is the bilge keel component.
 
-Ikeda's method propose semi empirical formulas for the
-viscous damping components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so
-that viscous damping can be obtained from,
+Ikeda's method propose semi empirical formulas for the viscous damping
+components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so that viscous
+damping can be obtained from,
 
 \begin{equation}
 \label{eq:viscous damping}
@@ -31,69 +31,12 @@ In order to reduce the number of uncertain parameters, the bilge keel
 damping $B_{BK}$ has been exluded above, thereby assuming that the
 ship does not have any bilge keels.
 
-Many of the papers describing the Ikeda's method are translations from original manuscripts written in
-Japanese. Summaries of this method \citep{7505983/FB64RGPF},
-\citep{7505983/KAKIM2E2} and \citep{7505983/UGK6YEVD} have been used
-together with the original papers to understand how the method should be
-implemented. \citep{7505983/UGK6YEVD} says that the \citep{7505983/FB64RGPF} and associated
-computer programs are well-known to have numerous typographical errors.
-When looking at these resources it becomes evident that there are some
-variety on how the method should be implemented, regardless if this is
-due to typographical errors or being variations of the actual method.
-The implementation was therefore a fairly time consuming task where
-various alternative implementations needed to be compared and
-investigated.
-
-The scale effects of roll damping are considered to mainly be associated
-with the skin friction component $B_F$ \citep{7505983/FB64RGPF}. This
-component constitute a very small part of the total damping for the full
-scale ship, but a substantial part for the model scale ship used in this
-study. This is therefore the only component in Ikedas method that needs
-to be recalculated when the scale changes.
-
-For the skin friction damping $B_F$ implementation was made according
-to the description in \citep{7505983/UGK6YEVD}. With the difference that
-the actual wetted surface at rest $S$ was used instead of the proposed
-estimation formula.
-
-The hull lift damping $B_L$ is calculated according to
-\citep{7505983/937PN5DT} and implemented as described in
-\citep{7505983/UYUAYY7E}. Journ\'ee added a linear interpolation to the
-values for $\kappa$ from the Ikeda's paper.
-
-Ikeda's method calculates the roll damping at a certain roll angle
-frequency $\omega$ and roll angle amplitude $\phi_a$. A schematic
-graph of how the parameters vary with speed and roll angle amplitude
-$\phi_a$ is shown in fig.\ref{fig:ikeda_generic}. In this
-figure, roll amplitude is first varied at zero speed (left). The speed
-is then varied at constant roll angle amplitude of 10 degrees (middle).
-The amplitude is then gradually reduced at the highest speed down to
-zero again (right).
-
-Assumming that the trends are correct in Ikeda's method it can be noted
-from the amplitude variations at zero knots (left):
-
-\begin{itemize}
-\item $B_W$ does not change with amplitude, implying that they only contribute to the linear part ($B_1$) of the damping. (The $B_W$ was calculated with strip theory here)
-\item $B_F$ has a small amplitude dependancy but the linear part is dominating.
-\item $B_E$ has a large amplitude depandancy and only contributes to the quadratic damping ($B_2$)\citep{7505983/4AFVVGNT}.
-\end{itemize}
-
-Looking at the speed variation (middle):
-
-\begin{itemize}
-\item At low speed $B_F$ and $B_E$ are the dominating components. (Note that this ship does not have bilge keels, as that would otherwise also be a large component).
-\item At high speed the $B_E$ has almost disappeared and is replaced by the $B_L$ which is now the dominating component.
-\item $B_F$ has a large contribution for all speeds (at model scale).
-\end{itemize}
-
-Looking at the roll amplitude variation (right):
-
-\begin{itemize}
-\item (Please note that this x-axis is revered in this graph)
-\item $B_L$ does not change with amplitude, implying that they only contribute to the linear part ($B_1$) of the damping.
-\item $B_F$ has a small amplitude dependancy but the linear part is dominating.
-\end{itemize}
+Many of the papers describing the Ikeda's method are translations from
+original manuscripts written in Japanese. Summaries of this method
+\citep{7505983/FB64RGPF}, \citep{7505983/KAKIM2E2} and
+\citep{7505983/UGK6YEVD} have been used together with the original papers
+to understand how the method should be implemented.
+\citep{7505983/UGK6YEVD}
 
     
 
