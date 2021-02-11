@@ -13,11 +13,12 @@
 \input{deffile.tex}
 \pagestyle{empty}
 \usepackage{nomencl}
-\makenomenclature
 % This will add the units
 %----------------------------------------------
+\renewcommand{\nomname}{}
 \newcommand{\nomunit}[1]{%
 \renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+\makenomenclature
 
 %\pagestyle{isopefoot} 
 %
