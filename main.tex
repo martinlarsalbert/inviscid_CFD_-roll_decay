@@ -12,6 +12,12 @@
 \usepackage{longtable}
 \input{deffile.tex}
 \pagestyle{empty}
+\usepackage{nomencl}
+\makenomenclature
+% This will add the units
+%----------------------------------------------
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
 
 %\pagestyle{isopefoot} 
 %
