@@ -18,7 +18,7 @@ Where $B_F$ is the skin friction component, $B_E$ is the eddy
 generation component, $B_L$ is hull lift component, $B_W$ is roll
 wave generation component and $B_{BK}$ is the bilge keel component.
 
-Ikeda has in a series of papers proposed semi empirical formulas for the
+Ikeda's method propose semi empirical formulas for the
 viscous damping components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so
 that viscous damping can be obtained from,
 
@@ -31,21 +31,20 @@ In order to reduce the number of uncertain parameters, the bilge keel
 damping $B_{BK}$ has been exluded above, thereby assuming that the
 ship does not have any bilge keels.
 
-Ikeda produced many papers about various aspects of roll damping where
-most of them are translations from original manuscripts written in
+Many of the papers describing the Ikeda's method are translations from original manuscripts written in
 Japanese. Summaries of this method \citep{7505983/FB64RGPF},
-\citep{7505983/KAKIM2E2} and \citep{7505983/UGK6YEVD} has been used
+\citep{7505983/KAKIM2E2} and \citep{7505983/UGK6YEVD} have been used
 together with the original papers to understand how the method should be
-implemented. Falzarano says that the Himeno report and associated
+implemented. \citep{7505983/UGK6YEVD} says that the \citep{7505983/FB64RGPF} and associated
 computer programs are well-known to have numerous typographical errors.
-When looking at these resources it becomes evident that there is some
+When looking at these resources it becomes evident that there are some
 variety on how the method should be implemented, regardless if this is
 due to typographical errors or being variations of the actual method.
 The implementation was therefore a fairly time consuming task where
 various alternative implementations needed to be compared and
 investigated.
 
-The scale effects of roll damping is considered to mainly be associated
+The scale effects of roll damping are considered to mainly be associated
 with the skin friction component $B_F$ \citep{7505983/FB64RGPF}. This
 component constitute a very small part of the total damping for the full
 scale ship, but a substantial part for the model scale ship used in this
@@ -102,7 +101,7 @@ Looking at the roll amplitude variation (right):
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/ikeda_generic.pdf}\end{center}
         \vspace{-1cm}
-        \caption{Ikeda generic}
+        \caption{Example of roll damping predicted with Ikeda's method}
         \label{fig:ikeda_generic}
     \end{figure}
     
