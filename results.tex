@@ -39,10 +39,13 @@ linear trend in the roll angle signal.
     The $C_r$ was calculated with regular Ikeda's method and the
 alternative decision tree model for the KVLCC2 with section data
 according to tab.\ref{tab:kvlcc2_section_table}. A comparison
-between these two methods are shown in the figure below. It can be seen
-that the regular implementation of Ikeda's method predicts much higher
-$C_r$ between station 8 and 14, where the bilge radius is also very
-small for this ship.
+between these two methods are shown in
+Fig.\ref{fig:analytical_numerical}. It can be seen that the
+regular implementation of Ikeda's method predicts much higher $C_r$
+between station 8 and 14, where the bilge radius is also very small for
+this ship.
+
+    
 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/kvlcc2_eddy.pdf}\end{center}
@@ -104,10 +107,12 @@ total damping is instead as shown in Fig.\ref{fig:hybrid_0}.
     \end{figure}
     
     Results from the roll decay model test and corresponding simulations
-with hybrid method and FNPF method is shown in the figure below. It is
-very clear that the injection of semi empirical viscous damping in the
-hybrid method has given a significant improvement compared to the
-invicid FNPF.
+with hybrid method and FNPF method is shown in
+Fig.\ref{fig:analytical_numerical}. It is very clear that the
+injection of semi empirical viscous damping in the hybrid method has
+given a significant improvement compared to the invicid FNPF.
+
+    
 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_0_time.pdf}\end{center}

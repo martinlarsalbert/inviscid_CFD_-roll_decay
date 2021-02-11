@@ -60,11 +60,14 @@ next section.
 
 The eddy damping is due to eddies generated around the ship hull during
 the roll motion. Strong eddies occures at sharp edges in the geometry.
-Below is an illustration of how the eddy damping changes with bilge
-radius to beam ratio as predicted with the current implementation of the
-method. It seems that the damping approaches zero very fast as the bilge
-radius increase. So having just a small rounding of the bilge, compared
-to a square section, will have a great impact on the eddy roll damping.
+Fig.\ref{fig:eddy_sigma} is an illustration of how the eddy
+damping changes with bilge radius to beam ratio as predicted with the
+current implementation of the method. It seems that the damping
+approaches zero very fast as the bilge radius increase. So having just a
+small rounding of the bilge, compared to a square section, will have a
+great impact on the eddy roll damping.
+
+    
 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/eddy_sigma.pdf}\end{center}
@@ -159,8 +162,10 @@ C_{r} = \frac{3 \pi B_{s} T_{s} \hat{B}_{E0} beam^{2} \sigma}{4 T^{4} \hat{\omeg
     Instead of trying to invent a complicated mathematical expression for
 the $C_r$ regression a simple decision tree model, based on the Lewis
 section coefficients, was instead fitted to the $C_r$ data from
-Ikeda's experiments. The fitted decision tree is illustrated in the
-figure below:
+Ikeda's experiments. The fitted decision tree is illustrated in
+Fig.\ref{fig:decision_tree}.
+
+    
 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/decision_tree.pdf}\end{center}
