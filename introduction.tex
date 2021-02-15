@@ -1,20 +1,22 @@
 \section*{INTRODUCTION}\label{introduction}
-Inviscid potential flow calculations are often used to solve seakeeping
+
+\quad Inviscid potential flow calculations are often used to solve seakeeping
 problems at very low computational costs. These methods offer far
 cheaper alternatives than doing for instance model tests or URANS
 calculations. Potential flow calculations can therefore be used
 extensively during the early design stage of ships. The pitch and heave
 motions can be predicted with good accuracy, even witht the older linear
-strip theory methods \citep{7505983/FB64RGPF}. The roll motions will however not be very realistic in potential flow,
-due to high influenced from viscous roll damping. This is very
-unfortunate as the roll motions is indeed a very important response. The
-impact of roll motions can be seen from the APL China casualty in 1998,
-where a post-Panamax C11 class container ship lost almost a third of its
-containers \citep{7505983/WPADAQB3}. Also newer ships as the ONE APUS a
-14,052 TEU container ship built in 2019 lost more than 1000 containers
-during heavy roll motions \citep{7505983/EYV6YF92}.
+strip theory methods \citep{7505983/FB64RGPF}. The roll motions will
+however not be very realistic in potential flow, due to high influenced
+from viscous roll damping. This is very unfortunate as the roll motions
+is indeed a very important response. The impact of roll motions can be
+seen from the APL China casualty in 1998, where a post-Panamax C11 class
+container ship lost almost a third of its containers
+\citep{7505983/WPADAQB3}. Also newer ships as the ONE APUS a 14,052 TEU
+container ship built in 2019 lost more than 1000 containers during heavy
+roll motions \citep{7505983/EYV6YF92}.
 
-A lot of experimental research was conducted during the 1970s and 80s to
+\quad A lot of experimental research was conducted during the 1970s and 80s to
 separate the invicid and viscous roll damping. Semi empirical formulas
 were developed to estimate the viscous parts, to be used together with
 the potential flow methods \citep{7505983/937PN5DT}. The older linear
@@ -36,7 +38,7 @@ Ikeda's method is believed to be a good method for the purpose, based on
 results from a previous comparisons of a large number of model scale
 roll decay tests \citep{7505983/QMGQ76Q9}.
 
-The implementation of the proposed hybrid method is introduced in the
+\quad The implementation of the proposed hybrid method is introduced in the
 next section where the underlying Ikeda's method and FNPF method are
 both presented. The implementation of Ikeda's method is also closely
 examined and an alternative way to calculate eddy damping is proposed.
@@ -48,4 +50,4 @@ wind and waves. This gives a good indication of the ship's roll damping
 and inertia. A more thorough description of the roll decay test is given
 in the Roll decay test section of this paper.
 
-    
+\quad     

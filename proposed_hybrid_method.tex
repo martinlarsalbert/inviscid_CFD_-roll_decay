@@ -1,46 +1,46 @@
 \section*{PROPOSED HYBRID METHOD}\label{proposed-hybrid-method}
 
-A hybrid method is proposed in this paper, where wave damping $B_W$
+\quad A hybrid method is proposed in this paper, where wave damping $B_W$
 (including the speed dependent wave damping) obtained implicitly with
 FNPF is used together with the viscous damping contributions from
 Ikeda's method. The viscous damping is added to the FNPF simulations by
 injecting the viscous parts of the linear and quadratic damping
 coefficients (obtained with Ikeda's method) to the equation of motion.
 
-Ikeda's method divides roll damping into five damping components so that
+\quad Ikeda's method divides roll damping into five damping components so that
 the total damping can be calculated as \citep{7505983/937PN5DT},
 
-\begin{equation}
+\quad \begin{equation}
 B = B_F + B_E + B_L + B_W + B_{BK}
 \end{equation}
 
-Where $B_F$ is the skin friction component, $B_E$ is the eddy
+\quad Where $B_F$ is the skin friction component, $B_E$ is the eddy
 generation component, $B_L$ is hull lift component, $B_W$ is roll
 wave generation component and $B_{BK}$ is the bilge keel component.
 
-Ikeda's method propose semi empirical formulas for the viscous damping
+\quad Ikeda's method propose semi empirical formulas for the viscous damping
 components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so that viscous
 damping can be obtained from,
 
-\begin{equation}
+\quad \begin{equation}
 \label{eq:viscous damping}
 B_{visc} = B_F + B_E + B_L
 \end{equation}
 
-In order to reduce the number of uncertain parameters, the bilge keel
+\quad In order to reduce the number of uncertain parameters, the bilge keel
 damping $B_{BK}$ has been exluded above, thereby assuming that the
 ship does not have any bilge keels.
 
-Many of the papers describing the Ikeda's method are translations from
+\quad Many of the papers describing the Ikeda's method are translations from
 original manuscripts written in Japanese. Summaries of this method
 \citep{7505983/FB64RGPF}, \citep{7505983/KAKIM2E2} and
 \citep{7505983/UGK6YEVD} have been used together with the original papers
 to understand how the method should be implemented.
 \citep{7505983/UGK6YEVD}
 
-    
+\quad     
 
-    
+\quad     
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/ikeda_generic.pdf}\end{center}
         \vspace{-1cm}
@@ -56,9 +56,9 @@ implementation of Ikeda's method. A thorough investigation of the eddy
 damping prediction was therefore conducted which is described in the
 next section.
 
-    \subsection*{Eddy damping}\label{eddy-damping}
+\quad     \subsection*{Eddy damping}\label{eddy-damping}
 
-The eddy damping is due to eddies generated around the ship hull during
+\quad The eddy damping is due to eddies generated around the ship hull during
 the roll motion. Strong eddies occures at sharp edges in the geometry.
 Fig.\ref{fig:eddy_sigma} is an illustration of how the eddy
 damping changes with bilge radius to beam ratio as predicted with the
@@ -67,9 +67,9 @@ approaches zero very fast as the bilge radius increase. So having just a
 small rounding of the bilge, compared to a square section, will have a
 great impact on the eddy roll damping.
 
-    
+\quad     
 
-    \begin{figure}[H]
+\quad     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/eddy_sigma.pdf}\end{center}
         \vspace{-1cm}
         \caption{Eddy damping for various bilge radius}
@@ -87,9 +87,9 @@ B'_{E0} = \frac{4 C_{r} T_{s}^{4} \omega \phi_{a} \rho}{3 \pi}
 \label{eq:eddy_section}
 \end{equation}
 
-    
+\quad     
 
-    The total eddy damping can be obtained as an integral over the sections
+\quad     The total eddy damping can be obtained as an integral over the sections
 along the ship hull:
  
             
@@ -99,9 +99,9 @@ B_{E0} = \int\limits_{AP}^{FP} B'_{E0}\, dx_{s}
 \label{eq:eddy_integration}
 \end{equation}
 
-    
+\quad     
 
-    It can be seen from the section damping (eq.
+\quad     It can be seen from the section damping (eq.
 \ref{eq:eddy_section}) above that the eddy damping increases
 linearly with both roll amplitude and frequency, and that it will go to
 zero for small amplitudes and frequencies, which means that it is only
@@ -115,12 +115,12 @@ results from Ikeda's experiments exactly. Other resources such as
 \citep{7505983/FB64RGPF} and \citep{7505983/KAKIM2E2} have also been used
 without success.
 
-Instead, a new regression for $C_r$ was made on the experimental
+\quad Instead, a new regression for $C_r$ was made on the experimental
 results from \citep{7505983/4AFVVGNT}. The experimental results were
 collected by the authors using manual digitalization
 \citep{7505983/RXYIE6UW}.
 
-    The nondimensional damping is expressed in \citep{7505983/4AFVVGNT} using
+\quad     The nondimensional damping is expressed in \citep{7505983/4AFVVGNT} using
 an asterisk, or star symbol (*). The reason seems to be that Ikeda
 wanted to signal that this damping only has the quadratic part of the
 damping. This stared damping is defined as:
@@ -132,14 +132,14 @@ damping. This stared damping is defined as:
 \label{eq:B_E_star_hat}
 \end{equation}
 
-    
+\quad     
 
-    $\hat{B_E^*}$ and $(B_W+B_F)^*$ are the experimental values taken
+\quad     $\hat{B_E^*}$ and $(B_W+B_F)^*$ are the experimental values taken
 from \citep{7505983/4AFVVGNT}. Which add up to the total damping:
 
-    $\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*$
+\quad     $\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*$
 
-    And the $C_r$ was calculated from the experiments as:
+\quad     And the $C_r$ was calculated from the experiments as:
  
             
     
@@ -148,17 +148,17 @@ C_{r} = \frac{3 \pi B_{s} T_{s} \hat{B}_{E0} beam^{2} \sigma}{4 T^{4} \hat{\omeg
 \label{eq:C_r_2}
 \end{equation}
 
-    
+\quad     
 
-    Instead of trying to invent a complicated mathematical expression for
+\quad     Instead of trying to invent a complicated mathematical expression for
 the $C_r$ regression a simple decision tree model, based on the Lewis
 section coefficients, was instead fitted to the $C_r$ data from
 Ikeda's experiments. The fitted decision tree is illustrated in
 Fig.\ref{fig:decision_tree}.
 
-    
+\quad     
 
-    \begin{figure}[H]
+\quad     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/decision_tree.pdf}\end{center}
         \vspace{-1cm}
         \caption{Decision tree}
@@ -168,9 +168,9 @@ Fig.\ref{fig:decision_tree}.
     Even thoug this tree is very simple it has very good accuracy in
 reproducing the results from Ikedas experiments ($r^2=0.996)$.
 
-    \subsection*{FNPF method}\label{fnpf-method}
+\quad     \subsection*{FNPF method}\label{fnpf-method}
 
-\label{fnpf-method} Wave damping was obtained using PIT on roll decay
+\quad \label{fnpf-method} Wave damping was obtained using PIT on roll decay
 simulation using the fully nonlinear potential flow method. This method
 is characterized by the application of the complete dynamic and
 kinematic free surface boundary conditions on the instantaneous free
@@ -179,18 +179,18 @@ wetted body surface is considered in the boundary value problem for the
 velocity potential, i.e. no linearizations are made to the governing
 equations of the potential flow problem.
 
-The method used in this study employs a boundary element method (BEM)
+\quad The method used in this study employs a boundary element method (BEM)
 \citep{7505983/FD4N3DW2} to solve the boundary value problem for the
 velocity potential.
 
-The free surface boundary conditions and the motions of the floating
+\quad The free surface boundary conditions and the motions of the floating
 body introduce time dependency to the boundary value problem. The BEM is
 coupled with the mixed Eulerian-Lagrangian method (MEL)
 \citep{7505983/ZKB494GT} which is used for the evolution of free surface.
 A fourth-order Adams-Bashforth-Moulton time integral scheme is then used
 to evolve free surface and the rigid-body body motions in time.
 
-The benefit with the FNPF method is the lack of linearizations to the
+\quad The benefit with the FNPF method is the lack of linearizations to the
 free surface potential flow where all interactions between the
 undisturbed incident flow and surface piercing body is captured
 implicitly in the total velocity potential, including inviscid (wave)
@@ -202,4 +202,4 @@ of the time integral scheme. However, FNPF methods are still typically
 less computationally demanding than for example URANS methods, making
 them attractive choices for seakeeping problems.
 
-    
+\quad     
