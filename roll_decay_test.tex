@@ -6,7 +6,7 @@ potential energy that subsequently is shifting to kinetic energy as the
 ship starts to oscillate during the inital phase of the roll decay test.
 The energy is transfered between kinetic and potential energy during the
 oscillations. The ship loses energy over time due to the damping as
-shown in this illustration:
+shown in Fig.Section \ref{energy}:
  
             
     
@@ -24,8 +24,7 @@ in this paper to determine the roll damping. Two different techniques to
 identify the damping from these tests are used: the PIT method,
 described in the next section and the logartithmic decrement method as
 described in \citep{7505983/BYNJ8CFG}.
-    \subsection*{PIT method to estimate
-damping}\label{pit-method-to-estimate-damping}
+     \#\# PIT method to estimate damping \label{se:PIT_method}
 
     A parameters identification technique (PIT) similar to
 \citep{7505983/EXYJELCU} is used to obtain the damping coefficients from
@@ -74,9 +73,7 @@ stiffness models. A cubic model can be obtained by using cubic damping
             
     
     \begin{equation}
-\begin{aligned}
-A_{44} \ddot{\phi} + \left(B_{1} + B_{2} \left|{\dot{\phi}}\right| + B_{3} \dot{\phi}^{2}\right) \dot{\phi} \\ + \left(C_{1} + C_{3} \phi^{2} + C_{5} \phi^{4}\right) \phi = 0
-\end{aligned}
+A_{44} \ddot{\phi} + \left(B_{1} + B_{2} \left|{\dot{\phi}}\right| + B_{3} \dot{\phi}^{2}\right) \dot{\phi} + \left(C_{1} + C_{3} \phi^{2} + C_{5} \phi^{4}\right) \phi = 0
 \label{eq:roll_decay_equation_cubic}
 \end{equation}
 
@@ -94,9 +91,7 @@ rewritten with these new parameters which have unique solutions:
             
     
     \begin{equation}
-\begin{aligned}
-\left(B_{1A} + B_{2A} \left|{\dot{\phi}}\right| + B_{3A} \dot{\phi}^{2}\right) \dot{\phi} \\ + \left(C_{1A} + C_{3A} \phi^{2} + C_{5A} \phi^{4}\right) \phi + \ddot{\phi} = 0
-\end{aligned}
+\left(B_{1A} + B_{2A} \left|{\dot{\phi}}\right| + B_{3A} \dot{\phi}^{2}\right) \dot{\phi} + \left(C_{1A} + C_{3A} \phi^{2} + C_{5A} \phi^{4}\right) \phi + \ddot{\phi} = 0
 \label{eq:roll_decay_equation_cubic_A}
 \end{equation}
 
@@ -111,9 +106,9 @@ using numerical differentiation of a low-pass filtered roll signal or
 Kalman filtered roll signal. The filtering will however introduce some
 errors in itself. So instead of using this "Differentiation approach",
 it has been found that solving the differential equation numerically for
-guessed parameter values determined using optimization similarly to what
-was used by \citep{7505983/FJHQJJUH} and \citep{7505983/24TNAV5Z} gives
-the best parameter estimation. One problem with this "Integration
+estimated parameter values determined using optimization similarly to
+what was used by \citep{7505983/FJHQJJUH} and \citep{7505983/24TNAV5Z}
+gives the best parameter estimation. One problem with this "Integration
 approach" is that in order to converge, the optimization needs a
 resonable first guess of the parameters. The Differentiation approach
 has therefore been used as a pre-step to obtain a very good first guess
@@ -130,9 +125,7 @@ acceleration:
             
     
     \begin{equation}
-\begin{aligned}
-\ddot{\phi} = - B_{1A} \dot{\phi} - B_{2A} \left|{\dot{\phi}}\right| \dot{\phi} - B_{3A} \dot{\phi}^{3} - C_{1A} \phi \\ - C_{3A} \phi^{3} - C_{5A} \phi^{5}
-\end{aligned}
+\ddot{\phi} = - B_{1A} \dot{\phi} - B_{2A} \left|{\dot{\phi}}\right| \dot{\phi} - B_{3A} \dot{\phi}^{3} - C_{1A} \phi - C_{3A} \phi^{3} - C_{5A} \phi^{5}
 \label{eq:eq_phi1d}
 \end{equation}
 
@@ -171,7 +164,7 @@ Fig.\ref{fig:analytical_numerical}.
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/analytical_numerical.pdf}\end{center}
         \vspace{-1cm}
-        \caption{Analytical and numerical}
+        \caption{Comparison of analytical solution and numerical simulation of a roll decay test.}
         \label{fig:analytical_numerical}
     \end{figure}
     

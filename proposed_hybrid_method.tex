@@ -22,23 +22,68 @@ wave generation component and $B_{BK}$ is the bilge keel component.
 damping components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so that
 viscous damping can be obtained from,
 
-\quad 
+\quad <a id="eq_viscous_damping">
 
 \begin{equation}
-\label{eq:viscous damping}
+\label{eq:viscous_damping}
 B_{visc} = B_F + B_E + B_L
 \end{equation}
 
 \quad In order to reduce the number of uncertain parameters, the bilge
-keel damping $B_{BK}$ has been exluded above, thereby assuming that
-the ship does not have any bilge keels.
+keel damping $B_{BK}$ has been exluded in
+Eq.\ref{eq:viscous_damping}, thereby assuming that the ship does
+not have any bilge keels.
 
-\quad Many of the papers describing the Ikeda's method are translations
-from original manuscripts written in Japanese. Summaries of this method
-\citep{7505983/FB64RGPF}, \citep{7505983/KAKIM2E2} and
-\citep{7505983/UGK6YEVD} have been used together with the original papers
-to understand how the method should be implemented.
-\citep{7505983/UGK6YEVD}
+\quad The skin friction damping $B_F$ is calculated using
+\citep{7505983/CKCMI3N9} which is implementation according to the
+description in \citep{7505983/UGK6YEVD} with the difference that the
+actual wetted surface at rest $S$ was used instead of the proposed
+estimation formula. The scale effects of roll damping are considered to
+mainly be associated with the skin friction component $B_F$
+\citep{7505983/FB64RGPF}. This component constitute a very small part of
+the total damping for the full scale ship, but a substantial part for
+the model scale ship used in this study. This is therefore the only
+component in Ikedas method that needs to be recalculated when the scale
+changes.
+
+\quad The hull lift damping $B_L$ is calculated according to
+\citep{7505983/937PN5DT} and implemented as described in
+\citep{7505983/UYUAYY7E}. Journ\'ee added a linear interpolation to the
+values for $\kappa$ from the Ikeda's paper.
+
+\quad Ikeda's method calculates the roll damping at a certain roll angle
+frequency $\omega$ and roll angle amplitude $\phi_a$. A schematic
+graph of how the parameters vary with speed and roll angle amplitude
+$\phi_a$ is shown in Fig.\ref{fig:ikeda_generic}. In this
+figure, roll amplitude is first varied at zero speed (left). The speed
+is then varied at constant roll angle amplitude of 10 degrees (middle).
+The amplitude is then gradually reduced at the highest speed down to
+zero again (right).
+
+\quad Assumming that the trends are correct in Ikeda's method it can be
+noted from the amplitude variations at zero knots (left):
+
+\begin{itemize}
+\item $B_W$ does not change with amplitude, implying that they only contribute to the linear part ($B_1$) of the damping. (The $B_W$ was calculated with strip theory here)
+\item $B_F$ has a small amplitude dependancy but the linear part is dominating.
+\item $B_E$ has a large amplitude depandancy and only contributes to the quadratic damping ($B_2$)\citep{7505983/4AFVVGNT}.
+\end{itemize}
+
+\quad Looking at the speed variation (middle):
+
+\begin{itemize}
+\item At low speed $B_F$ and $B_E$ are the dominating components. (Note that this ship does not have bilge keels, as that would otherwise also be a large component).
+\item At high speed the $B_E$ has almost disappeared and is replaced by the $B_L$ which is now the dominating component.
+\item $B_F$ has a large contribution for all speeds (at model scale).
+\end{itemize}
+
+\quad Looking at the roll amplitude variation (right):
+
+\begin{itemize}
+\item (Please note that this x-axis is revered in this graph)
+\item $B_L$ does not change with amplitude, implying that they only contribute to the linear part ($B_1$) of the damping.
+\item $B_F$ has a small amplitude dependancy but the linear part is dominating.
+\end{itemize}
 
     
 
@@ -65,22 +110,23 @@ the roll motion. Strong eddies occures at sharp edges in the geometry.
 Fig.\ref{fig:eddy_sigma} is an illustration of how the eddy
 damping changes with bilge radius to beam ratio as predicted with the
 current implementation of the method. It seems that the damping
-approaches zero very fast as the bilge radius increase. So having just a
-small rounding of the bilge, compared to a square section, will have a
-great impact on the eddy roll damping.
+approaches zero very fast as the bilge radius increase. Hving just a
+small rounding of the bilge, compared to a square section, will thereby
+have a great impact on the eddy roll damping.
 
     
 
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/eddy_sigma.pdf}\end{center}
         \vspace{-1cm}
-        \caption{Eddy damping for various bilge radius}
+        \caption{Sectional eddy damping (left y-axis) and $\sigma$ (right y-axis) vs. bilge radius (x-axis).}
         \label{fig:eddy_sigma}
     \end{figure}
     
-    Ikeda made experiements on a number of two-dimensional cylinders with
-various sections \citep{7505983/4AFVVGNT}. Ikeda found that the eddy
-damping per unit length of these sections can be expressed as: 
+    The eddy damping prediction is based on a regression formula from
+experiements on a number of two-dimensional cylinders with various
+sections \citep{7505983/4AFVVGNT}. The eddy damping per unit length of
+these sections can be expressed as: 
  
             
     
@@ -104,28 +150,24 @@ B_{E0} = \int\limits_{AP}^{FP} B'_{E0}\, dx_{s}
     
 
     It can be seen from the section damping (eq.
-\ref{eq:eddy_section}) above that the eddy damping increases
-linearly with both roll amplitude and frequency, and that it will go to
-zero for small amplitudes and frequencies, which means that it is only
-included in the quadratic damping term ($B_2$). Ikeda expressed the
-$C_r$ coefficient to be entirely depending on the hull form. Ikeda
-developed a regression formula for $C_r$ based on his experiments,
-which is used in the prediction method. The authors of this paper have
-tried to implement this method according to the description in the
-original paper \citep{7505983/4AFVVGNT} but have failed to reproduce the
-results from Ikeda's experiments exactly. Other resources such as
-\citep{7505983/FB64RGPF} and \citep{7505983/KAKIM2E2} have also been used
-without success.
+\ref{eq:eddy_section}) that the eddy damping increases linearly
+with both roll amplitude and frequency, and that it will go to zero for
+small amplitudes and frequencies. This means that eddy damping is only
+included in the quadratic damping term ($B_2$). The $C_r$
+coefficient in (eq. \ref{eq:eddy_section}) is assumed to be
+entirely depending on the hull form and can therefore be calculated
+using the regression formula in \citep{7505983/4AFVVGNT}, which is based
+on: section area coefficient $\sigma$ and the Lewis section
+coefficients: $a_1$ and $a_3$. An alternative regression formula for
+$C_r$ has has however been developed for this paper, as described
+below. This regression is based the same experimental results
+\citep{7505983/4AFVVGNT}, collected by the authors using manual
+digitalization \citep{7505983/RXYIE6UW}.
 
-\quad Instead, a new regression for $C_r$ was made on the experimental
-results from \citep{7505983/4AFVVGNT}. The experimental results were
-collected by the authors using manual digitalization
-\citep{7505983/RXYIE6UW}.
-
-    The nondimensional damping is expressed in \citep{7505983/4AFVVGNT} using
-an asterisk, or star symbol (*). The reason seems to be that Ikeda
-wanted to signal that this damping only has the quadratic part of the
-damping. This stared damping is defined as:
+    The nondimensional damping taken from \citep{7505983/4AFVVGNT} is
+expressed using an asterisk, or star symbol (*), to be to emphase that
+this damping only has the quadratic part of the damping. This stared
+damping is defined as:
  
             
     
@@ -139,9 +181,9 @@ damping. This stared damping is defined as:
     $\hat{B_E^*}$ and $(B_W+B_F)^*$ are the experimental values taken
 from \citep{7505983/4AFVVGNT}. Which add up to the total damping:
 
-    $\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*$
+    \[\hat{B^*} = \hat{B^*_E} + (B_W+B_F)^*\]
 
-    And the $C_r$ was calculated from the experiments as:
+    And the $C_r$ can be calculated from the experiments as:
  
             
     
@@ -152,10 +194,9 @@ C_{r} = \frac{3 \pi B_{s} T_{s} \hat{B}_{E0} beam^{2} \sigma}{4 T^{4} \hat{\omeg
 
     
 
-    Instead of trying to invent a complicated mathematical expression for
-the $C_r$ regression a simple decision tree model, based on the Lewis
-section coefficients, was instead fitted to the $C_r$ data from
-Ikeda's experiments. The fitted decision tree is illustrated in
+    A simple decision tree model is used for the $C_r$ regression, based
+on the same Lewis section coefficients that the regular regression
+formula uses. The fitted decision tree is illustrated in
 Fig.\ref{fig:decision_tree}.
 
     
@@ -163,7 +204,7 @@ Fig.\ref{fig:decision_tree}.
     \begin{figure}[H]
         \begin{center}\includegraphics[width = 0.5\textwidth]{figures/decision_tree.pdf}\end{center}
         \vspace{-1cm}
-        \caption{Decision tree}
+        \caption{Decision tree to predict $C_r$}
         \label{fig:decision_tree}
     \end{figure}
     
@@ -172,14 +213,16 @@ reproducing the results from Ikedas experiments ($r^2=0.996)$.
 
     \subsection*{FNPF method}\label{fnpf-method}
 
-\label{fnpf-method} Wave damping was obtained using PIT on roll decay
-simulation using the fully nonlinear potential flow method. This method
-is characterized by the application of the complete dynamic and
-kinematic free surface boundary conditions on the instantaneous free
-surface as well as the body-exact approach where the instantaneous
-wetted body surface is considered in the boundary value problem for the
-velocity potential, i.e. no linearizations are made to the governing
-equations of the potential flow problem.
+\label{fnpf-method} Wave damping was obtained using parameter
+identification technique, as described in section:
+"\nameref{se:pit_method}", on roll decay simulation using the fully
+nonlinear potential flow method. This method is characterized by the
+application of the complete dynamic and kinematic free surface boundary
+conditions on the instantaneous free surface as well as the body-exact
+approach where the instantaneous wetted body surface is considered in
+the boundary value problem for the velocity potential, i.e. no
+linearizations are made to the governing equations of the potential flow
+problem.
 
 \quad The method used in this study employs a boundary element method
 (BEM) \citep{7505983/FD4N3DW2} to solve the boundary value problem for
