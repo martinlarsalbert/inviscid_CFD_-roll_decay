@@ -1,18 +1,26 @@
-\documentclass[11pt,fleqn,a3]{article}
-\usepackage{articlestyle}
-%\usepackage{graphicx} %%%%%%%%%%%%%%% for inserting EPS pictures
+%**************************************************************%
+%                     File Name: main.tex                      %
+%                                                              %
+%   International Journal of Offshore and Polar Engineering    %
+%               Paper Number is : ISOPE-HE-2011                %
+%                                                              %
+%              Using Template Prepared by Masashi KASHIWAGI    %
+%**************************************************************%
+%\documentclass[11pt,fleqn,letterpaper]{article}
+ \documentclass[11pt,fleqn,a3]{article}
+\usepackage{graphicx} %%%%%%%%%%%%%%% for inserting EPS pictures
 \usepackage{amsmath}% AMS math equation
 \usepackage{txfonts}
-\usepackage{nameref}
 \usepackage{bm}
-\usepackage{float}
-\usepackage{tikz}
-%\usepackage{pgfplots}
-\usepackage{longtable}
+%
 \input{deffile.tex}
-%\setlength\parindent{20pt}
 \pagestyle{empty}
+%\pagestyle{isopefoot} 
+
 \usepackage{nomencl}
+\usepackage{nameref}
+\usepackage{natbib}
+\usepackage{float}
 % This will add the units
 %----------------------------------------------
 \renewcommand{\nomname}{}
@@ -20,55 +28,46 @@
 \renewcommand{\nomentryend}{\hspace*{\fill}#1}}
 \makenomenclature
 
-%\pagestyle{isopefoot} 
-%
 
-\newcommand{\papernumber} {TPC-970}
-\newcommand{\firstauthorname} {Martin Alexandersson}
-\newcommand{\totalpage} {10}
-%
+
+\usepackage{authblk}
+\renewcommand\Authfont{\small}
+\renewcommand\Affilfont{\small}
+\author[1,2]{Martin Alexandersson}
+\author[2]{Martin Kjellberg}
+\author[1]{Wengang Mao}
+\author[1]{Jonas W Ringsberg}
+\affil[1]{Dept. of Mechanics and Maritime Sciences, Chalmers University of Technology, 41296 Gothenburg, Sweden}
+\affil[2]{SSPA Sweden AB, 41296 Gothenburg, Sweden}
+\affil[ ]{\textit {maralex@chalmers.se}}
+\date{}
+
+\title{Prediction of roll damping using fully nonlinear potential flow and Ikeda's method}
+
 %+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \begin{document}
 \baselineskip \mybaselineskip
-\twocolumn[ 
-    \par\vspace*{40.0mm}
-    \large\bc{ \bf
-        Prediction of ship roll decay motion using fully nonlinear potential flow and Ikeda's method
-    }\ec 
-
-    \par\vspace{1mm}\footnotesize\bc
-    {
-        \small\it
-        Martin Alexandersson
-    }\\ 
-    Department of Mechanics and Maritime Sciences, Chalmers University of Technology, Sweden \\
-    SSPA Sweden AB, Gothenburg, Sweden\\
-    {
-        \small\it
-        Martin Kjellberg
-    }\\
-    SSPA Sweden AB, Gothenburg, Sweden\\
-    {
-        \small\it
-        Wengang Mao
-    }\\
-     Department of Mechanics and Maritime Sciences, Chalmers University of Technology, Sweden\\
-    {
-        \small\it
-        Jonas W. Ringsberg
-    }\\
-     Department of Mechanics and Maritime Sciences, Chalmers University of Technology, Sweden\\
+\twocolumn[ \par\vspace*{30.0mm}\large\bc{\bf
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% Title of Paper %%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}\ec %
+\maketitle
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ec\par\vspace*{15mm}
-
+%\ec\par\vspace*{15mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ]
-%\footnotesize\par\noindent{\small ABSTRACT}\par\vspace*{2.0mm}
-\footnotesize\par\par\vspace*{2.0mm}
-\baselineskip \mybaselineskip
-
+\footnotesize\par\noindent\par\vspace*{-7.0mm}
+%\baselineskip \mybaselineskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% Write Abstract Here %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 \input{abstract}
+
 %-----------------------------------------------------------------
 \footnotesize
 \par\bigskip\noindent{{\small KEY\,\,WORDS}}:
@@ -77,19 +76,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Roll-decay; Roll-damping; Ikeda's method; Fully nonlinear potential flow (FNPF); Boundary element methods; KVLCC2.
 %
-\par\vspace*{2mm}%
+%\par\vspace*{2mm}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%% Start Introduction %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Please use \jsection{ .... } or \section*{ ..... } %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\jsection{Introduction}
-%%-----------------------------------------------------------------
-%\input{introduction}
-%
-%\medskip%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% Next Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%% Please use \jsection{ .... } or \section*{ ..... } %%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill\eject  % column break
 
 \input{nomenclature}
 \input{introduction}
