@@ -7,14 +7,13 @@
 %              Using Template Prepared by Masashi KASHIWAGI    %
 %**************************************************************%
 %\documentclass[11pt,fleqn,letterpaper]{article}
- \documentclass[11pt,fleqn,a3]{article}
+\documentclass[11pt,fleqn,a3]{article}
 \usepackage{graphicx} %%%%%%%%%%%%%%% for inserting EPS pictures
 \usepackage{amsmath}% AMS math equation
 \usepackage{txfonts}
 \usepackage{bm}
 %
 \input{deffile.tex}
-\pagestyle{empty}
 %\pagestyle{isopefoot} 
 
 \usepackage{nomencl}
@@ -27,8 +26,6 @@
 \newcommand{\nomunit}[1]{%
 \renewcommand{\nomentryend}{\hspace*{\fill}#1}}
 \makenomenclature
-
-
 
 \usepackage{authblk}
 \renewcommand\Authfont{\small}
@@ -54,7 +51,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }\ec %
 \maketitle
-
+\thispagestyle{empty}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\ec\par\vspace*{15mm}
