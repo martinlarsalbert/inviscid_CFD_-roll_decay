@@ -1,6 +1,6 @@
 \section*{INTRODUCTION}\label{introduction}
 
-Inviscid potential flow calculations are often used to solve seakeeping
+Inviscid potential flow calculations can be used to solve seakeeping
 problems at very low computational costs. These methods offer far
 cheaper alternatives than doing for instance model tests or URANS
 calculations. Potential flow calculations can therefore be used
@@ -31,24 +31,24 @@ shown that the separation of viscous and invicid damping is still valid
 for a panel method and Ikeda's method to predict the roll motion for the
 mentioned APL China vessel. \citep{7505983/24TNAV5Z} have investigated an
 even more advanced method, using a fully nonlinear potential flow method
-(FNPF) \citep{7505983/P4XDUMMQ} combined with Watanabe and Inoue (W-I)
-method \citep{7505983/ARMIRMVY} to predict the viscous damping for the
-DTC test case \citep{7505983/BYNJ8CFG}. This FNPF method is used also in
-the present paper, but instead of W-I method, Ikeda's method is used.
-Ikeda's method is believed to be a good method for the purpose, based on
-results from a previous comparisons of a large number of model scale
-roll decay tests \citep{7505983/QMGQ76Q9}.
+(FNPF) \citep{7505983/P4XDUMMQ} combined with Watanabe and Inoue method
+(W-I) \citep{7505983/ARMIRMVY} to predict the viscous damping for the DTC
+test case \citep{7505983/BYNJ8CFG}. This FNPF method is used also in the
+present paper, but instead of W-I method, Ikeda's method is instead
+used. Ikeda's method is believed to be a good method for the purpose,
+based on results from a previous comparisons of a large number of model
+scale roll decay tests \citep{7505983/QMGQ76Q9}.
 
 \quad The implementation of the proposed hybrid method is introduced in
 the next section where the underlying Ikeda's method and FNPF method are
 both presented. The implementation of Ikeda's method is also closely
 examined and an alternative way to calculate eddy damping is proposed.
 In the validation study of the hybrid method, roll decay tests from
-model tests are compared with simulations for the KVLCC2 test case. The
-roll decay test represents a very simple test case. Both decay and
-frequency can be observed, without the presence of external forces from
-wind and waves. This gives a good indication of the ship's roll damping
-and inertia. A more thorough description of the roll decay test is given
-in the Roll decay test section of this paper.
+model tests are compared with simulations for the KVLCC2 test case. In
+the roll decay tests, both decay and frequency can be observed, without
+the presence of external forces from wind and waves. This gives a good
+indication of the ship's roll damping and inertia. A more thorough
+description of the roll decay test is given in the Roll decay test
+section of this paper.
 
     

@@ -6,9 +6,8 @@ FNPF is used together with the viscous damping contributions from
 Ikeda's method. The viscous damping is added to the FNPF simulations by
 injecting the viscous parts of the linear and quadratic damping
 coefficients (obtained with Ikeda's method) to the equation of motion.
-
-\quad Ikeda's method divides roll damping into five damping components
-so that the total damping can be calculated as \citep{7505983/937PN5DT},
+Ikeda's method divides roll damping into five damping components so that
+the total damping can be calculated as \citep{7505983/937PN5DT},
 
 \begin{equation}
 B = B_F + B_E + B_L + B_W + B_{BK}
@@ -17,10 +16,9 @@ B = B_F + B_E + B_L + B_W + B_{BK}
 Where $B_F$ is the skin friction component, $B_E$ is the eddy
 generation component, $B_L$ is hull lift component, $B_W$ is roll
 wave generation component and $B_{BK}$ is the bilge keel component.
-
-\quad Ikeda's method propose semi empirical formulas for the viscous
-damping components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so that
-viscous damping can be obtained from,
+Ikeda's method propose semi empirical formulas for the viscous damping
+components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so that viscous
+damping can be obtained from,
 
 \begin{equation}
 \label{eq:viscous_damping}
@@ -94,7 +92,7 @@ noted from the amplitude variations at zero knots (left):
     \end{figure}
     
     When the damping predicted with Ikeda's method was compared with
-corresponding model test it was found that the results were in poor
+corresponding model tests, it was found that the results were in poor
 agreement for the zero speed case but quite good results at speed. This
 was pointing towards the eddy damping being incorrect in the current
 implementation of Ikeda's method. A thorough investigation of the eddy
@@ -106,11 +104,11 @@ next section.
 The eddy damping is due to eddies generated around the ship hull during
 the roll motion. Strong eddies occures at sharp edges in the geometry.
 Fig.\ref{fig:eddy_sigma} is an illustration of how the eddy
-damping changes with bilge radius to beam ratio as predicted with the
-current implementation of the method. It seems that the damping
-approaches zero very fast as the bilge radius increase. Hving just a
-small rounding of the bilge, compared to a square section, will thereby
-have a great impact on the eddy roll damping.
+damping changes with bilge radius as predicted with the current
+implementation of the method. It seems that the damping approaches zero
+very fast as the bilge radius increase. Having just a small rounding of
+the bilge, compared to a square section, will thereby have a great
+impact on the eddy roll damping.
 
     
 
@@ -153,19 +151,19 @@ with both roll amplitude and frequency, and that it will go to zero for
 small amplitudes and frequencies. This means that eddy damping is only
 included in the quadratic damping term ($B_2$). The $C_r$
 coefficient in (eq. \ref{eq:eddy_section}) is assumed to be
-entirely depending on the hull form and can therefore be calculated
-using the regression formula in \citep{7505983/4AFVVGNT}, which is based
-on: section area coefficient $\sigma$ and the Lewis section
+entirely depending on the hull form and is calculated using the
+regression formula in \citep{7505983/4AFVVGNT}. This regression formula
+is based on: section area coefficient $\sigma$ and the Lewis section
 coefficients: $a_1$ and $a_3$. An alternative regression formula for
-$C_r$ has has however been developed for this paper, as described
-below. This regression is based the same experimental results
+$C_r$ has however been developed for this paper, as described below.
+This regression is based the same experimental results
 \citep{7505983/4AFVVGNT}, collected by the authors using manual
 digitalization \citep{7505983/RXYIE6UW}.
 
     The nondimensional damping taken from \citep{7505983/4AFVVGNT} is
-expressed using an asterisk, or star symbol (*), to be to emphase that
-this damping only has the quadratic part of the damping. This stared
-damping is defined as:
+expressed using an asterisk, or star symbol (*), to emphase that this
+component only has a quadratic part of the damping. This stared damping
+is defined as:
  
             
     
@@ -200,8 +198,8 @@ C_{r} = \frac{3 \pi B_{s} \hat{B}_{E0} beam^{2} \sigma}{4 T_{s}^{3} \hat{\omega}
     
 
     A simple decision tree model is used for the $C_r$ regression, based
-on the same Lewis section coefficients that the regular regression
-formula uses. The fitted decision tree is illustrated in
+on the same Lewis section coefficients from the regular regression
+formula. The fitted decision tree is illustrated in
 Fig.\ref{fig:decision_tree}.
 
     
@@ -218,7 +216,7 @@ reproducing the results from Ikedas experiments ($r^2=0.996)$.
 
     \subsection*{FNPF method}\label{fnpf-method}
 
-\label{fnpf-method} Wave damping was obtained using parameter
+\label{fnpf-method} The wave damping was obtained using parameter an
 identification technique, as described in section:
 "\nameref{se:pit_method}", on roll decay simulation using the fully
 nonlinear potential flow method. This method is characterized by the

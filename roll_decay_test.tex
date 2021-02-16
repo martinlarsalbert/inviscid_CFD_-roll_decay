@@ -6,7 +6,9 @@ potential energy that subsequently is shifting to kinetic energy as the
 ship starts to oscillate during the inital phase of the roll decay test.
 The energy is transfered between kinetic and potential energy during the
 oscillations. The ship loses energy over time due to the damping as
-shown in Fig.Section \ref{energy}:
+shown in Fig.\ref{fig:energy}:
+
+    
  
             
     
@@ -18,12 +20,12 @@ shown in Fig.Section \ref{energy}:
     \end{figure}
     
 
-    Time traces of the roll motion from roll decay tests in model scale
-experiments as well as from FNPF and hybrid method simulations are used
-in this paper to determine the roll damping. Two different techniques to
-identify the damping from these tests are used: the PIT method,
-described in the next section and the logartithmic decrement method as
-described in \citep{7505983/BYNJ8CFG}.
+    Time traces of the roll decay roll motion, from model tests as well as
+from FNPF and hybrid method simulations are used in this paper to
+determine the roll damping. Two different techniques to identify the
+damping from these tests are used: the PIT method, described in the next
+section and the logartithmic decrement method as described in
+\citep{7505983/BYNJ8CFG}.
      \#\# PIT method to estimate damping \label{se:PIT_method}
 
     A parameters identification technique (PIT) similar to
@@ -34,7 +36,7 @@ signal. A derivation of a matematical model suitable for this study is
 described below together with a description of how the parameters:
 damping, stiffness and inertia coefficients are determined. The roll
 decay motion can be expressed in general form according to
-\citep{7505983/KL7A3RIV} which is the same equation as
+\citep{7505983/KL7A3RIV} which is the same equation as in
 \citep{7505983/FB64RGPF} but with nonlinear stiffness:
  
             
@@ -48,7 +50,7 @@ A_{44} \ddot{\phi} + \operatorname{B_{44}}\left(\dot{\phi}\right) + \operatornam
 
     Where $B_{44}(\dot{\phi})$ and $C_{44}(\phi)$ are the damping and
 stiffness models. A cubic model can be obtained by using cubic damping
-\citep{7505983/FB64RGPF} and stiffness models \citep{7505983/KL7A3RIV}:
+\citep{7505983/FB64RGPF}:
  
             
     
@@ -58,6 +60,8 @@ stiffness models. A cubic model can be obtained by using cubic damping
 \end{equation}
 
     
+
+    And a higher order stiffness model \citep{7505983/KL7A3RIV}:
  
             
     
@@ -85,8 +89,8 @@ have one unique solution however. If all parameters would be multiplied
 by a factor $k$ these parameters would also yield as a solution to the
 equation. All parameters are therefore divided by the total inertia
 $A_{44}$ (including added mass inertia), replacing the parameters with
-new parameters such as: $B_{1A} = B_1/A_{44}$. The equation is now
-rewritten with these new parameters which have unique solutions:
+new helper parameters such as: $B_{1A} = B_1/A_{44}$. The equation is
+now rewritten with these new parameters which have unique solutions:
  
             
     
