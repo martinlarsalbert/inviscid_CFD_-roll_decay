@@ -4,8 +4,9 @@
 \nomenclature{$\displaystyle AP$,$\displaystyle FP$}{ship perpendiculars\nomunit{-}}
 \nomenclature{$\displaystyle A_{44}$}{total mass moment of inertia\nomunit{kg\cdot m^2}}
 \nomenclature{$\displaystyle B'_{E0}$}{zero speed sectional eddy damping\nomunit{Nm\cdot s/(m)}}
-\nomenclature{$\displaystyle B_{1}$,$\displaystyle B_{2}$,$\displaystyle B_{3}$,$\displaystyle C_{1}$,$\displaystyle C_{3}$,$\displaystyle C_{5}$}{stiffness coefficient\nomunit{Nm}}
-\nomenclature{$\displaystyle B_{1A}$,$\displaystyle B_{2A}$,$\displaystyle B_{3A}$}{damping helpers\nomunit{ }}
+\nomenclature{$\displaystyle B_{1}$,$\displaystyle B_{2}$,$\displaystyle C_{1}$,$\displaystyle C_{3}$,$\displaystyle C_{5}$}{stiffness coefficient\nomunit{Nm}}
+\nomenclature{$\displaystyle B_{1A}$,$\displaystyle B_{2A}$}{damping helpers\nomunit{ }}
+\nomenclature{$\displaystyle B_{E}$}{eddy roll damping\nomunit{Nm\cdot s}}
 \nomenclature{$\displaystyle B_{E0}$}{zero speed eddy damping \nomunit{Nm\cdot s}}
 \nomenclature{$\displaystyle \hat{B}_{E0}$}{eddy roll damping at zero speed\nomunit{-}}
 \nomenclature{$\displaystyle \hat{B^*}_{E}$}{only nonlinear nondimensional eddy damping\nomunit{-}}
@@ -17,8 +18,11 @@
 \nomenclature{$\displaystyle C_{r}$}{eddy damping coefficient\nomunit{-}}
 \nomenclature{$\displaystyle D_{1}$,$\displaystyle a_{1}$,$\displaystyle a_{3}$}{lewis section coefficient\nomunit{-}}
 \nomenclature{$\displaystyle H_{0}$}{half beam-draft ratio\nomunit{-}}
+\nomenclature{$\displaystyle K$}{reduced frequency\nomunit{-}}
+\nomenclature{$\displaystyle L_{pp}$}{ship perpendicular length\nomunit{m}}
 \nomenclature{$\displaystyle R_{b}$}{bilge radius\nomunit{m}}
 \nomenclature{$\displaystyle T_{s}$}{section draught\nomunit{m}}
+\nomenclature{$\displaystyle V$}{ship speed\nomunit{m/s}}
 \nomenclature{$\displaystyle beam$}{ship beam\nomunit{m}}
 \nomenclature{$\displaystyle \omega$}{angular velocity of external moment\nomunit{rad/s}}
 \nomenclature{$\displaystyle \omega_{0}$}{natural angular velocity\nomunit{rad/s}}
@@ -29,4 +33,28 @@
 \nomenclature{$\displaystyle t$}{time\nomunit{s}}
 \nomenclature{$\displaystyle \zeta$}{damping coefficient\nomunit{-}}
 \printnomenclature
+\begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\begin{Verbatim}[commandchars=\\\{\}]
+21337                                   2.461273
+21338                                   2.461043
+kvlcc2\_rolldecay\_0kn                    2.469513
+kvlcc2\_rolldecay\_0kn                    2.461043
+21340                                   2.467363
+kvlcc2\_rolldecay\_15-5kn\_const\_large2    2.467271
+kvlcc2\_rolldecay\_15-5kn\_ikeda\_dev       2.441790
+Name: omega0, dtype: float64
+\end{Verbatim}
+\end{tcolorbox}
+\begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\begin{Verbatim}[commandchars=\\\{\}]
+21337                                   0.000000
+21338                                   0.000000
+kvlcc2\_rolldecay\_0kn                    0.000000
+kvlcc2\_rolldecay\_0kn                    0.000000
+21340                                   0.083280
+kvlcc2\_rolldecay\_15-5kn\_const\_large2    0.083283
+kvlcc2\_rolldecay\_15-5kn\_ikeda\_dev       0.084152
+Name: K, dtype: float64
+\end{Verbatim}
+\end{tcolorbox}
 % Add a bibliography block to the postdoc

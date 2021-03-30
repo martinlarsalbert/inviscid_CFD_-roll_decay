@@ -74,30 +74,43 @@ noted from the amplitude variations at zero knots (left):
 When the damping predicted with Ikeda's method was compared with
 corresponding model tests (see section "\nameref{se:validation}"), it
 was found that the results were in poor agreement for the zero speed
-case (see Fig.\ref{fig:ikeda}) but quite good results at speed.
-\quad This was pointing towards the eddy damping being incorrect in the
+case (see Fig.\ref{fig:ikeda} (left)) but quite good results at
+speed. This was pointing towards the eddy damping being incorrect in the
 current implementation of Ikeda's method. A thorough investigation of
 the eddy damping prediction was therefore conducted which is described
 in the next section.
 \subsection*{Eddy damping}\label{eddy-damping}
-The eddy damping is due to eddies generated around the ship hull during
-the roll motion. Strong eddies occures at sharp edges in the geometry.
-Fig.\ref{fig:eddy_sigma} is an illustration of how the eddy
-damping changes with bilge radius as predicted with the current
-implementation of the method. It seems that the damping approaches zero
-very fast as the bilge radius increase. Having just a small rounding of
-the bilge, compared to a square section, will thereby have a great
-impact on the eddy roll damping.
+At zero speed, the eddy damping $B_E$ represents a nonlinear force
+caused by the two-dimensional separation near the bilge keel. The eddy
+damping is also nonlinear at speed where it represents the nonlinear
+part part of the hydrodynamic lift damping ($B_L$ represents the
+linear part). The speed dependancy of the eddy damping is calculated
+using the following semi empirical formula \citep{7505983/937PN5DT}:
+\begin{equation}
+\frac{B_{E}}{B_{E0}} = \frac{0.0016 K^{2}}{0.0016 K^{2} + 1}
+\label{eq:eddy_speed}
+\end{equation}
+Where $K$ is the reduced frequency:
+\begin{equation}
+K = \frac{L_{pp} \omega}{V}
+\label{eq:K}
+\end{equation}
+For the zero speed case, Fig.\ref{fig:eddy_sigma} is an
+illustration of how the eddy damping changes with bilge radius as
+predicted with the current implementation of the method. It seems that
+the damping approaches zero very fast as the bilge radius increases.
+Having just a small rounding of the bilge, compared to a square section,
+will thereby have a great impact on the eddy roll damping.
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/eddy_sigma.pdf}\end{center}
 \vspace{-1cm}
 \caption{Sectional eddy damping (left y-axis) and $\sigma$ (right y-axis) vs. bilge radius (x-axis).}
 \label{fig:eddy_sigma}
 \end{figure}
-The eddy damping prediction is based on a regression formula from
-experiements on a number of two-dimensional cylinders with various
-sections \citep{7505983/4AFVVGNT}. The eddy damping per unit length of
-these sections can be expressed as:
+The eddy damping prediction at zero speed is based on a regression
+formula from experiements on a number of two-dimensional cylinders with
+various sections \citep{7505983/4AFVVGNT}. The eddy damping per unit
+length of these sections can be expressed as:
 \begin{equation}
 B'_{E0} = \frac{4 C_{r} T_{s}^{4} \omega \phi_{a} \rho}{3 \pi}
 \label{eq:eddy_section}
@@ -151,8 +164,18 @@ Fig.\ref{fig:decision_tree}.
 \caption{Decision tree to predict $C_r$}
 \label{fig:decision_tree}
 \end{figure}
-Even thoug this tree is very simple it has very good accuracy in
-reproducing the results from Ikedas experiments ($r^2=0.996)$.
+Even though this tree is very simple it has very good accuracy in
+reproducing the results from Ikedas experiments ($r^2=0.996$) compared
+to ($r^2=0.762$) when using Ikeda's method.
+Fig.\ref{fig:ikeda_sections} shows a $C_r$ from the
+experiments and corresponding predictions with Ikeda's method and the
+decision tree.
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/ikeda_sections.pdf}\end{center}
+\vspace{-1cm}
+\caption{$C_r$ for cylinder sections from experiments and predicted with Ikeda's method and the decision tree model}
+\label{fig:ikeda_sections}
+\end{figure}
 \subsection*{FNPF method}\label{fnpf-method}
 \label{fnpf-method} The wave damping was obtained using parameter an
 identification technique, as described in section: "\nameref{se:pit}",
