@@ -27,19 +27,20 @@ linear trend in the roll angle signal.
 \label{fig:mdl}
 \end{figure}
 \subsection*{Damping by Ikeda's method}\label{damping-by-ikedas-method}
-Roll damping has been calculated for the validation cases using two
-alternatives for Ikeda's method. The first alternative using the
-original semi empirical formula to calculate $C_r$ coefficient for
-eddy damping and a second alternative using the developed decision tree.
-These two implementations of Ikeda's method are compared with the
-corresponding model tests at 0 speed in Fig.\ref{fig:ikeda} and
-at speed ($F_n=0.14)$ in Fig.\ref{fig:ikeda_speed}. The left
-plots in these figures show original Ikeda's method and the right ones
-shows the decision tree alternative. The decision tree alternative shows
-good agreement with the model test for the 0 speed case where Ikeda's
-method gives much higher values. For the speed case Ikeda's method has
-the best agreement with model test. The decision tree alternative gives
-a damping that is somewhat lower than the model test.
+Roll damping has been calculated for the validation cases with two
+alternative implementations of Ikeda's method. The first alternative
+uses the original semi empirical formula to calculate $C_r$
+coefficient for eddy damping. The second alternative uses the developed
+decision tree. These two implementations of Ikeda's method are compared
+with the corresponding model tests at 0 speed in
+Fig.\ref{fig:ikeda} and at speed ($F_n=0.14)$ in
+Fig.\ref{fig:ikeda_speed}. The left plots in these figures show
+original Ikeda's method and the right plots show the decision tree
+alternative. The decision tree alternative shows good agreement with the
+model test for the 0 speed case. Ikeda's method gives much higher values
+for this case. For the speed case, Ikeda's method has the best agreement
+with model test. The decision tree alternative gives a damping that is
+somewhat lower than the model test.
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/ikeda.pdf}\end{center}
 \vspace{-1cm}
