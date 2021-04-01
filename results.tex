@@ -1,24 +1,4 @@
 \section*{RESULTS}\label{results}
-\begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\begin{Verbatim}[commandchars=\\\{\}]
-A\_44       B\_1      B\_1A        B\_2      B\_2A         C\_1  \textbackslash{}
-21337  135.684702  0.535310  0.003945  14.950714  0.110187  821.959802
-21338  135.710141  0.508312  0.003746  14.984229  0.110413  821.959802
-21340  135.015777  7.933675  0.058761   5.096384  0.037747  821.959802
-C\_1A         C\_3      C\_3A           C\_5        C\_5A     id  \textbackslash{}
-21337  6.057866  512.365901  3.776151   8884.362208   65.477995  21337
-21338  6.056731  521.311395  3.841359   7158.897459   52.751382  21338
-21340  6.087880 -433.712787 -3.212312  54620.385838  404.548173  21340
-omega0  omega0\_fft  paper\_name  phi\_start  phi\_stop     score  \textbackslash{}
-21337  2.461273    2.475575           1   0.161181  0.063006  0.999970
-21338  2.461043    2.475575           2   0.175318  0.060737  0.999942
-21340  2.467363    2.475575           3   0.161967  0.058643  0.999966
-method
-21337  model test
-21338  model test
-21340  model test
-\end{Verbatim}
-\end{tcolorbox}
 \subsection*{Roll decay model tests}\label{roll-decay-model-tests}
 \subsubsection*{Test at 0 knots}\label{test-at-0-knots}
 Two roll decay model tests were conducted at zero speed referred to as
@@ -53,13 +33,13 @@ original semi empirical formula to calculate $C_r$ coefficient for
 eddy damping and a second alternative using the developed decision tree.
 These two implementations of Ikeda's method are compared with the
 corresponding model tests at 0 speed in Fig.\ref{fig:ikeda} and
-at speed ($F_n=0.14)$ in Fig.Section \ref{ikeda_speed}. The left plots
-in these figures show original Ikeda's method and the right ones shows
-the decision tree alternative. The decision tree alternative shows good
-agreement with the model test for the 0 speed case where Ikeda's method
-gives much higher values. For the speed case Ikeda's method has the best
-agreement with model test. The decision tree alternative gives a damping
-that is somewhat lower than the model test.
+at speed ($F_n=0.14)$ in Fig.\ref{fig:ikeda_speed}. The left
+plots in these figures show original Ikeda's method and the right ones
+shows the decision tree alternative. The decision tree alternative shows
+good agreement with the model test for the 0 speed case where Ikeda's
+method gives much higher values. For the speed case Ikeda's method has
+the best agreement with model test. The decision tree alternative gives
+a damping that is somewhat lower than the model test.
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/ikeda.pdf}\end{center}
 \vspace{-1cm}
@@ -115,10 +95,10 @@ Fig.\ref{fig:hybrid_0} and Fig.\ref{fig:hybrid_speed}
 show comparisons between roll damping predicted with hybrid method and
 model tests. The hybrid method predicts higher damping than the decision
 tree alternative of Ikeda's method (see right plots in
-Fig.\ref{fig:ikeda} and Fig.Section \ref{ikeda_speed}) due to
-the higher wave damping of FNPF. The hybrid method predicts roll damping
-that is slightly higher than the model test for the 0 speed case and
-very good agreement at speed case.
+Fig.\ref{fig:ikeda} and Fig.\ref{fig:ikeda_speed}) due
+to the higher wave damping of FNPF. The hybrid method predicts roll
+damping that is slightly higher than the model test for the 0 speed case
+and very good agreement at speed case.
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_0.pdf}\end{center}
 \vspace{-1cm}
