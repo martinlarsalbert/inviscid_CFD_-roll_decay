@@ -1,11 +1,12 @@
 \section*{ROLL DECAY TEST}\label{roll-decay-test}
 A common way to determine the roll damping of a ship is to conduct a
-roll decay test. The initial heel angle during this test gives the ship
-potential energy that subsequently is shifting to kinetic energy as the
-ship starts to oscillate during the initial phase of the roll decay
-test. The energy is transferred between kinetic and potential energy
-during the oscillations. The ship loses energy over time due to the
-damping as shown in Fig.\ref{fig:energy}:
+roll decay test using: model tests, CFD simulations or in some rare
+cases at full scale tests. The initial heel angle during this test gives
+the ship potential energy that subsequently is shifting to kinetic
+energy as the ship starts to oscillate during the initial phase of the
+roll decay test. The energy is transferred between kinetic and potential
+energy during the oscillations. The ship loses energy over time due to
+the damping as shown in Fig.\ref{fig:energy}:
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/energy.png}\end{center}
 \vspace{-1cm}
@@ -58,35 +59,17 @@ have one unique solution however. If all parameters would be multiplied
 by a factor $k$ these parameters would also yield as a solution to the
 equation. All parameters are therefore divided by the total inertia
 $A_{44}$ (including added mass inertia), replacing the parameters with
-new helper parameters such as: $B_{1A} = B_1/A_{44}$. The equation is
-now rewritten with these new parameters which have unique solutions:
+new normalized parameters such as: $B_{1A} = B_1/A_{44}$. The equation
+is now rewritten with these new parameters which have unique solutions:
 \begin{equation}
 \left(B_{1A} + B_{2A} \left|{\dot{\phi}}\right|\right) \dot{\phi} + \left(C_{1A} + C_{3A} \phi^{2} + C_{5A} \phi^{4}\right) \phi + \ddot{\phi} = 0
 \label{eq:roll_decay_equation_quadratic_A}
 \end{equation}
-The parameters of this equation can be identified using least square fit
-if the time signals $\phi(t)$, $\dot{\phi}(t)$ and
-$\ddot{\phi}(t)$ are all known. This is the case for the results from
-the FNPF simulations but not from the model tests, where only the roll
-signal $\phi(t)$ is known. The other time derivatives can be estimated
-using numerical differentiation of a low-pass filtered roll signal or
-Kalman filtered roll signal. The filtering will however introduce some
-errors in itself. So instead of using this "Differentiation approach",
-it has been found that solving the differential equation numerically for
-estimated parameter values determined using optimization similarly to
-what was used by \citep{7505983/FJHQJJUH} and \citep{7505983/24TNAV5Z}
-gives the best parameter estimation. One problem with this "Integration
-approach" is that in order to converge, the optimization needs a
-reasonable first guess of the parameters. The Differentiation approach
-has therefore been used as a pre-step to obtain a very good first guess
-of the parameters that can be passed on to the Integration approach.
-This has been used for both signals from FNPF and model tests where in
-the latter case numerical differentiation is used.
-\quad The differential equation is numerically solved as an initial
-value problem, where the initial states for $\phi(t)$,
-$\dot{\phi}(t)$ and $\ddot{\phi}(t)$ are used to estimate the
-following states, by conducting very small time steps using the
-following expression for the acceleration:
+The differential equation is numerically solved as an initial value
+problem, where the initial states for $\phi(t)$, $\dot{\phi}(t)$ and
+$\ddot{\phi}(t)$ are used to estimate the following states, by
+conducting very small time steps using the following expression for the
+acceleration:
 \begin{equation}
 \ddot{\phi} = - B_{1A} \dot{\phi} - B_{2A} \left|{\dot{\phi}}\right| \dot{\phi} - C_{1A} \phi - C_{3A} \phi^{3} - C_{5A} \phi^{5}
 \label{eq:eq_phi1d}
@@ -104,11 +87,44 @@ and the natural frequency can be obtained from:
 \label{eq:omega0_eq}
 \end{equation}
 The analytical and numerical solutions are very similar according to the
-example: $A_{44} = 1.0$, $B_1 = 0.3$, $C_1 = 5.0$ shown in
-Fig.\ref{fig:analytical_numerical}.
+example: $A_{44} = 1.0$, $B_1 = 0.3$, $C_1 = 5.0$ (with 0.01 s
+time step) shown in Fig.\ref{fig:analytical_numerical}.
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/analytical_numerical.pdf}\end{center}
 \vspace{-1cm}
 \caption{Comparison of analytical solution and numerical simulation of a roll decay test.}
 \label{fig:analytical_numerical}
+\end{figure}
+The parameters of Eq.\ref{eq:eq_phi1d} can be identified using
+least square fit if the time signals $\phi(t)$, $\dot{\phi}(t)$ and
+$\ddot{\phi}(t)$ are all known. This is the case for the results from
+the FNPF simulations but not from the model tests, where only the roll
+signal $\phi(t)$ is known. The other time derivatives can be estimated
+using numerical differentiation of a low-pass filtered roll signal or
+Kalman filtered roll signal. The filtering will however introduce some
+errors in itself. As an alternative of using this "Differentiation
+approach", an "Integration approach" similar to what was used by
+\citep{7505983/FJHQJJUH} and \citep{7505983/24TNAV5Z} can also be used.
+The differential equation is solved numerically for estimated parameter
+values determined with optimization. Gausian noise with 0.2 degrees
+standard deviation has been added to the simulated roll signal in
+Fig.\ref{fig:analytical_numerical} to mimic measurement noise.
+Fig.\ref{fig:diff_vs_int} shows a comparison between these two
+approaches for a variation of the low pass filter cutoff frequency. A
+very high cutoff frequency means that most frequencies pass through the
+filter undisturbed. It can be seen that the estimation of damping
+coefficient $B_{1A}$ with "Differentiation approach" depends very much
+on the filter setting. The "Integration approach" was therefore selected
+for this study, being the more accurate and robust solution. One problem
+is however that the optimization needs a reasonable first guess of the
+parameters to converge. The Differentiation approach has therefore been
+used as a pre-step to obtain a very good first guess of the parameters
+that can be passed on to the Integration approach. This has been used
+for both signals from FNPF and model tests, where in the latter case
+numerical differentiation is used.
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/diff_vs_int.pdf}\end{center}
+\vspace{-1cm}
+\caption{Comparing differentiation approach with integration approach}
+\label{fig:diff_vs_int}
 \end{figure}
