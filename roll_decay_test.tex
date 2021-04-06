@@ -87,8 +87,10 @@ and the natural frequency can be obtained from:
 \label{eq:omega0_eq}
 \end{equation}
 The analytical and numerical solutions are very similar according to the
-example: $A_{44} = 1.0$, $B_1 = 0.3$, $C_1 = 5.0$ (with 0.01 s
-time step) shown in Fig.\ref{fig:analytical_numerical}.
+example: $A_{44} = 1.0$, $B_1 = 0.3$, $C_1 = 5.0$ shown in
+Fig.\ref{fig:analytical_numerical}. The numerical integration
+was done with Explicit Runge-Kutta method of order 5(4) with 0.01 s time
+step.
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/analytical_numerical.pdf}\end{center}
 \vspace{-1cm}
@@ -107,7 +109,7 @@ approach", an "Integration approach" similar to what was used by
 \citep{7505983/FJHQJJUH} and \citep{7505983/24TNAV5Z} can also be used.
 The differential equation is solved numerically for estimated parameter
 values determined with optimization. Gausian noise with 0.2 degrees
-standard deviation has been added to the simulated roll signal in
+standard deviation was added to the simulated roll signal in
 Fig.\ref{fig:analytical_numerical} to mimic measurement noise.
 Fig.\ref{fig:diff_vs_int} shows a comparison between these two
 approaches for a variation of the low pass filter cutoff frequency. A
@@ -117,10 +119,10 @@ coefficient $B_{1A}$ with "Differentiation approach" depends very much
 on the filter setting. The "Integration approach" was therefore selected
 for this study, being the more accurate and robust solution. One problem
 is however that the optimization needs a reasonable first guess of the
-parameters to converge. The Differentiation approach has therefore been
-used as a pre-step to obtain a very good first guess of the parameters
-that can be passed on to the Integration approach. This has been used
-for both signals from FNPF and model tests, where in the latter case
+parameters to converge. The Differentiation approach was therefore used
+as a pre-step to obtain a very good first guess of the parameters that
+can be passed on to the Integration approach. This has been used for
+both signals from FNPF and model tests, where in the latter case
 numerical differentiation is used.
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/diff_vs_int.pdf}\end{center}
