@@ -41,6 +41,18 @@ model test for the 0 speed case. Ikeda's method gives much higher values
 for this case. For the speed case, Ikeda's method has the best agreement
 with model test. The decision tree alternative gives a damping that is
 somewhat lower than the model test.
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/ikeda.pdf}\end{center}
+\vspace{-1cm}
+\caption{Roll damping components calculated at zero speed with two alternative implementations of Ikeda's method: Regular implementation (left), Decision tree $C_r$ (right).}
+\label{fig:ikeda}
+\end{figure}
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/ikeda_speed.pdf}\end{center}
+\vspace{-1cm}
+\caption{Roll damping components calculated at speed with two alternative implementations of Ikeda's method: Regular implementation (left), Decision tree $C_r$ (right).}
+\label{fig:ikeda_speed}
+\end{figure}
 The $C_r$ coefficient has been calculated for KVLCC2 with section data
 according to Tab.\ref{tab:kvlcc2_section_table}. A section wise
 comparison between the two alternatives of Ikeda's method is shown in
@@ -55,6 +67,12 @@ and also in the illustration in Fig.\ref{fig:eddy_sigma}. The
 decision tree and Ikeda's method capture this very nonlinear behaviour
 differently, giving the deviating $C_r$ predictions for stations 8 to
 14.
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/kvlcc2_eddy.pdf}\end{center}
+\vspace{-1cm}
+\caption{KVLCC2 eddy damping coefficient along the hull}
+\label{fig:kvlcc2_eddy}
+\end{figure}
 \subsection*{Motions estimated by FNPF}\label{motions-estimated-by-fnpf}
 Simulations of roll decay tests were conducted with FNPF without viscous
 damping. Wave damping obtained from these tests are shown in
@@ -64,6 +82,12 @@ Fig.\ref{fig:ikeda} and Fig.\ref{fig:ikeda_speed}). The
 FNPF wave damping does not change much with the roll amplitude which
 means that it is reasonably linear. This confirms the assumption used in
 the derivation of the eddy damping \citep{7505983/4AFVVGNT}.
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/fnpf.pdf}\end{center}
+\vspace{-1cm}
+\caption{Wave damping obtained from FNPF}
+\label{fig:fnpf}
+\end{figure}
 \subsection*{Roll motion prediction with hybrid
 method}\label{roll-motion-prediction-with-hybrid-method}
 The hybrid method uses the decision tree in the calculation of eddy
@@ -76,6 +100,18 @@ Fig.\ref{fig:ikeda} and Fig.\ref{fig:ikeda_speed}) due
 to the higher wave damping of FNPF. The hybrid method predicts roll
 damping that is slightly higher than the model test for the 0 speed case
 and very good agreement at speed case.
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_0.pdf}\end{center}
+\vspace{-1cm}
+\caption{Roll damping from hybrid method ($F_n = 0$)}
+\label{fig:hybrid_0}
+\end{figure}
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_speed.pdf}\end{center}
+\vspace{-1cm}
+\caption{Roll damping from hybrid method ($F_n = 0.14$)}
+\label{fig:hybrid_speed}
+\end{figure}
 The hybrid method can also be compared with the model tests in the time
 domain. Time step simulations (see section "\nameref{se:pit}") with
 damping coefficients from the hybrid method can be conducted to obtain
@@ -85,8 +121,37 @@ a comparison at speed. The time series from the corresponding FNPF
 simulations has also been added to these plots to show how much the
 injection of semi empirical viscous damping can improve the accuracy of
 these simulations.
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_0_time.pdf}\end{center}
+\vspace{-1cm}
+\caption{Roll decay (0 kn)}
+\label{fig:hybrid_0_time}
+\end{figure}
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/hybrid_speed_time.pdf}\end{center}
+\vspace{-1cm}
+\caption{Roll decay (15.5 kn)}
+\label{fig:hybrid_speed_time}
+\end{figure}
 The coefficients obtained from model tests, FNPF and hybrid method are
 summarized in model scale units in the table below. The equivalent
 linearized damping for 5 degrees roll angle amplitude $B_{e5}$ has
 also been added to this table. It can be seen that the hybrid method
 overpredicts the damping at 0 knots for this amplitude.
+\begin{table}[H]
+\scriptsize
+\center
+\caption{Roll damping coefficients for model scale KVLCC2}
+\label{tab:results}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline\addlinespace
+$F_n$ & run & method & $B_1$ & $B_2$ & $B_{e5}$\\
+$[-]$ &  &  & $[Nm \cdot s]$ & $[Nm \cdot s^2]$ & $[Nm \cdot s]$\\
+\hline0.0 & 1 & model test & 0.54 & 14.95 & 3.26\\
+0.0 & 2 & model test & 0.51 & 14.98 & 3.24\\
+0.0 & 2 & hybrid & 1.2 & 14.5 & 3.84\\
+0.14 & 3 & model test & 7.93 & 5.1 & 8.87\\
+0.14 & 3 & hybrid & 7.52 & 6.01 & 8.61\\
+\hline
+\end{tabular}
+\end{table}
