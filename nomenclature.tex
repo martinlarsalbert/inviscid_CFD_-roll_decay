@@ -1,42 +1,19 @@
 \section*{NOMENCLATURE}\label{nomenclature}
-\vspace{-1.3cm}
-\mbox{}
-\nomenclature{$\displaystyle AP$,$\displaystyle FP$}{ship perpendiculars\nomunit{-}}
-\nomenclature{$\displaystyle A_{44}$}{total mass moment of inertia\nomunit{kg\cdot m^2}}
-\nomenclature{$\displaystyle B'_{E0}$}{zero speed sectional eddy damping\nomunit{Nm\cdot s/(m)}}
-\nomenclature{$\displaystyle B_{1}$,$\displaystyle B_{2}$,$\displaystyle C_{1}$,$\displaystyle C_{3}$,$\displaystyle C_{5}$}{stiffness coefficient\nomunit{Nm}}
-\nomenclature{$\displaystyle B_{1A}$,$\displaystyle B_{2A}$}{damping helpers\nomunit{ }}
-\nomenclature{$\displaystyle B_{E}$}{eddy roll damping\nomunit{Nm\cdot s}}
-\nomenclature{$\displaystyle B_{E0}$}{zero speed eddy damping \nomunit{Nm\cdot s}}
-\nomenclature{$\displaystyle \hat{B}_{E0}$}{eddy roll damping at zero speed\nomunit{-}}
-\nomenclature{$\displaystyle \hat{B^*}_{E}$}{only nonlinear nondimensional eddy damping\nomunit{-}}
-\nomenclature{$\displaystyle \hat{B^*}_{F}$}{only nonlinear nondimensional friction damping\nomunit{-}}
-\nomenclature{$\displaystyle \hat{B^*}_{W}$}{only nonlinear nondimensional wave damping\nomunit{-}}
-\nomenclature{$\displaystyle B_{s}$}{section b\nomunit{m}}
-\nomenclature{$\displaystyle \hat{B^*}$}{only nonlinear nondimensional damping\nomunit{-}}
-\nomenclature{$\displaystyle C_{1A}$,$\displaystyle C_{3A}$,$\displaystyle C_{5A}$}{stiffness helpers\nomunit{ }}
-\nomenclature{$\displaystyle C_{r}$}{eddy damping coefficient\nomunit{-}}
-\nomenclature{$\displaystyle D_{1}$,$\displaystyle a_{1}$,$\displaystyle a_{3}$}{lewis section coefficient\nomunit{-}}
-\nomenclature{$\displaystyle Disp$}{displacement\nomunit{m^3}}
-\nomenclature{$\displaystyle F_{n}$}{froude number\nomunit{-}}
-\nomenclature{$\displaystyle H_{0}$}{half b-draft ratio\nomunit{-}}
-\nomenclature{$\displaystyle K$}{reduced frequency\nomunit{-}}
-\nomenclature{$\displaystyle K_{xx}$}{nondimensional roll radius of gyration\nomunit{-}}
-\nomenclature{$\displaystyle L_{pp}$}{ship perpendicular length\nomunit{m}}
-\nomenclature{$\displaystyle R_{b}$}{bilge radius\nomunit{m}}
-\nomenclature{$\displaystyle S$}{wetted surface\nomunit{m^2}}
-\nomenclature{$\displaystyle T$}{mean draught\nomunit{m}}
-\nomenclature{$\displaystyle T_{s}$}{section draught\nomunit{m}}
-\nomenclature{$\displaystyle V$}{ship speed\nomunit{m/s}}
-\nomenclature{$\displaystyle b$}{ship beam\nomunit{m}}
-\nomenclature{$\displaystyle g$}{acceleration of gravity\nomunit{m/s^2}}
-\nomenclature{$\displaystyle kg$}{keel to g\nomunit{m}}
-\nomenclature{$\displaystyle \omega$}{angular velocity of external moment\nomunit{rad/s}}
-\nomenclature{$\displaystyle \omega_{0}$}{natural angular velocity\nomunit{rad/s}}
-\nomenclature{$\displaystyle \phi_{a}$}{roll amplitude\nomunit{rad}}
-\nomenclature{$\displaystyle \rho$}{water density\nomunit{kg/m^3}}
-\nomenclature{$\displaystyle \sigma$}{section area coefficient\nomunit{-}}
-\nomenclature{$\displaystyle t$}{time\nomunit{s}}
-\nomenclature{$\displaystyle \zeta$}{damping coefficient\nomunit{-}}
-\printnomenclature
+\begin{Verbatim}[commandchars=\\\{\}]
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-59-d3a0bed4c42c> in <module>
+1 from reports.paper\_writing import \_get\_symbols,\_generate\_latex\_nomenclature
+----> 2 symbols\_nomenclature = \_get\_symbols(equation\_dict=equation\_dict)
+3 text = '\textbackslash{}\textbackslash{}vspace\{-1.3cm\}\textbackslash{}n'
+4
+5 additional\_descriptions = \{
+c:\textbackslash{}dev\textbackslash{}prediction-of-roll-damping-using-fully-nonlinear-potential-flow-and-ikedas-method\textbackslash{}reports\textbackslash{}paper\_writing.py in \_get\_symbols(equation\_dict)
+153     symbols = \{\}
+154     for name,eq in equation\_dict.items():
+--> 155         free\_symbols = \{symbol.name:symbol for symbol in eq.free\_symbols\}
+156         symbols.update(free\_symbols)
+157
+AttributeError: 'str' object has no attribute 'free\_symbols'
+\end{Verbatim}
 % Add a bibliography block to the postdoc

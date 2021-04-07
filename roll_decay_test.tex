@@ -132,17 +132,17 @@ numerical differentiation is used.
 \end{figure}
 \subsection*{Time and frequency domain}\label{time-and-frequency-domain}
 \label{se:time_and_frequency} Ikeda's method is defined in the
-frequency domain, expressing the damping as function of roll angle
-amplitude $\phi_a$ and roll angle frequency $\omega$. In the time
-domain roll decay tests however, the damping needs to be expressed as
-function of the roll velocity $\dot{\phi}$. This can be obtained using
-the equivalent linear damping $B_e$ (not to confuse with eddy damping
-$B_E$). The most general way to determine $B_e$ is to assume that
-the energy loss due to damping during a half cycle of roll is the same
-when nonlinear and linear dampings are used \citep{7505983/RYUBZITQ}. The
-$B_e$ can be calculated as a Fourier series expansion of the damping
-model, which in the case of a quadratic model yields as
-\citep{7505983/FB64RGPF}:
+frequency domain. The damping is expressed as function of roll angle
+amplitude $\phi_a$ and roll angle frequency $\omega$. The roll decay
+tests are however in the time domain, where the damping instead needs to
+be expressed as function of the roll velocity $\dot{\phi}$. This can
+be obtained using the equivalent linear damping $B_e$ (not to confuse
+with eddy damping $B_E$). The most general way to determine $B_e$ is
+to assume that the energy loss due to damping during a half cycle of
+roll is the same when nonlinear and linear dampings are used
+\citep{7505983/RYUBZITQ}. The $B_e$ can be calculated as a Fourier
+series expansion of the damping model, which in the case of a quadratic
+model yields as \citep{7505983/FB64RGPF}:
 \begin{equation}
 B_{e} = B_{1} + \frac{8 B_{2} \omega_{0} \phi_{a}}{3 \pi}
 \label{eq:B_e_equation}
@@ -153,8 +153,8 @@ equivalent linear damping for the same amplitudes
 \citep{7505983/FB64RGPF}. This way $B_1$ and $B_2$ from the quadratic
 model (Eq.\ref{eq:eq_phi1d}) fitted on roll decay tests can be
 compared with corresponding values from Ikeda's method. The logaritmic
-decrement method \citep{7505983/BYNJ8CFG} can also be used to obtaining
-the frequency domain quantities directly from roll decay tests (without
+decrement method \citep{7505983/BYNJ8CFG} can be used to measure the
+frequency domain quantities directly from roll decay tests (without
 fitting a model first). In this method the peaks in the signal are first
 measured as shown in Fig.\ref{fig:peaks}.
 \begin{figure}[H]
@@ -166,16 +166,25 @@ measured as shown in Fig.\ref{fig:peaks}.
 The decrement $\Delta_n$ is calculated as the ratio between every
 other peak, so that negative and positive roll peaks are separated. This
 decrement can be calulated for each peak:
-\[ \Delta_n = \frac{\phi_{a,n}}{\phi_{a,n+2}}\]
+\begin{equation}
+\Delta_n = \frac{\phi_{a,n}}{\phi_{a,n+2}}
+\label{decrement}
+\end{equation}
 The nondimensional $\zeta$ damping coefficient for each peak can be
-calculated from the logaritimic decrement:
-\[ \zeta_n = \frac{\delta_n}{2\pi}=\frac{ln(\Delta_n)}{2\pi} \]
+calculated from the logaritimic decrement \citep{7505983/BYNJ8CFG}:
+\begin{equation}
+\zeta_n = \frac{\delta_n}{2\pi}=\frac{ln(\Delta_n)}{2\pi}
+\label{zeta_n}
+\end{equation}
 The dimensional damping $B_n$ (Nm*s) for each peak can be calculated
 as:
 \begin{equation}
 B = 2 A_{44} \omega_{0} \zeta
 \label{eq:B_1_zeta_eq}
 \end{equation}
-The roll amplitude is calculated as the mean value of the three peaks
-used to obtain $B_n$:
-\[ \phi_a = (\phi_{a,n} + \phi_{a,n+1} + \phi_{a,n+2})/3 \]
+The roll amplitude is calculated as the mean value of the three peaks in
+the time window where $B_n$ is calculated:
+\begin{equation}
+\phi_a = (\phi_{a,n} + \phi_{a,n+1} + \phi_{a,n+2})/3
+\label{phi_a}
+\end{equation}
