@@ -130,3 +130,48 @@ numerical differentiation is used.
 \caption{Comparing differentiation approach with integration approach}
 \label{fig:diff_vs_int}
 \end{figure}
+\subsection*{Time and frequency domain}\label{time-and-frequency-domain}
+\label{se:time_and_frequency} Ikeda's method is defined in the
+frequency domain, expressing the damping as function of roll angle
+amplitude $\phi_a$ and roll angle frequency $\omega$. In the time
+domain roll decay tests however, the damping needs to be expressed as
+function of the roll velocity $\dot{\phi}$. This can be obtained using
+the equivalent linear damping $B_e$ (not to confuse with eddy damping
+$B_E$). The most general way to determine $B_e$ is to assume that
+the energy loss due to damping during a half cycle of roll is the same
+when nonlinear and linear dampings are used \citep{7505983/RYUBZITQ}. The
+$B_e$ can then be calculated as a Fourier series expansion of the
+damping model, which in the case of a quadratic model yields as
+\citep{7505983/FB64RGPF}:
+\begin{equation}
+B_{e} = B_{1} + \frac{8 B_{2} \omega_{0} \phi_{a}}{3 \pi}
+\label{eq:B_e_equation}
+\end{equation}
+$B_1$ and $B_2$ can be calculated with this equation by assuming
+that the damping for a variation of roll amplitudes corresponds to the
+equivalent linear damping for the same amplitudes
+\citep{7505983/FB64RGPF}. This way $B_1$ and $B_2$ from the quadratic
+model (Eq.\ref{eq:eq_phi1d}) fitted on roll decay tests can be
+compared with corresponding values from Ikeda's method. The logaritmic
+decrement method \citep{7505983/BYNJ8CFG} can also be used to obtaining
+the frequency domain quantities directly from roll decay tests (without
+fitting a model first). In this method the peaks in the signal are first
+measured as shown in Fig.\ref{fig:peaks}.
+\begin{figure}[H]
+\begin{center}\includegraphics[width = 0.5\textwidth]{figures/peaks.pdf}\end{center}
+\vspace{-1cm}
+\caption{Analyzing peaks with logarithmic decrement method.}
+\label{fig:peaks}
+\end{figure}
+The decrement \$ \Delta\_n \$ is calculated as the ratio between every
+other peak, so that negative and positive roll peaks are separated. This
+decrement can be calulated for each peak:
+\[ \Delta_n = \frac{\phi_{a,n}}{\phi_{a,n+2}}\]
+The nondimensional $\zeta$ damping coefficient for each peak can be
+calculated from the logaritimic decrement:
+\[\zeta_n = \frac{\delta_n}{2\pi}=\frac{ln(\Delta_n)}{2\pi}\]
+The dimensional damping $B_n$ (Nm*s) can be calculated as:
+\begin{equation}
+B = 2 A_{44} \omega_{0} \zeta
+\label{eq:B_1_zeta_eq}
+\end{equation}
