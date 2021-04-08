@@ -204,6 +204,8 @@ damping due to radiation and diffraction. The downside is the larger
 computational cost compared to many other potential flow based methods
 due to the fact that a boundary value problem for the velocity potential
 must be solved at least once every time step, depending on the specifics
-of the time integral scheme. However, FNPF methods are still typically
+of the time integral scheme. A factor of approximately 1000 between
+wall-clock time and simulated time on a computer with 32 cores (Intel(R)
+Xeon(R) CPU E5-4627 v2 @ 3.30GHz) can be expected. This is typically
 less computationally demanding than for example URANS methods, making
-them attractive choices for seakeeping problems.
+FNPF methods attractive choices for seakeeping problems.
