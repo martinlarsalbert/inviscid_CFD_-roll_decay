@@ -36,7 +36,7 @@ A_{44} \ddot{\phi} + \operatorname{B_{44}}\left(\dot{\phi}\right) + \operatornam
 \label{eq:roll_decay_equation_general_himeno}
 \end{equation}
 Where $B_{44}(\dot{\phi})$ and $C_{44}(\phi)$ are the damping and
-stiffness models. A quadratic model can be obtained by using cubic
+stiffness models. A quadratic model can be obtained by using quadratic
 damping \citep{7505983/FB64RGPF}:
 \begin{equation}
 \operatorname{B_{44}}\left(\dot{\phi}\right) = B_{1} \dot{\phi} + B_{2} \left|{\dot{\phi}}\right| \dot{\phi}
@@ -52,14 +52,13 @@ The total equation is then written:
 A_{44} \ddot{\phi} + \left(B_{1} + B_{2} \left|{\dot{\phi}}\right|\right) \dot{\phi} + \left(C_{1} + C_{3} \phi^{2} + C_{5} \phi^{4}\right) \phi = 0
 \label{eq:roll_decay_equation_quadratic}
 \end{equation}
-This mathematical model can be reduced to a quadratic damping model when
-$B_3=0$ and a linear model when $B_2=B_3=0$. This equation does not
-have one unique solution however. If all parameters would be multiplied
-by a factor $k$ these parameters would also yield as a solution to the
-equation. All parameters are therefore divided by the total inertia
-$A_{44}$ (including added mass inertia), replacing the parameters with
-new normalized parameters such as: $B_{1A} = B_1/A_{44}$. The equation
-is now rewritten with these new parameters which have unique solutions:
+This equation does not have one unique solution however. If all
+parameters would be multiplied by a factor $k$ these parameters would
+also yield as a solution to the equation. All parameters are therefore
+divided by the total inertia $A_{44}$ (including added mass inertia),
+replacing the parameters with new normalized parameters such as:
+$B_{1A} = B_1/A_{44}$. The equation is now rewritten with these new
+parameters which have unique solutions:
 \begin{equation}
 \left(B_{1A} + B_{2A} \left|{\dot{\phi}}\right|\right) \dot{\phi} + \left(C_{1A} + C_{3A} \phi^{2} + C_{5A} \phi^{4}\right) \phi + \ddot{\phi} = 0
 \label{eq:roll_decay_equation_quadratic_A}
