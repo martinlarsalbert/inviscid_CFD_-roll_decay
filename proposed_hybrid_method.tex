@@ -13,7 +13,7 @@ B = B_F + B_E + B_L + B_W + B_{BK}
 Where $B_F$ is the skin friction component, $B_E$ is the eddy
 generation component, $B_L$ is hull lift component, $B_W$ is roll
 wave generation component and $B_{BK}$ is the bilge keel component.
-Ikeda's method propose semi empirical formulas for the viscous damping
+Ikeda's method propose semi-empirical formulas for the viscous damping
 components: $B_F$, $B_E$, $B_{BK}$ and $B_L$ so that viscous
 damping can be obtained from,
 \begin{equation}
@@ -25,11 +25,11 @@ keel damping $B_{BK}$ has been exluded in
 Eq.\ref{eq:viscous_damping}, thereby assuming that the ship does
 not have any bilge keels.
 \quad The skin friction damping $B_F$ is calculated using
-\citep{7505983/CKCMI3N9} which is implementation according to the
+\citep{7505983/CKCMI3N9} which is implemented according to the
 description in \citep{7505983/UGK6YEVD}. The scale effects of roll
 damping are considered to mainly be associated with the skin friction
-component $B_F$ \citep{7505983/FB64RGPF}. This component constitute a
-very small part of the total damping for the full scale ship, but a
+component $B_F$ \citep{7505983/FB64RGPF}. This component constitutes a
+very small part of the total damping for the full scale ship but a
 substantial part for the model scale ship used in this study. This is
 therefore the only component in Ikedas method that needs to be
 recalculated when the scale changes.
@@ -47,10 +47,10 @@ is then varied at constant roll angle amplitude of 10 degrees (middle).
 The amplitude is then gradually reduced at the highest speed down to
 zero again (right).
 \quad Assumming that the trends are correct in Ikeda's method it can be
-noted from the amplitude variations at zero knots (left):
+noted from the amplitude variations at zero speed (left):
 \begin{itemize}
 \item $B_W$ does not change with amplitude, implying that they only contribute to the linear part ($B_1$) of the damping. (The $B_W$ was calculated with strip theory here)
-\item $B_F$ has a small amplitude dependancy but the linear part is dominating.
+\item $B_F$ has a small amplitude dependency but the linear part is dominating.
 \item $B_E$ has a large amplitude depandancy and only contributes to the quadratic damping ($B_2$)\citep{7505983/4AFVVGNT}.
 \end{itemize}
 \quad Looking at the speed variation (middle):
@@ -61,9 +61,9 @@ noted from the amplitude variations at zero knots (left):
 \end{itemize}
 \quad Looking at the roll amplitude variation (right):
 \begin{itemize}
-\item (Please note that this x-axis is revered in this graph)
+\item (Please note that this horizontal axis is reversed in this graph)
 \item $B_L$ does not change with amplitude, implying that they only contribute to the linear part ($B_1$) of the damping.
-\item $B_F$ has a small amplitude dependancy but the linear part is dominating.
+\item $B_F$ has a small amplitude dependency but the linear part is dominating.
 \end{itemize}
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/ikeda_generic.pdf}\end{center}
@@ -84,8 +84,8 @@ At zero speed, the eddy damping $B_E$ represents a nonlinear force
 caused by the two-dimensional separation near the bilge keel. The eddy
 damping is also nonlinear at speed where it represents the nonlinear
 part of the hydrodynamic lift damping ($B_L$ represents the linear
-part). The speed dependancy of the eddy damping is calculated using the
-following semi empirical formula \citep{7505983/937PN5DT}:
+part). The speed dependency of the eddy damping is calculated using the
+following semi-empirical formula \citep{7505983/937PN5DT}:
 \begin{equation}
 \frac{B_{E}}{B_{E0}} = \frac{0.0016 K^{2}}{0.0016 K^{2} + 1}
 \label{eq:eddy_speed}
@@ -154,10 +154,22 @@ And the $C_r$ can be calculated from the experiments as:
 C_{r} = \frac{3 \sqrt{2} \pi B_{s} \hat{B}_{E0} b^{2} \sigma}{4 T_{s}^{3} \omega \phi_{a} \sqrt{\frac{b}{g}}}
 \label{eq:C_r_2}
 \end{equation}
-A simple decision tree model is used for the $C_r$ regression, based
-on the same Lewis section coefficients from the regular regression
-formula. The fitted decision tree is illustrated in
-Fig.\ref{fig:decision_tree}.
+A decision tree regressor is used for the $C_r$ regression, based on
+the same Lewis section coefficients used in Ikeda's method. The fitted
+decision tree is illustrated in Fig.\ref{fig:decision_tree}.
+This figure shows a graphical representation of the decision tree with:
+the root node at the top, the leaf nodes at the very bottom and some
+intermediate decision nodes in between. The predicted value of the
+decision tree is given by the "value" from one of the leaf nodes, which
+is selected by the true/false conditions based on $\sigma$ and $a_3$
+in the intermediate nodes. The graph also shows: "samples" being the
+number of experiements that fullfill the conditional path to reach that
+node and "mse" being the mean square error of a prediction using that
+node on those samples. It can be observed how the "mse" decreases as the
+decision path is approaching the leaf nodes. As an example: the root
+node has all of the 16 experiments as "sample" and $C_r$ = 1.576 would
+be the best prediction if no conditions are used, which would then give
+a very high error "mse=4.921"
 \begin{figure}[H]
 \begin{center}\includegraphics[width = 0.5\textwidth]{figures/decision_tree.pdf}\end{center}
 \vspace{-1cm}
